@@ -17,10 +17,16 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            
+            // Tambahkan kolom kustom kamu di sini
+            $table->string('phone')->nullable();
+            $table->enum('role', ['eo', 'user'])->default('user');
+            
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // Bagian password_reset_tokens dan sessions biarkan saja tetap ada
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
