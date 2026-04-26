@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // Seeder EO
         User::create([
             'name' => 'EO Artantic',
+            'username' => 'eoartantic',
             'email' => 'eo@gmail.com',
             'password' => Hash::make('password123'),
             'phone' => '08123456789',
@@ -25,6 +26,7 @@ class DatabaseSeeder extends Seeder
         // Data User
         User::create([
             'name' => 'Byan',
+            'username' => 'byan',
             'email' => 'byan@gmail.com',
             'password' => Hash::make('password123'),
             'phone' => '08987654321',
