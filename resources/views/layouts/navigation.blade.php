@@ -24,7 +24,7 @@
             <div class="flex items-center">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-xl text-deep-navy bg-white hover:bg-gray-50 transition ease-in-out duration-150">
+                        <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-xl text-deep-navy bg-white hover:bg-slate-white transition ease-in-out duration-150">
                             <div class="flex items-center gap-2">
                                 <div class="w-8 h-8 rounded-full bg-electric-blue/10 flex items-center justify-center text-electric-blue font-bold">
                                     {{ substr(Auth::user()->name, 0, 1) }}
@@ -56,7 +56,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -65,21 +65,36 @@
         </div>
     </div>
 
-    <!-- Mobile Navigation Drawer (Simplified Overlay) -->
+    <!-- Mobile Navigation Drawer -->
     <div x-show="open" class="fixed inset-0 z-50 lg:hidden" style="display: none;">
         <div class="fixed inset-0 bg-deep-navy/80 backdrop-blur-sm" @click="open = false"></div>
-        <div class="fixed inset-y-0 left-0 w-64 bg-deep-navy p-6 flex flex-col">
-            <div class="flex items-center gap-3 mb-8">
-                <x-application-logo class="w-8 h-8 text-electric-blue" />
-                <span class="text-xl font-bold tracking-tight text-white">Eventic</span>
+        <div class="fixed inset-y-0 left-0 w-72 bg-electric-blue p-6 flex flex-col shadow-2xl">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white p-2 rounded-lg">
+                        <x-application-logo class="w-6 h-6 text-electric-blue" />
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white">Eventic</span>
+                </div>
+                <button @click="open = false" class="text-white/60 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
             
-            <nav class="space-y-1">
+            <nav class="space-y-2">
                 <x-sidebar-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" @click="open = false">
-                    {{ __('Dashboard') }}
+                    <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span class="ml-3">{{ __('Dashboard') }}</span>
                 </x-sidebar-link>
                 <x-sidebar-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" @click="open = false">
-                    {{ __('Profile') }}
+                    <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <span class="ml-3">{{ __('Profile') }}</span>
                 </x-sidebar-link>
             </nav>
         </div>

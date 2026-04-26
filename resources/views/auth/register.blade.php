@@ -2,10 +2,10 @@
     <div class="flex h-screen overflow-hidden">
         <!-- Left Side: Form -->
         <div class="w-full lg:w-1/2 flex flex-col p-4 lg:p-8 bg-white overflow-y-auto">
-            <div class="mb-4">
-                <a href="/" class="flex items-center gap-2">
-                    <x-application-logo class="w-7 h-7 text-electric-blue" />
-                    <span class="text-lg font-bold text-deep-navy tracking-tight">Eventic</span>
+            <div class="mb-6">
+                <a href="/" class="flex items-center gap-3">
+                    <x-application-logo class="w-10 h-10" />
+                    <span class="text-xl font-bold text-deep-navy tracking-tight">Eventic</span>
                 </a>
             </div>
 

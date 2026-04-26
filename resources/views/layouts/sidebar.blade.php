@@ -32,16 +32,25 @@
     </nav>
 
     <!-- Sidebar Footer -->
-    <div class="p-4 border-t border-white/10 bg-blue-600/20 overflow-hidden">
+    <div class="p-4 mt-auto">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <button type="submit" class="flex items-center text-sm font-semibold text-blue-100 hover:text-white transition-colors w-full group">
-                <div class="bg-white/10 p-2 rounded-lg shrink-0 group-hover:bg-white/20 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
+            <button type="submit" class="w-full group outline-none">
+                <div :class="expanded ? 'px-4 py-4' : 'p-4 justify-center'" 
+                     class="flex items-center rounded-2xl bg-white/10 hover:bg-white/20 transition-all duration-200 border border-white/20 shadow-lg">
+                    <div class="shrink-0">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                    </div>
+                    <span x-show="expanded" 
+                          x-transition:enter="transition ease-out duration-200 delay-100" 
+                          x-transition:enter-start="opacity-0 -translate-x-4" 
+                          x-transition:enter-end="opacity-100 translate-x-0" 
+                          class="ml-3 whitespace-nowrap text-base font-bold text-white">
+                        {{ __('Keluar') }}
+                    </span>
                 </div>
-                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Keluar') }}</span>
             </button>
         </form>
     </div>
