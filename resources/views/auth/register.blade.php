@@ -63,8 +63,7 @@
                                         name="phone" 
                                         :value="old('phone')" 
                                         placeholder="0812..." 
-                                        required 
-                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                                        required />
                         <x-input-error :messages="$errors->get('phone')" class="mt-0.5 text-[10px]" />
                     </div>
 

@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'eo' => \App\Http\Middleware\EnsureUserIsEo::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

@@ -8,6 +8,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    if (auth()->user()->role === 'eo') {
+        return redirect()->route('eo.dashboard');
+    }
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -15,6 +18,25 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // EO Routes
+    Route::prefix('eo')->name('eo.')->middleware('eo')->group(function () {
+        Route::get('/dashboard', [\App\Http\Controllers\EO\DashboardController::class, 'index'])->name('dashboard');
+        
+        // Event Management
+        Route::get('/events', [\App\Http\Controllers\EO\EventController::class, 'index'])->name('events.index');
+        Route::get('/events/create', [\App\Http\Controllers\EO\EventController::class, 'create'])->name('events.create');
+        Route::post('/events', [\App\Http\Controllers\EO\EventController::class, 'store'])->name('events.store');
+        
+        // Transaction Management
+        Route::get('/transactions', function() { return view('eo.transactions.index'); })->name('transactions.index');
+        
+        // Analytics
+        Route::get('/analytics', function() { return view('eo.analytics.index'); })->name('analytics.index');
+        
+        // Participants
+        Route::get('/participants', function() { return view('eo.participants.index'); })->name('participants.index');
+    });
 });
 
 require __DIR__.'/auth.php';

@@ -16,7 +16,11 @@
 
     <!-- Sidebar Navigation -->
     <nav class="flex-grow px-3 space-y-2 mt-6 overflow-hidden">
-        <x-sidebar-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        @php
+            $dashboardRoute = auth()->user()->role === 'eo' ? route('eo.dashboard') : route('dashboard');
+            $isDashboardActive = auth()->user()->role === 'eo' ? request()->routeIs('eo.dashboard') : request()->routeIs('dashboard');
+        @endphp
+        <x-sidebar-link :href="$dashboardRoute" :active="$isDashboardActive">
             <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
             </svg>
@@ -29,6 +33,44 @@
             </svg>
             <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Profil') }}</span>
         </x-sidebar-link>
+
+        @if (auth()->user()->role === 'eo')
+            <div class="pt-4 pb-2">
+                <span x-show="expanded" class="px-3 text-xs font-semibold text-blue-200 uppercase tracking-wider">Manajemen EO</span>
+            </div>
+
+            <!-- Event Management -->
+            <x-sidebar-link :href="route('eo.events.index')" :active="request()->routeIs('eo.events.*')">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">Kelola Event</span>
+            </x-sidebar-link>
+
+            <!-- Transaksi -->
+            <x-sidebar-link :href="route('eo.transactions.index')" :active="request()->routeIs('eo.transactions.*')">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">Transaksi</span>
+            </x-sidebar-link>
+
+            <!-- Laporan/Analytics -->
+            <x-sidebar-link :href="route('eo.analytics.index')" :active="request()->routeIs('eo.analytics.*')">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">Keuntungan</span>
+            </x-sidebar-link>
+
+            <!-- Peserta -->
+            <x-sidebar-link :href="route('eo.participants.index')" :active="request()->routeIs('eo.participants.*')">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">Peserta Event</span>
+            </x-sidebar-link>
+        @endif
     </nav>
 
     <!-- Sidebar Footer -->

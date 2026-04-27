@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'string', 'numeric', 'max:20'],
+            'phone' => ['required', 'string'],
             'role' => ['required', 'string', 'in:user,eo'],
         ]);
 
@@ -51,6 +51,10 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+
+        if ($user->role === 'eo') {
+            return redirect(route('eo.dashboard', absolute: false));
+        }
 
         return redirect(route('dashboard', absolute: false));
     }
