@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/events', [\App\Http\Controllers\EO\EventController::class, 'index'])->name('events.index');
         Route::get('/events/create', [\App\Http\Controllers\EO\EventController::class, 'create'])->name('events.create');
         Route::post('/events', [\App\Http\Controllers\EO\EventController::class, 'store'])->name('events.store');
+        Route::get('/events/{event}', [\App\Http\Controllers\EO\EventController::class, 'show'])->name('events.show');
+        Route::get('/events/{event}/edit', [\App\Http\Controllers\EO\EventController::class, 'edit'])->name('events.edit');
+        Route::put('/events/{event}', [\App\Http\Controllers\EO\EventController::class, 'update'])->name('events.update');
+        Route::delete('/events/{event}', [\App\Http\Controllers\EO\EventController::class, 'destroy'])->name('events.destroy');
         
         // Transaction Management
         Route::get('/transactions', function() { return view('eo.transactions.index'); })->name('transactions.index');
