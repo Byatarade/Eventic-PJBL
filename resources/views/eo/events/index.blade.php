@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center gap-8">
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('Kelola Event') }}
             </h2>
@@ -43,7 +43,7 @@
                     </div>
 
                     {{-- Table List --}}
-                    <div class="overflow-x-auto">
+                    <div class="overflow-x-auto scrollbar-hide">
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center">
+        <div class="flex justify-between items-center gap-8">
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('EO Dashboard') }}
             </h2>
