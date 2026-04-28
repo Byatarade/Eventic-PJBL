@@ -20,24 +20,27 @@
             $dashboardRoute = auth()->user()->role === 'eo' ? route('eo.dashboard') : route('dashboard');
             $isDashboardActive = auth()->user()->role === 'eo' ? request()->routeIs('eo.dashboard') : request()->routeIs('dashboard');
         @endphp
-        <x-sidebar-link :href="$dashboardRoute" :active="$isDashboardActive">
-            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Dashboard') }}</span>
-        </x-sidebar-link>
 
-        <x-sidebar-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Profil') }}</span>
-        </x-sidebar-link>
+        @if (auth()->user()->role !== 'eo')
+            <x-sidebar-link :href="$dashboardRoute" :active="$isDashboardActive">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Dashboard') }}</span>
+            </x-sidebar-link>
+        @endif
 
         @if (auth()->user()->role === 'eo')
             <div class="pt-4 pb-2">
                 <span x-show="expanded" class="px-3 text-xs font-semibold text-blue-200 uppercase tracking-wider">Manajemen EO</span>
             </div>
+
+            <x-sidebar-link :href="$dashboardRoute" :active="$isDashboardActive">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Dashboard') }}</span>
+            </x-sidebar-link>
 
             <!-- Event Management -->
             <x-sidebar-link :href="route('eo.events.index')" :active="request()->routeIs('eo.events.*')">
@@ -71,6 +74,13 @@
                 <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">Peserta Event</span>
             </x-sidebar-link>
         @endif
+
+        <x-sidebar-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+            <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span x-show="expanded" x-transition:enter="transition ease-out duration-200 delay-100" x-transition:enter-start="opacity-0 -translate-x-4" x-transition:enter-end="opacity-100 translate-x-0" class="ml-3 whitespace-nowrap">{{ __('Profil') }}</span>
+        </x-sidebar-link>
     </nav>
 
     <!-- Sidebar Footer -->
