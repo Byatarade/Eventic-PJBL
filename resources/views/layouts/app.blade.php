@@ -28,7 +28,7 @@
                 @include('layouts.navigation')
 
                 <!-- Page Content -->
-                <main class="flex-1 overflow-y-auto p-6 lg:p-10">
+                <main class="flex-1 overflow-y-auto p-6 lg:p-10 scrollbar-hide">
                     <div class="max-w-7xl mx-auto">
                         {{ $slot }}
                     </div>

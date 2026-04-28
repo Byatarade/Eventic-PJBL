@@ -47,9 +47,10 @@ class EventController extends Controller
             'organizer_name' => ['required', 'string', 'max:255'],
             'organizer_social' => ['nullable', 'string', 'max:255'],
             'banner' => ['nullable', 'image', 'max:2048'],
-            'ticket_type' => ['required', 'string', 'in:reguler,vip,vvip'],
-            'ticket_price' => ['required', 'integer', 'min:0'],
-            'ticket_qty' => ['required', 'integer', 'min:1'],
+            'tickets' => ['required', 'array', 'min:1'],
+            'tickets.*.type' => ['required', 'string', 'max:255'],
+            'tickets.*.price' => ['required', 'integer', 'min:0'],
+            'tickets.*.stock' => ['required', 'integer', 'min:1'],
         ]);
 
         // Determine status based on which button was pressed
@@ -75,21 +76,16 @@ class EventController extends Controller
             'organizer_social' => $validated['organizer_social'],
         ]);
 
-        // Map ticket type for database enum
-        $ticketTypeMap = [
-            'reguler' => 'regular',
-            'vip' => 'vip',
-            'vvip' => 'vip', // VVIP mapped to vip for now
-        ];
-
-        // Create ticket
-        Ticket::create([
-            'event_id' => $event->id,
-            'type' => $ticketTypeMap[$validated['ticket_type']],
-            'price' => $validated['ticket_price'],
-            'stock' => $validated['ticket_qty'],
-            'max_per_user' => 5,
-        ]);
+        // Create tickets
+        foreach ($validated['tickets'] as $ticketData) {
+            Ticket::create([
+                'event_id' => $event->id,
+                'type' => $ticketData['type'],
+                'price' => $ticketData['price'],
+                'stock' => $ticketData['stock'],
+                'max_per_user' => 5, // Default limit per user
+            ]);
+        }
 
         return redirect()
             ->route('eo.events.index')
@@ -140,9 +136,10 @@ class EventController extends Controller
             'organizer_name' => ['required', 'string', 'max:255'],
             'organizer_social' => ['nullable', 'string', 'max:255'],
             'banner' => ['nullable', 'image', 'max:2048'],
-            'ticket_type' => ['required', 'string', 'in:reguler,vip,vvip'],
-            'ticket_price' => ['required', 'integer', 'min:0'],
-            'ticket_qty' => ['required', 'integer', 'min:1'],
+            'tickets' => ['required', 'array', 'min:1'],
+            'tickets.*.type' => ['required', 'string', 'max:255'],
+            'tickets.*.price' => ['required', 'integer', 'min:0'],
+            'tickets.*.stock' => ['required', 'integer', 'min:1'],
         ]);
 
         // Handle banner upload
@@ -165,22 +162,22 @@ class EventController extends Controller
             'status' => $request->has('draft') ? 'draft' : 'published',
         ]);
 
-        // Map ticket type
-        $ticketTypeMap = [
-            'reguler' => 'regular',
-            'vip' => 'vip',
-            'vvip' => 'vip',
-        ];
-
-        // Update or create ticket (assuming one ticket type for now based on current logic)
-        $event->tickets()->updateOrCreate(
-            ['event_id' => $event->id],
-            [
-                'type' => $ticketTypeMap[$validated['ticket_type']],
-                'price' => $validated['ticket_price'],
-                'stock' => $validated['ticket_qty'],
-            ]
-        );
+        // Update tickets: Delete removed ones and update/create current ones
+        $keepTicketIds = [];
+        foreach ($validated['tickets'] as $ticketData) {
+            $ticket = $event->tickets()->updateOrCreate(
+                ['type' => $ticketData['type']],
+                [
+                    'price' => $ticketData['price'],
+                    'stock' => $ticketData['stock'],
+                    'max_per_user' => 5,
+                ]
+            );
+            $keepTicketIds[] = $ticket->id;
+        }
+        
+        // Remove tickets that are no longer in the list
+        $event->tickets()->whereNotIn('id', $keepTicketIds)->delete();
 
         return redirect()
             ->route('eo.events.index')
