@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 h-24 flex items-center shrink-0">
+<nav x-data="{ open: false }" class="bg-white/80 backdrop-blur-md border-b border-gray-100 h-24 flex items-center shrink-0 sticky top-0 z-40 shadow-sm shadow-blue-500/5">
     <!-- Primary Navigation Menu -->
     <div class="w-full px-6 lg:px-10">
         <div class="flex justify-between items-center">
@@ -26,9 +26,13 @@
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-xl text-deep-navy bg-white hover:bg-slate-white transition ease-in-out duration-150">
                             <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-full bg-electric-blue/10 flex items-center justify-center text-electric-blue font-bold">
-                                    {{ substr(Auth::user()->name, 0, 1) }}
-                                </div>
+                                @if(Auth::user()->avatar)
+                                    <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}" class="w-8 h-8 rounded-full object-cover">
+                                @else
+                                    <div class="w-8 h-8 rounded-full bg-electric-blue/10 flex items-center justify-center text-electric-blue font-bold">
+                                        {{ substr(Auth::user()->name, 0, 1) }}
+                                    </div>
+                                @endif
                                 <span class="hidden sm:inline">{{ Auth::user()->name }}</span>
                             </div>
 

@@ -3,12 +3,25 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --brand-primary: #3b82f6;
+        --brand-secondary: #1e3a8a;
+        --brand-accent: #00d2ff;
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.3);
+    }
     body {
-        @apply bg-slate-white text-deep-navy antialiased;
+        @apply bg-[#f8fafc] text-slate-900 antialiased;
     }
 }
 
 @layer utilities {
+    .glass {
+        @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+    }
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-cyan-500;
+    }
     .scrollbar-hide::-webkit-scrollbar {
         display: none;
     }
