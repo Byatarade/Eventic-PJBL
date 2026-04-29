@@ -19,6 +19,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    // User Routes
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/tickets', function() { return view('user.tickets.index'); })->name('tickets.index');
+        Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
+    });
+
     // EO Routes
     Route::prefix('eo')->name('eo.')->middleware('eo')->group(function () {
         Route::get('/dashboard', [\App\Http\Controllers\EO\DashboardController::class, 'index'])->name('dashboard');
