@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Eventic - Events</title>
+    <link rel="icon" type="image/svg+xml" href="{{ asset('eventic.svg') }}">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -12,13 +13,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
-        .nav-shape {
-            /* This gives the exact angled sides with rounded bottoms from the image */
-            clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
-            border-bottom-left-radius: 1.5rem;
-            border-bottom-right-radius: 1.5rem;
-        }
-
         .hero-bg {
             background-image: url('https://images.unsplash.com/photo-1540039155732-68473678d4dd?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
@@ -30,49 +24,16 @@
         }
     </style>
 </head>
-<body class="bg-white font-sans text-gray-900 antialiased h-screen flex flex-col overflow-hidden">
+<body class="bg-white font-sans text-gray-900 antialiased relative">
     
-    <!-- Header -->
-    <header class="w-full flex justify-between items-start px-8 lg:px-12 z-50 absolute top-0 left-0 right-0">
-        <!-- Left: Logo & Brand -->
-        <div class="flex items-center gap-3 pt-6 w-1/3">
-            <svg class="w-8 h-8 text-[#3b82f6]" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Similar to Eventic logo -->
-                <path d="M4 6L12 2L20 6V18L12 22L4 18V6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M4 6L12 10L20 6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M12 10V22" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M8 8V16M16 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
-            <span class="text-2xl font-bold tracking-tight text-gray-900">Eventic</span>
-        </div>
-
-        <!-- Center: Navigation -->
-        <nav class="bg-[#4285F4] text-white px-16 py-4 nav-shape flex items-center justify-center gap-8 shadow-lg w-auto relative -top-1">
-            <a href="#" class="font-medium text-sm lg:text-base hover:text-blue-100 transition">Beranda</a>
-            <a href="#" class="font-medium text-sm lg:text-base hover:text-blue-100 transition">About</a>
-            <a href="#" class="font-medium text-sm lg:text-base hover:text-blue-100 transition">Event</a>
-            <a href="#" class="font-medium text-sm lg:text-base hover:text-blue-100 transition">Hubungi Kami</a>
-        </nav>
-
-        <!-- Right: Auth Links -->
-        <div class="flex items-center justify-end gap-6 pt-5 w-1/3">
-            @if (Route::has('login'))
-                @auth
-                    <a href="{{ url('/dashboard') }}" class="font-bold text-gray-900 hover:text-blue-600 transition">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}" class="font-bold text-gray-900 hover:text-blue-600 transition text-sm lg:text-base">Login</a>
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="px-6 py-2.5 bg-[#4285F4] text-white font-medium rounded-lg hover:bg-blue-600 transition shadow-md text-sm lg:text-base">Register</a>
-                    @endif
-                @endauth
-            @endif
-        </div>
-    </header>
+    <!-- Navbar Component -->
+    <x-navbar />
 
     <!-- Main Content -->
-    <main class="flex-grow p-4 pt-[5rem] pb-4 w-full h-full flex">
-        <!-- Hero Section -->
-        <div class="w-full h-full relative rounded-[2.5rem] overflow-hidden hero-bg flex items-center shadow-2xl">
+    <main class="w-full">
+        <!-- Hero Section Container -->
+        <div class="p-4 pt-[8rem] pb-4 w-full h-screen flex flex-col">
+            <div class="w-full flex-grow relative rounded-[2.5rem] overflow-hidden hero-bg flex items-center shadow-2xl">
             <!-- Dark Overlay -->
             <div class="absolute inset-0 bg-black/45"></div>
             
@@ -99,6 +60,49 @@
                 </div>
             </div>
         </div>
+        </div>
+        
+        <!-- About Section -->
+        <section id="about" class="w-full py-24 px-8 lg:px-24 flex flex-col items-center">
+            <div class="max-w-7xl w-full flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Visual -->
+                <div class="w-full lg:w-1/2 relative">
+                    <div class="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl relative z-10">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Conference" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-[#4285F4]/10 rounded-full z-0"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-blue-100 rounded-full z-0"></div>
+                </div>
+                
+                <!-- Text -->
+                <div class="w-full lg:w-1/2">
+                    <div class="text-[#4285F4] font-semibold tracking-wider uppercase text-sm mb-3">About Eventic</div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight" style="font-family: 'Playfair Display', serif;">
+                        Elevate Your Event Experience
+                    </h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6 font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                        Eventic is a modern, intuitive platform designed to bridge the gap between event organizers and attendees. We provide seamless ticketing, real-time updates, and an elegant experience from start to finish.
+                    </p>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
+                        Whether you're hosting an intimate workshop or a massive conference, our tools are crafted to make your job effortless, letting you focus on what truly matters: creating unforgettable moments.
+                    </p>
+                    
+                    <div class="flex items-center gap-6">
+                        <a href="#" class="px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition shadow-lg shadow-gray-900/20">
+                            Learn More
+                        </a>
+                        <div class="flex -space-x-4">
+                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop" alt="User" />
+                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop" alt="User" />
+                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop" alt="User" />
+                            <div class="w-12 h-12 rounded-full border-4 border-white bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600">
+                                +2k
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
 </body>
