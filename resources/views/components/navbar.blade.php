@@ -23,7 +23,7 @@
                 @else
                     <a href="{{ route('login') }}" class="hidden sm:block px-5 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#4285F4] transition rounded-full hover:bg-blue-50/50">Login</a>
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="px-6 py-2.5 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition shadow-md shadow-gray-900/20 text-sm flex items-center gap-2">
+                        <a href="{{ route('register') }}" class="px-6 py-2.5 bg-[#4285F4] text-white font-semibold rounded-full hover:bg-[#3b78e7] transition shadow-md shadow-blue-500/20 text-sm flex items-center gap-2">
                             Register
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                         </a>

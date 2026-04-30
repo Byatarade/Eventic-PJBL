@@ -3,8 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\Event;
+
 Route::get('/', function () {
-    return view('welcome');
+    $events = Event::where('status', 'published')->latest()->get();
+    return view('welcome', compact('events'));
 });
 
 Route::get('/dashboard', function () {
