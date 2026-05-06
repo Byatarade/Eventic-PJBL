@@ -1,82 +1,129 @@
 @props(['events'])
 
-<section id="events" class="w-full py-24 px-8 lg:px-24 bg-[#FDFCFB]">
+<section id="events" class="w-full py-24 px-8 lg:px-24 bg-[#FDFCFB]" x-data="{ filter: 'all' }">
     <div class="max-w-7xl mx-auto">
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
-            <div class="max-w-2xl">
-                <div class="text-[#4285F4] font-bold tracking-[0.2em] uppercase text-xs mb-4">Discover Experience</div>
-                <h2 class="text-4xl md:text-6xl font-black text-gray-900 leading-tight uppercase tracking-tighter" style="font-family: 'Montserrat', sans-serif;">
-                    Upcoming <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Events</span>
-                </h2>
-                <div class="mt-6 w-24 h-1.5 bg-blue-500 rounded-full"></div>
-            </div>
-            <div class="hidden md:block">
-                <p class="text-gray-500 font-medium max-w-xs text-right italic">
-                    "Every event is a new story waiting to be told. Find your next chapter here."
-                </p>
+        <!-- Section Header & Filters -->
+        <div class="flex flex-col mb-16 gap-10">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+                <div class="max-w-2xl">
+                    <div class="text-[#4285F4] font-bold tracking-[0.2em] uppercase text-xs mb-4">Discover Experience</div>
+                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight uppercase tracking-tighter" style="font-family: 'Montserrat', sans-serif;">
+                        Upcoming <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Events</span>
+                    </h2>
+                    <div class="mt-6 w-24 h-1.5 bg-blue-500 rounded-full"></div>
+                </div>
+                
+                <!-- Filter Chips -->
+                <div class="flex flex-wrap gap-3">
+                    <button @click="filter = 'all'" 
+                            :class="filter === 'all' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                        Semua
+                    </button>
+                    <button @click="filter = 'musik'" 
+                            :class="filter === 'musik' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                        Musik
+                    </button>
+                    <button @click="filter = 'olahraga'" 
+                            :class="filter === 'olahraga' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                        Olahraga
+                    </button>
+                    <button @click="filter = 'wahana'" 
+                            :class="filter === 'wahana' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                        Wahana
+                    </button>
+                    <button @click="filter = 'wisata'" 
+                            :class="filter === 'wisata' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                        Wisata
+                    </button>
+                </div>
             </div>
         </div>
 
         <!-- Events Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($events as $event)
-                <div class="group bg-white rounded-[1.5rem] overflow-hidden border border-gray-100 hover:border-blue-100 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] flex flex-col h-full">
-                    <!-- Image Container -->
-                    <div class="relative aspect-[16/10] overflow-hidden">
+                <div x-show="filter === 'all' || filter === '{{ strtolower($event->category ?? '') }}'"
+                     x-transition:enter="transition ease-out duration-300"
+                     x-transition:enter-start="opacity-0 transform scale-95"
+                     x-transition:enter-end="opacity-100 transform scale-100"
+                     class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-blue-100 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] flex flex-col h-full">
+                    
+                    <!-- Banner Container -->
+                    <div class="relative aspect-video overflow-hidden bg-slate-100">
                         <img src="{{ $event->image ? asset('storage/' . $event->image) : 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=2070&auto=format&fit=crop' }}" 
                              alt="{{ $event->name }}" 
                              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         
-                        <!-- Mini Date Badge -->
-                        <div class="absolute top-4 left-4 flex flex-col items-center justify-center w-12 h-14 bg-white/95 backdrop-blur-md rounded-xl shadow-lg">
-                            <span class="text-[8px] font-black text-blue-600 uppercase tracking-tighter">{{ $event->date->format('M') }}</span>
-                            <span class="text-lg font-black text-gray-900 leading-none">{{ $event->date->format('d') }}</span>
+                        <!-- Category Badge -->
+                        @if($event->category)
+                        <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full">
+                            <span class="text-[9px] font-black text-gray-800 uppercase tracking-widest">{{ $event->category }}</span>
                         </div>
-
-                        <!-- Status Overlay -->
-                        <div class="absolute top-4 right-4 px-3 py-1 bg-black/30 backdrop-blur-sm rounded-full">
-                            <div class="flex items-center gap-1.5">
-                                <div class="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-                                <span class="text-[8px] font-black text-white uppercase tracking-widest">Available</span>
-                            </div>
-                        </div>
+                        @endif
                     </div>
 
                     <!-- Content -->
-                    <div class="p-5 flex flex-col flex-grow">
-                        <div class="flex items-center gap-2 mb-3">
-                            <svg class="w-3 h-3 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider truncate">
-                                {{ $event->location }}
-                            </span>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <!-- Date & Location Row -->
+                        <div class="flex items-center gap-4 mb-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                            <div class="flex items-center gap-1.5 text-blue-600">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                <span>{{ $event->date->format('d M Y') }}</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 truncate">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                <span class="truncate">{{ $event->location }}</span>
+                            </div>
                         </div>
 
-                        <h3 class="text-lg font-black text-gray-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight uppercase tracking-tight line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
+                        <!-- Title -->
+                        <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
                             {{ $event->name }}
                         </h3>
 
-                        <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Start From</span>
-                                <span class="text-sm font-black text-blue-600">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
+                        <!-- Bottom Section -->
+                        <div class="mt-auto pt-5 border-t border-gray-50 flex items-center justify-between">
+                            <!-- Organizer Info -->
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-xs font-bold uppercase shrink-0 border border-slate-200">
+                                    {{ substr($event->organizer_name ?: 'E', 0, 1) }}
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">By</span>
+                                    <span class="text-xs font-bold text-gray-800 truncate max-w-[100px]">{{ $event->organizer_name ?: 'Eventic' }}</span>
+                                </div>
                             </div>
                             
-                            <a href="#" class="w-8 h-8 rounded-xl bg-gray-900 text-white flex items-center justify-center transition-all duration-300 group-hover:bg-blue-600 group-hover:rotate-12 shadow-lg shadow-gray-900/10">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
-                            </a>
+                            <!-- Price -->
+                            <div class="flex flex-col items-end">
+                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Mulai</span>
+                                <span class="text-sm font-black text-blue-600">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
         </div>
 
+        <!-- Empty State (When Filter returns 0) -->
+        <div x-show="!Array.from(document.querySelectorAll('.group')).some(el => el.style.display !== 'none')" 
+             style="display: none;"
+             class="w-full py-12 text-center flex flex-col items-center justify-center">
+            <div class="w-20 h-20 bg-gray-50 rounded-full flex items-center justify-center mb-4">
+                <svg class="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <p class="text-gray-500 font-medium">Belum ada event untuk kategori ini.</p>
+        </div>
+
         <!-- View All Button -->
-        <div class="mt-20 flex justify-center">
-            <a href="#" class="group relative px-12 py-5 bg-white border-2 border-gray-900 text-gray-900 font-black rounded-full overflow-hidden transition-all duration-300 hover:text-white">
-                <span class="relative z-10 uppercase tracking-[0.2em] text-sm">Explore All Events</span>
+        <div class="mt-16 flex justify-center">
+            <a href="#" class="group relative px-10 py-4 bg-white border-2 border-gray-900 text-gray-900 font-black rounded-full overflow-hidden transition-all duration-300 hover:text-white">
+                <span class="relative z-10 uppercase tracking-widest text-xs">Jelajahi Semua</span>
                 <div class="absolute inset-0 bg-gray-900 transition-transform duration-300 transform translate-y-full group-hover:translate-y-0"></div>
             </a>
         </div>

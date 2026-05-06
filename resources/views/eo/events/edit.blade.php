@@ -69,8 +69,8 @@
                             </div>
                         </div>
 
-                        <!-- Tanggal & Lokasi -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Tanggal, Lokasi & Kategori -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div class="input-group group">
                                 <label for="datetime" class="premium-label">Tanggal & Waktu Event</label>
                                 <div class="relative">
@@ -93,6 +93,25 @@
                                         </svg>
                                     </span>
                                     <input type="text" id="location" name="location" class="premium-input-with-icon" value="{{ old('location', $event->location) }}" required placeholder="Contoh: Convention Center, Jakarta">
+                                </div>
+                            </div>
+
+                            <div class="input-group group">
+                                <label for="category" class="premium-label">Kategori Event</label>
+                                <div class="relative">
+                                    <span class="input-icon">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                        </svg>
+                                    </span>
+                                    <select id="category" name="category" class="premium-input-with-icon" required>
+                                        <option value="" disabled {{ !$event->category ? 'selected' : '' }}>Pilih Kategori</option>
+                                        <option value="musik" {{ old('category', $event->category) == 'musik' ? 'selected' : '' }}>Musik</option>
+                                        <option value="olahraga" {{ old('category', $event->category) == 'olahraga' ? 'selected' : '' }}>Olahraga</option>
+                                        <option value="wahana" {{ old('category', $event->category) == 'wahana' ? 'selected' : '' }}>Wahana</option>
+                                        <option value="wisata" {{ old('category', $event->category) == 'wisata' ? 'selected' : '' }}>Wisata</option>
+                                        <option value="lainnya" {{ old('category', $event->category) == 'lainnya' ? 'selected' : '' }}>Lainnya</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
