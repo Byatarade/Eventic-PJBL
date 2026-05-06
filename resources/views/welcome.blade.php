@@ -257,6 +257,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- Event Section -->
+        <x-event-section :events="$events" />
     </main>
 
 </body>

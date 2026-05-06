@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Event;
 
 Route::get('/', function () {
-    $events = Event::where('status', 'published')->latest()->get();
+    $events = Event::with('tickets')->where('status', 'published')->latest()->get();
     return view('welcome', compact('events'));
 });
 
