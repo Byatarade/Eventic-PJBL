@@ -57,7 +57,10 @@
         <div class="flex items-center justify-end gap-1 pr-1.5 shrink-0">
             @if (Route::has('login'))
                 @auth
-                    <a href="{{ url('/dashboard') }}" class="hidden lg:block px-5 py-2.5 text-sm font-semibold text-gray-700 hover:text-[#4285F4] transition rounded-full hover:bg-blue-50/50">Dashboard</a>
+                    <a href="{{ url('/dashboard') }}" class="hidden lg:flex px-6 py-2.5 bg-[#4285F4] text-white font-semibold rounded-full hover:bg-[#3b78e7] transition shadow-md shadow-[#4285F4]/20 text-sm items-center gap-2">
+                        Dashboard
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </a>
                 @else
                     <a href="{{ route('login') }}" class="hidden lg:block px-5 py-2.5 text-sm font-semibold text-gray-600 hover:text-[#4285F4] transition rounded-full hover:bg-blue-50/50">Login</a>
                     @if (Route::has('register'))
@@ -109,7 +112,7 @@
                 
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="px-5 py-3.5 text-center text-sm font-bold text-gray-700 bg-gray-50 rounded-2xl hover:bg-gray-100">Dashboard</a>
+                        <a href="{{ url('/dashboard') }}" class="px-5 py-3.5 text-center text-sm font-bold text-white bg-[#4285F4] rounded-2xl hover:bg-[#3b78e7] shadow-md shadow-[#4285F4]/20">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="sm:hidden px-5 py-3.5 text-center text-sm font-bold text-gray-700 bg-gray-50 rounded-2xl hover:bg-gray-100">Login</a>
                         @if (Route::has('register'))
