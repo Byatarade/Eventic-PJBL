@@ -1,6 +1,6 @@
 @props(['events'])
 
-<section id="events" class="w-full py-16 md:py-24 px-5 sm:px-8 lg:px-24 bg-[#FDFCFB]" x-data="{ filter: 'all' }">
+<section id="events" class="w-full pt-16 md:pt-24 pb-12 md:pb-20 px-5 sm:px-8 lg:px-24 bg-[#FDFCFB]" x-data="{ filter: 'all' }">
     <div class="max-w-7xl mx-auto">
         <!-- Section Header & Filters -->
         <div class="flex flex-col mb-12 md:mb-16 gap-8 md:gap-10">
@@ -120,12 +120,5 @@
             <p class="text-gray-500 font-medium">Belum ada event untuk kategori ini.</p>
         </div>
 
-        <!-- View All Button -->
-        <div class="mt-16 flex justify-center">
-            <a href="#" class="group relative px-10 py-4 bg-white border-2 border-[#4285F4] text-[#4285F4] font-black rounded-full overflow-hidden transition-all duration-300 hover:text-white">
-                <span class="relative z-10 uppercase tracking-widest text-xs">Jelajahi Semua</span>
-                <div class="absolute inset-0 bg-[#4285F4] transition-transform duration-300 transform translate-y-full group-hover:translate-y-0"></div>
-            </a>
-        </div>
     </div>
 </section>
