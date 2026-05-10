@@ -1,43 +1,43 @@
 @props(['events'])
 
-<section id="events" class="w-full py-24 px-8 lg:px-24 bg-[#FDFCFB]" x-data="{ filter: 'all' }">
+<section id="events" class="w-full py-16 md:py-24 px-5 sm:px-8 lg:px-24 bg-[#FDFCFB]" x-data="{ filter: 'all' }">
     <div class="max-w-7xl mx-auto">
         <!-- Section Header & Filters -->
-        <div class="flex flex-col mb-16 gap-10">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-8">
+        <div class="flex flex-col mb-12 md:mb-16 gap-8 md:gap-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 md:gap-8">
                 <div class="max-w-2xl">
-                    <div class="text-[#4285F4] font-bold tracking-[0.2em] uppercase text-xs mb-4">Discover Experience</div>
+                    <div class="text-[#4285F4] font-bold tracking-[0.2em] uppercase text-[10px] md:text-xs mb-3 md:mb-4">Discover Experience</div>
                     <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
                         Upcoming <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] to-blue-500">Events</span>
                     </h2>
-                    <div class="mt-6 w-24 h-1.5 bg-[#4285F4] rounded-full"></div>
+                    <div class="mt-4 md:mt-6 w-16 md:w-24 h-1.5 bg-[#4285F4] rounded-full"></div>
                 </div>
                 
                 <!-- Filter Chips -->
-                <div class="flex flex-wrap gap-3">
+                <div class="flex flex-wrap gap-2.5 md:gap-3 w-full">
                     <button @click="filter = 'all'" 
                             :class="filter === 'all' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Semua
                     </button>
                     <button @click="filter = 'musik'" 
                             :class="filter === 'musik' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Musik
                     </button>
                     <button @click="filter = 'olahraga'" 
                             :class="filter === 'olahraga' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Olahraga
                     </button>
                     <button @click="filter = 'wahana'" 
                             :class="filter === 'wahana' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Wahana
                     </button>
                     <button @click="filter = 'wisata'" 
                             :class="filter === 'wisata' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Wisata
                     </button>
                 </div>

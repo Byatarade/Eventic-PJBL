@@ -32,7 +32,7 @@
     <!-- Main Content -->
     <main class="w-full" id="home">
         <!-- Hero Section Container -->
-        <div class="p-4 pt-[8rem] pb-4 w-full h-screen flex flex-col" 
+        <div class="p-3 sm:p-4 pt-[5.5rem] sm:pt-[7rem] md:pt-[8rem] pb-4 w-full h-[100svh] min-h-[600px] flex flex-col" 
              x-data="{ 
                 activeSlide: 0, 
                 slidesCount: {{ $events->count() > 0 ? $events->count() : 1 }},
@@ -67,7 +67,7 @@
                             <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
                             
                             <!-- Text Content -->
-                                    <div class="w-full h-full max-w-7xl mx-auto px-6 lg:px-12 flex items-center" style="font-family: 'Montserrat', sans-serif;">
+                                    <div class="w-full h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center" style="font-family: 'Montserrat', sans-serif;">
                                         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full mt-12 lg:mt-0">
                                             
                                             <!-- Content Left -->
@@ -86,8 +86,8 @@
                                                 </div>
 
                                                 <!-- Massive Title -->
-                                                <h1 class="font-black tracking-tighter text-white mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] uppercase leading-[0.9]" 
-                                                    :class="'{{ strlen($event->name) }}' > 15 ? 'text-5xl md:text-6xl lg:text-7xl' : 'text-6xl md:text-7xl lg:text-8xl'">
+                                                <h1 class="font-black tracking-tighter text-white mb-6 md:mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] uppercase leading-[1.1] md:leading-[0.9]" 
+                                                    :class="'{{ strlen($event->name) }}' > 15 ? 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl' : 'text-5xl sm:text-6xl md:text-7xl lg:text-8xl'">
                                                     {{ $event->name }}
                                                 </h1>
 
@@ -218,29 +218,29 @@
         
         <!-- About Section -->
         <!-- About Section -->
-        <section id="about" class="w-full py-24 px-8 lg:px-24 bg-white flex flex-col items-center">
-            <div class="max-w-6xl w-full flex flex-col lg:flex-row gap-16 items-center">
+        <section id="about" class="w-full py-16 md:py-24 px-5 sm:px-8 lg:px-24 bg-white flex flex-col items-center">
+            <div class="max-w-6xl w-full flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
                 
                 <!-- Text Content -->
                 <div class="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-start">
                     <span class="text-[#4285F4] font-bold uppercase tracking-[0.2em] text-xs mb-6">Tentang Eventic</span>
                     
-                    <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
+                    <h2 class="text-2xl md:text-4xl font-semibold mb-6 text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
                         Platform Terpadu Untuk Kesuksesan Event Anda.
                     </h2>
                     
-                    <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium" style="font-family: 'Montserrat', sans-serif;">
+                    <p class="text-gray-500 text-base md:text-lg leading-relaxed mb-10 font-medium" style="font-family: 'Montserrat', sans-serif;">
                         Kami menjembatani penyelenggara dengan peserta. Dari publikasi hingga distribusi tiket, Eventic memberikan kemudahan akses dan manajemen yang cerdas tanpa hambatan.
                     </p>
 
-                    <div class="flex items-center gap-8 mb-10">
+                    <div class="flex items-center gap-6 sm:gap-8 mb-10">
                         <div>
-                            <div class="text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">100+</div>
+                            <div class="text-2xl md:text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">100+</div>
                             <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Event Sukses</div>
                         </div>
                         <div class="w-px h-12 bg-gray-200"></div>
                         <div>
-                            <div class="text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">2k+</div>
+                            <div class="text-2xl md:text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">2k+</div>
                             <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Pengguna</div>
                         </div>
                     </div>
@@ -263,8 +263,8 @@
         <x-event-section :events="$events" />
         
         <!-- Contact Section -->
-        <section id="contact" class="w-full py-24 px-8 lg:px-24 flex flex-col items-center bg-gray-50/50">
-            <div class="max-w-4xl w-full flex flex-col items-center text-center mb-16">
+        <section id="contact" class="w-full py-16 md:py-24 px-5 sm:px-8 lg:px-24 flex flex-col items-center bg-gray-50/50">
+            <div class="max-w-4xl w-full flex flex-col items-center text-center mb-12 md:mb-16">
                 <div class="text-[#4285F4] font-semibold tracking-wider uppercase text-sm mb-3">Hubungi Kami</div>
                 <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
                     Layanan Pengaduan & Masukan
@@ -274,7 +274,7 @@
                 </p>
             </div>
 
-            <div class="w-full max-w-3xl bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
+            <div class="w-full max-w-3xl bg-white p-6 sm:p-8 md:p-12 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
                 <!-- Decorative Elements -->
                 <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#4285F4]/5 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl pointer-events-none"></div>
@@ -327,7 +327,7 @@
 
     <!-- Footer Section -->
     <footer class="bg-[#4285F4] pt-12 pb-8 border-t border-white/10 text-white/90">
-        <div class="max-w-7xl mx-auto px-8 lg:px-24">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-24">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-12">
                 <!-- Brand & Description -->
                 <div class="md:col-span-5 flex flex-col gap-6">
