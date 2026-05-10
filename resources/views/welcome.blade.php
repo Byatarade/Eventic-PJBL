@@ -92,8 +92,8 @@
                                                 </h1>
 
                                                 <!-- Actions & Meta -->
-                                                <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-4 relative z-50">
-                                                    <a href="#" class="h-14 px-8 bg-blue-500 text-white font-black rounded-full hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-blue-500/40 flex items-center justify-center gap-3 w-full sm:w-auto transform hover:scale-105 active:scale-95">
+                                                <div class="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-4 relative z-10">
+                                                    <a href="#" class="h-14 px-8 bg-[#4285F4] text-white font-black rounded-full hover:bg-[#3b78e7] transition-all duration-300 shadow-xl shadow-[#4285F4]/40 flex items-center justify-center gap-3 w-full sm:w-auto transform hover:scale-105 active:scale-95">
                                                         <span class="uppercase tracking-widest text-sm">Beli Tiket</span>
                                                         <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-colors">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -217,42 +217,43 @@
         </div>
         
         <!-- About Section -->
-        <section id="about" class="w-full py-24 px-8 lg:px-24 flex flex-col items-center">
-            <div class="max-w-7xl w-full flex flex-col lg:flex-row gap-16 items-center">
-                <!-- Visual -->
-                <div class="w-full lg:w-1/2 relative">
-                    <div class="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl relative z-10">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Conference" class="w-full h-full object-cover" />
-                    </div>
-                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-[#4285F4]/10 rounded-full z-0"></div>
-                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-blue-100 rounded-full z-0"></div>
-                </div>
+        <!-- About Section -->
+        <section id="about" class="w-full py-24 px-8 lg:px-24 bg-white flex flex-col items-center">
+            <div class="max-w-6xl w-full flex flex-col lg:flex-row gap-16 items-center">
                 
-                <!-- Text -->
-                <div class="w-full lg:w-1/2">
-                    <div class="text-[#4285F4] font-semibold tracking-wider uppercase text-sm mb-3">About Eventic</div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight" style="font-family: 'Playfair Display', serif;">
-                        Elevate Your Event Experience
-                    </h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-6 font-medium" style="font-family: 'Instrument Sans', sans-serif;">
-                        Eventic is a modern, intuitive platform designed to bridge the gap between event organizers and attendees. We provide seamless ticketing, real-time updates, and an elegant experience from start to finish.
-                    </p>
-                    <p class="text-gray-500 text-lg leading-relaxed mb-8">
-                        Whether you're hosting an intimate workshop or a massive conference, our tools are crafted to make your job effortless, letting you focus on what truly matters: creating unforgettable moments.
-                    </p>
+                <!-- Text Content -->
+                <div class="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-start">
+                    <span class="text-[#4285F4] font-bold uppercase tracking-[0.2em] text-xs mb-6">Tentang Eventic</span>
                     
-                    <div class="flex items-center gap-6">
-                        <a href="#" class="px-8 py-3.5 bg-gray-900 text-white font-semibold rounded-full hover:bg-gray-800 transition shadow-lg shadow-gray-900/20">
-                            Learn More
-                        </a>
-                        <div class="flex -space-x-4">
-                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop" alt="User" />
-                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop" alt="User" />
-                            <img class="w-12 h-12 rounded-full border-4 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop" alt="User" />
-                            <div class="w-12 h-12 rounded-full border-4 border-white bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-600">
-                                +2k
-                            </div>
+                    <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
+                        Platform Terpadu Untuk Kesuksesan Event Anda.
+                    </h2>
+                    
+                    <p class="text-gray-500 text-lg leading-relaxed mb-10 font-medium" style="font-family: 'Montserrat', sans-serif;">
+                        Kami menjembatani penyelenggara dengan peserta. Dari publikasi hingga distribusi tiket, Eventic memberikan kemudahan akses dan manajemen yang cerdas tanpa hambatan.
+                    </p>
+
+                    <div class="flex items-center gap-8 mb-10">
+                        <div>
+                            <div class="text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">100+</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Event Sukses</div>
                         </div>
+                        <div class="w-px h-12 bg-gray-200"></div>
+                        <div>
+                            <div class="text-3xl font-semibold text-gray-900 mb-1" style="font-family: 'Montserrat', sans-serif;">2k+</div>
+                            <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Pengguna</div>
+                        </div>
+                    </div>
+                    
+                    <a href="#events" class="px-8 py-3.5 bg-[#4285F4] text-white font-semibold rounded-full hover:bg-[#3b78e7] transition-colors duration-300" style="font-family: 'Montserrat', sans-serif;">
+                        Jelajahi Event
+                    </a>
+                </div>
+
+                <!-- Visual Content -->
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-gray-100 shadow-xl shadow-gray-200/50 group">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Conference" class="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
                     </div>
                 </div>
             </div>
@@ -265,10 +266,10 @@
         <section id="contact" class="w-full py-24 px-8 lg:px-24 flex flex-col items-center bg-gray-50/50">
             <div class="max-w-4xl w-full flex flex-col items-center text-center mb-16">
                 <div class="text-[#4285F4] font-semibold tracking-wider uppercase text-sm mb-3">Hubungi Kami</div>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight" style="font-family: 'Playfair Display', serif;">
+                <h2 class="text-3xl md:text-4xl font-semibold mb-6 text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
                     Layanan Pengaduan & Masukan
                 </h2>
-                <p class="text-gray-600 text-lg leading-relaxed max-w-2xl font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                <p class="text-gray-600 text-lg leading-relaxed max-w-2xl font-medium" style="font-family: 'Montserrat', sans-serif;">
                     Apakah Anda mengalami kendala dengan tiket atau memiliki saran untuk kami? Silakan isi form di bawah ini dan tim kami akan segera menghubungi Anda.
                 </p>
             </div>
@@ -315,7 +316,7 @@
                     </div>
 
                     <!-- Submit -->
-                    <button type="submit" class="mt-2 w-full md:w-auto md:self-end px-10 py-4 bg-gray-900 text-white font-semibold rounded-2xl hover:bg-[#4285F4] transition-colors duration-300 shadow-lg shadow-gray-900/10 flex items-center justify-center gap-3 group">
+                    <button type="submit" class="mt-2 w-full md:w-auto md:self-end px-10 py-4 bg-[#4285F4] text-white font-semibold rounded-2xl hover:bg-[#3b78e7] transition-colors duration-300 shadow-lg shadow-[#4285F4]/20 flex items-center justify-center gap-3 group">
                         Kirim Pesan
                         <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                     </button>
@@ -332,9 +333,9 @@
                 <div class="md:col-span-5 flex flex-col gap-6">
                     <div class="flex items-center gap-3">
                         <img src="{{ asset('eventic.svg') }}" alt="Eventic Logo" class="w-10 h-10 filter brightness-0 invert">
-                        <span class="text-2xl font-bold text-white tracking-tight" style="font-family: 'Playfair Display', serif;">Eventic</span>
+                        <span class="text-2xl font-bold text-white tracking-tight" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
                     </div>
-                    <p class="text-white/80 leading-relaxed font-medium max-w-sm" style="font-family: 'Instrument Sans', sans-serif;">
+                    <p class="text-white/80 leading-relaxed font-medium max-w-sm" style="font-family: 'Montserrat', sans-serif;">
                         Platform modern untuk menemukan dan mengelola event impian Anda. Nikmati kemudahan akses, pembelian tiket, dan pengalaman tanpa batas.
                     </p>
                     <!-- Social Media -->
@@ -356,8 +357,8 @@
 
                 <!-- Quick Links -->
                 <div class="md:col-span-3 lg:col-span-2 lg:col-start-8">
-                    <h4 class="text-white font-bold mb-6 tracking-wide uppercase text-sm">Quick Links</h4>
-                    <ul class="flex flex-col gap-4 font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                    <h4 class="text-white font-semibold mb-6 tracking-wide uppercase text-sm" style="font-family: 'Montserrat', sans-serif;">Quick Links</h4>
+                    <ul class="flex flex-col gap-4 font-medium" style="font-family: 'Montserrat', sans-serif;">
                         <li><a href="#" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">Beranda</a></li>
                         <li><a href="#about" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">Tentang Kami</a></li>
                         <li><a href="#events" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">Events</a></li>
@@ -367,8 +368,8 @@
 
                 <!-- Support/Legal -->
                 <div class="md:col-span-4 lg:col-span-3">
-                    <h4 class="text-white font-bold mb-6 tracking-wide uppercase text-sm">Legal & Bantuan</h4>
-                    <ul class="flex flex-col gap-4 font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                    <h4 class="text-white font-semibold mb-6 tracking-wide uppercase text-sm" style="font-family: 'Montserrat', sans-serif;">Legal & Bantuan</h4>
+                    <ul class="flex flex-col gap-4 font-medium" style="font-family: 'Montserrat', sans-serif;">
                         <li><a href="#" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">Syarat & Ketentuan</a></li>
                         <li><a href="#" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">Kebijakan Privasi</a></li>
                         <li><a href="#" class="text-white/80 hover:text-white hover:translate-x-1 inline-block transition-all">FAQ</a></li>
@@ -382,7 +383,7 @@
 
             <!-- Copyright -->
             <div class="pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                <p class="text-white/60 text-sm font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                <p class="text-white/60 text-sm font-medium" style="font-family: 'Montserrat', sans-serif;">
                     &copy; {{ date('Y') }} Eventic. All rights reserved.
                 </p>
             </div>

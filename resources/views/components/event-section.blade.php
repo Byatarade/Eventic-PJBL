@@ -7,36 +7,36 @@
             <div class="flex flex-col md:flex-row justify-between items-end gap-8">
                 <div class="max-w-2xl">
                     <div class="text-[#4285F4] font-bold tracking-[0.2em] uppercase text-xs mb-4">Discover Experience</div>
-                    <h2 class="text-4xl md:text-5xl font-black text-gray-900 leading-tight uppercase tracking-tighter" style="font-family: 'Montserrat', sans-serif;">
-                        Upcoming <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Events</span>
+                    <h2 class="text-3xl md:text-4xl font-semibold text-gray-900 leading-tight" style="font-family: 'Montserrat', sans-serif;">
+                        Upcoming <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#4285F4] to-blue-500">Events</span>
                     </h2>
-                    <div class="mt-6 w-24 h-1.5 bg-blue-500 rounded-full"></div>
+                    <div class="mt-6 w-24 h-1.5 bg-[#4285F4] rounded-full"></div>
                 </div>
                 
                 <!-- Filter Chips -->
                 <div class="flex flex-wrap gap-3">
                     <button @click="filter = 'all'" 
-                            :class="filter === 'all' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            :class="filter === 'all' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
                             class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Semua
                     </button>
                     <button @click="filter = 'musik'" 
-                            :class="filter === 'musik' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            :class="filter === 'musik' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
                             class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Musik
                     </button>
                     <button @click="filter = 'olahraga'" 
-                            :class="filter === 'olahraga' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            :class="filter === 'olahraga' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
                             class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Olahraga
                     </button>
                     <button @click="filter = 'wahana'" 
-                            :class="filter === 'wahana' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            :class="filter === 'wahana' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
                             class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Wahana
                     </button>
                     <button @click="filter = 'wisata'" 
-                            :class="filter === 'wisata' ? 'bg-gray-900 text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
+                            :class="filter === 'wisata' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
                             class="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
                         Wisata
                     </button>
@@ -71,7 +71,7 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <!-- Date & Location Row -->
                         <div class="flex items-center gap-4 mb-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                            <div class="flex items-center gap-1.5 text-blue-600">
+                            <div class="flex items-center gap-1.5 text-[#4285F4]">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 <span>{{ $event->date->format('d M Y') }}</span>
                             </div>
@@ -82,7 +82,7 @@
                         </div>
 
                         <!-- Title -->
-                        <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
+                        <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-[#4285F4] transition-colors leading-snug line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
                             {{ $event->name }}
                         </h3>
 
@@ -102,7 +102,7 @@
                             <!-- Price -->
                             <div class="flex flex-col items-end">
                                 <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Mulai</span>
-                                <span class="text-sm font-black text-blue-600">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
+                                <span class="text-sm font-black text-[#4285F4]">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
                             </div>
                         </div>
                     </div>
@@ -122,9 +122,9 @@
 
         <!-- View All Button -->
         <div class="mt-16 flex justify-center">
-            <a href="#" class="group relative px-10 py-4 bg-white border-2 border-gray-900 text-gray-900 font-black rounded-full overflow-hidden transition-all duration-300 hover:text-white">
+            <a href="#" class="group relative px-10 py-4 bg-white border-2 border-[#4285F4] text-[#4285F4] font-black rounded-full overflow-hidden transition-all duration-300 hover:text-white">
                 <span class="relative z-10 uppercase tracking-widest text-xs">Jelajahi Semua</span>
-                <div class="absolute inset-0 bg-gray-900 transition-transform duration-300 transform translate-y-full group-hover:translate-y-0"></div>
+                <div class="absolute inset-0 bg-[#4285F4] transition-transform duration-300 transform translate-y-full group-hover:translate-y-0"></div>
             </a>
         </div>
     </div>

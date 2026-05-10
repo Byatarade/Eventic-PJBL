@@ -1,4 +1,4 @@
-<header class="w-full flex justify-center z-50 fixed top-6 left-0 right-0 px-4 md:px-8 transition-all duration-300"
+<header class="w-full flex justify-center z-[100] fixed top-6 left-0 right-0 px-4 md:px-8 transition-all duration-300"
         x-data="{ 
             activeSection: 'home',
             sections: ['home', 'about', 'events', 'contact'],
@@ -36,19 +36,19 @@
         <!-- Center: Navigation -->
         <nav class="hidden lg:flex items-center justify-center p-1.5 bg-gray-50/80 rounded-full border border-gray-200/50">
             <a href="#home" @click.prevent="scrollTo('home')" 
-               :class="activeSection === 'home' ? 'text-white bg-blue-900 shadow-md ring-1 ring-blue-900/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
+               :class="activeSection === 'home' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Beranda</a>
                
             <a href="#about" @click.prevent="scrollTo('about')" 
-               :class="activeSection === 'about' ? 'text-white bg-blue-900 shadow-md ring-1 ring-blue-900/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
+               :class="activeSection === 'about' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Tentang Kami</a>
                
             <a href="#events" @click.prevent="scrollTo('events')" 
-               :class="activeSection === 'events' ? 'text-white bg-blue-900 shadow-md ring-1 ring-blue-900/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
+               :class="activeSection === 'events' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Event</a>
                
             <a href="#contact" @click.prevent="scrollTo('contact')" 
-               :class="activeSection === 'contact' ? 'text-white bg-blue-900 shadow-md ring-1 ring-blue-900/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
+               :class="activeSection === 'contact' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer whitespace-nowrap">Hubungi Kami</a>
         </nav>
 
