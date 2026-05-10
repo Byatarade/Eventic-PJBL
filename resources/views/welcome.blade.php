@@ -260,6 +260,68 @@
 
         <!-- Event Section -->
         <x-event-section :events="$events" />
+        
+        <!-- Contact Section -->
+        <section id="contact" class="w-full py-24 px-8 lg:px-24 flex flex-col items-center bg-gray-50/50">
+            <div class="max-w-4xl w-full flex flex-col items-center text-center mb-16">
+                <div class="text-[#4285F4] font-semibold tracking-wider uppercase text-sm mb-3">Hubungi Kami</div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight" style="font-family: 'Playfair Display', serif;">
+                    Layanan Pengaduan & Masukan
+                </h2>
+                <p class="text-gray-600 text-lg leading-relaxed max-w-2xl font-medium" style="font-family: 'Instrument Sans', sans-serif;">
+                    Apakah Anda mengalami kendala dengan tiket atau memiliki saran untuk kami? Silakan isi form di bawah ini dan tim kami akan segera menghubungi Anda.
+                </p>
+            </div>
+
+            <div class="w-full max-w-3xl bg-white p-8 md:p-12 rounded-[2rem] shadow-[0_20px_40px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden">
+                <!-- Decorative Elements -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#4285F4]/5 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-blue-100/50 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <form action="#" method="POST" class="flex flex-col gap-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Nama Lengkap -->
+                        <div class="flex flex-col gap-2">
+                            <label for="name" class="text-sm font-semibold text-gray-700">Nama Lengkap</label>
+                            <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#4285F4]/50 focus:border-[#4285F4] transition-all text-gray-800" required>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="flex flex-col gap-2">
+                            <label for="email" class="text-sm font-semibold text-gray-700">Email</label>
+                            <input type="email" id="email" name="email" placeholder="contoh@email.com" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#4285F4]/50 focus:border-[#4285F4] transition-all text-gray-800" required>
+                        </div>
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="flex flex-col gap-2 relative">
+                        <label for="subject" class="text-sm font-semibold text-gray-700">Subjek</label>
+                        <div class="relative">
+                            <select id="subject" name="subject" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#4285F4]/50 focus:border-[#4285F4] transition-all appearance-none cursor-pointer text-gray-800" required>
+                                <option value="" disabled selected>Pilih subjek pesan</option>
+                                <option value="pengaduan_tiket">Pengaduan Tiket</option>
+                                <option value="saran_masukan">Saran dan Masukan</option>
+                            </select>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none text-gray-400">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div class="flex flex-col gap-2">
+                        <label for="message" class="text-sm font-semibold text-gray-700">Pesan</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tuliskan pesan Anda di sini..." class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#4285F4]/50 focus:border-[#4285F4] transition-all resize-none text-gray-800" required></textarea>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="mt-2 w-full md:w-auto md:self-end px-10 py-4 bg-gray-900 text-white font-semibold rounded-2xl hover:bg-[#4285F4] transition-colors duration-300 shadow-lg shadow-gray-900/10 flex items-center justify-center gap-3 group">
+                        Kirim Pesan
+                        <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </section>
     </main>
 
 </body>
