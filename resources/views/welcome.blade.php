@@ -30,7 +30,7 @@
     <x-navbar />
 
     <!-- Main Content -->
-    <main class="w-full">
+    <main class="w-full" id="home">
         <!-- Hero Section Container -->
         <div class="p-4 pt-[8rem] pb-4 w-full h-screen flex flex-col" 
              x-data="{ 
