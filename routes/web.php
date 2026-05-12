@@ -16,7 +16,36 @@ Route::get('/dashboard', function () {
     if (auth()->user()->role === 'eo') {
         return redirect()->route('eo.dashboard');
     }
-    return view('dashboard');
+
+    $orders = \App\Models\Order::where('user_id', auth()->id())->with('items.ticket.event')->get();
+    
+    // Stats calculation
+    $activeTicketsCount = 0;
+    foreach($orders as $order) {
+        if ($order->status === 'paid') {
+            foreach($order->items as $item) {
+                if ($item->ticket->event->date >= now()) {
+                    $activeTicketsCount += $item->quantity;
+                }
+            }
+        }
+    }
+    
+    $transactionCount = $orders->count();
+    
+    $upcomingEvents = \App\Models\Event::where('status', 'published')
+        ->where('date', '>=', now())
+        ->latest()
+        ->take(3)
+        ->get();
+        
+    $recentActivities = \App\Models\Order::where('user_id', auth()->id())
+        ->with('items.ticket.event')
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return view('dashboard', compact('activeTicketsCount', 'transactionCount', 'upcomingEvents', 'recentActivities'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -32,8 +61,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/events/{event}/checkout/details', [\App\Http\Controllers\User\CheckoutController::class, 'processDetails'])->name('checkout.process_details');
         Route::get('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'payment'])->name('checkout.payment');
         Route::post('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'processPayment'])->name('checkout.process_payment');
-        Route::get('/tickets', [\App\Http\Controllers\User\CheckoutController::class, 'myTickets'])->name('tickets.index');
-        Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
+        Route::get('/tickets', [\App\Http\Controllers\User\TicketController::class, 'index'])->name('tickets.index');
+        Route::get('/tickets/{order}', [\App\Http\Controllers\User\TicketController::class, 'show'])->name('tickets.show');
+        Route::get('/transactions', [\App\Http\Controllers\User\TransactionController::class, 'index'])->name('transactions.index');
+        Route::get('/transactions/{order}', [\App\Http\Controllers\User\TransactionController::class, 'show'])->name('transactions.show');
     });
 
     // EO Routes
