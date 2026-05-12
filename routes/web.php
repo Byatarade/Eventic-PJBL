@@ -29,6 +29,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/events/{event}/checkout', [\App\Http\Controllers\User\CheckoutController::class, 'index'])->name('checkout.index');
         Route::post('/events/{event}/checkout', [\App\Http\Controllers\User\CheckoutController::class, 'process'])->name('checkout.process');
         Route::get('/events/{event}/checkout/details', [\App\Http\Controllers\User\CheckoutController::class, 'details'])->name('checkout.details');
+        Route::post('/events/{event}/checkout/details', [\App\Http\Controllers\User\CheckoutController::class, 'processDetails'])->name('checkout.process_details');
+        Route::get('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'payment'])->name('checkout.payment');
+        Route::post('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'processPayment'])->name('checkout.process_payment');
         Route::get('/tickets', function() { return view('user.tickets.index'); })->name('tickets.index');
         Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
     });

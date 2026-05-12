@@ -66,4 +66,64 @@ class CheckoutController extends Controller
 
         return view('user.checkout.details', compact('event', 'selectedTickets', 'tickets'));
     }
+
+    public function processDetails(Request $request, Event $event)
+    {
+        $request->validate([
+            'orderer.name' => 'required|string|max:255',
+            'orderer.email' => 'required|email|max:255',
+            'orderer.whatsapp' => 'required|string|max:20',
+            'tickets' => 'required|array',
+            'tickets.*.ticket_id' => 'required|exists:tickets,id',
+            'tickets.*.name' => 'required|string|max:255',
+            'tickets.*.identity_type' => 'required|string',
+            'tickets.*.identity_number' => 'required|string|max:50',
+        ]);
+
+        $checkoutData = session('checkout');
+        if (!$checkoutData || $checkoutData['event_id'] !== $event->id) {
+            return redirect()->route('user.checkout.index', $event);
+        }
+
+        $checkoutData['orderer'] = $request->orderer;
+        $checkoutData['participant_details'] = $request->tickets;
+        session(['checkout' => $checkoutData]);
+
+        return redirect()->route('user.checkout.payment', $event);
+    }
+
+    public function payment(Event $event)
+    {
+        $checkoutData = session('checkout');
+        if (!$checkoutData || $checkoutData['event_id'] !== $event->id || !isset($checkoutData['orderer'])) {
+            return redirect()->route('user.checkout.index', $event);
+        }
+
+        $selectedTickets = $checkoutData['tickets'];
+        $ticketIds = collect($selectedTickets)->pluck('id');
+        $tickets = \App\Models\Ticket::whereIn('id', $ticketIds)->get();
+
+        return view('user.checkout.payment', compact('event', 'selectedTickets', 'tickets'));
+    }
+
+    public function processPayment(Request $request, Event $event)
+    {
+        $request->validate([
+            'payment_method' => 'required|string',
+        ]);
+
+        $checkoutData = session('checkout');
+        if (!$checkoutData || $checkoutData['event_id'] !== $event->id) {
+            return redirect()->route('user.checkout.index', $event);
+        }
+
+        // Simpan metode pembayaran ke session
+        $checkoutData['payment_method'] = $request->payment_method;
+        session(['checkout' => $checkoutData]);
+
+        // Nanti di sini buat order ke database, untuk sekarang redirect ke transactions
+        session()->forget('checkout');
+        
+        return redirect()->route('user.transactions.index')->with('success', 'Pesanan berhasil dibuat!');
+    }
 }

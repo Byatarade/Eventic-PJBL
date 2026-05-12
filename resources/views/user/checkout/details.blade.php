@@ -58,10 +58,33 @@
     <!-- Main Content -->
     <div class="py-10">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <form action="{{ route('user.checkout.process_details', $event) }}" method="POST" id="checkoutDetailsForm">
+                @csrf
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                 
                 <!-- Left Column -->
                 <div class="lg:col-span-8 space-y-6">
+                    
+                    @if ($errors->any())
+                        <div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6 rounded-r-xl">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-bold text-red-800">Terdapat kesalahan pada data Anda:</h3>
+                                    <ul class="mt-1 text-sm text-red-700 list-disc list-inside">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+
                     
                     <!-- Event Info Header -->
                     <div class="mb-8">
@@ -72,8 +95,7 @@
                         </div>
                     </div>
 
-                    <form action="#" method="POST" id="checkoutDetailsForm">
-                        @csrf
+
                         
                         <div class="space-y-6">
                             <!-- Data Pemesan (Satu Kali) -->
@@ -164,7 +186,7 @@
                                 @endfor
                             @endforeach
                         </div>
-                    </form>
+
                 </div>
 
                 <!-- Right Column (Sticky Box) -->
@@ -230,7 +252,7 @@
                             <a href="{{ route('user.checkout.index', $event) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                             </a>
-                            <button type="button" onclick="document.getElementById('checkoutDetailsForm').submit()" class="flex-1 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center">
+                            <button type="submit" form="checkoutDetailsForm" class="flex-1 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center">
                                 Lanjutkan
                             </button>
                         </div>
@@ -239,6 +261,7 @@
                 </div>
 
             </div>
+            </form>
         </div>
     </div>
 
