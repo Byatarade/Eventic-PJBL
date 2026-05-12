@@ -169,9 +169,13 @@
                                 </div>
                             </div>
 
-                            <button @click="alert('Proses ke halaman Detail Pesanan')" class="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white py-3.5 rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center gap-2">
-                                Beli Sekarang
-                            </button>
+                            <form method="POST" action="{{ route('user.checkout.process', $event) }}">
+                                @csrf
+                                <input type="hidden" name="tickets" :value="JSON.stringify(tickets)">
+                                <button type="submit" class="w-full bg-[#4F46E5] hover:bg-[#4338CA] text-white py-3.5 rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center gap-2">
+                                    Beli Sekarang
+                                </button>
+                            </form>
                         </div>
 
                     </div>

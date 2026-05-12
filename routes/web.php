@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
     // User Routes
     Route::prefix('user')->name('user.')->group(function () {
         Route::get('/events/{event}/checkout', [\App\Http\Controllers\User\CheckoutController::class, 'index'])->name('checkout.index');
+        Route::post('/events/{event}/checkout', [\App\Http\Controllers\User\CheckoutController::class, 'process'])->name('checkout.process');
+        Route::get('/events/{event}/checkout/details', [\App\Http\Controllers\User\CheckoutController::class, 'details'])->name('checkout.details');
         Route::get('/tickets', function() { return view('user.tickets.index'); })->name('tickets.index');
         Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
     });

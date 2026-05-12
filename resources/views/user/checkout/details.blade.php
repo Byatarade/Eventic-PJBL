@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Detail Pesanan - {{ $event->name }}</title>
+    
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800,900|montserrat:400,500,600,700,800,900" rel="stylesheet" />
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="font-sans antialiased bg-[#F4F7FB]">
+    
+    <!-- Navbar -->
+    <nav class="bg-white border-b border-gray-100 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
+        <a href="{{ url('/') }}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <img src="{{ asset('eventic.svg') }}" alt="Eventic Logo" class="h-8 w-auto">
+            <span class="font-extrabold text-xl text-[#2D336B] tracking-tight" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
+        </a>
+    </nav>
+
+    <!-- Stepper -->
+    <div class="py-6 border-b border-gray-100 bg-white">
+        <div class="max-w-5xl mx-auto px-4 flex items-center justify-center gap-3 md:gap-5 text-[13px] md:text-sm font-semibold">
+            <!-- Step 1 -->
+            <a href="{{ route('user.checkout.index', $event) }}" class="flex items-center gap-2 text-[#4F46E5] hover:opacity-80">
+                <span class="w-6 h-6 rounded-full bg-[#4F46E5] text-white flex items-center justify-center text-xs">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </span>
+                <span>Pilih Kategori</span>
+            </a>
+            <svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            
+            <!-- Step 2 (Active) -->
+            <div class="flex items-center gap-2 text-[#4F46E5]">
+                <span class="w-6 h-6 rounded-full border-2 border-[#4F46E5] flex items-center justify-center text-xs">2</span>
+                <span class="hidden sm:inline">Detail Pesanan</span>
+            </div>
+            <svg class="w-4 h-4 text-gray-300 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            
+            <!-- Step 3 -->
+            <div class="flex items-center gap-2 text-gray-400 hidden sm:flex">
+                <span class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs">3</span>
+                <span>Metode Pembayaran</span>
+            </div>
+            <svg class="w-4 h-4 text-gray-300 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            
+            <!-- Step 4 -->
+            <div class="flex items-center gap-2 text-gray-400 hidden md:flex">
+                <span class="w-6 h-6 rounded-full border-2 border-gray-300 flex items-center justify-center text-xs">4</span>
+                <span>Pembayaran</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="py-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left Column -->
+                <div class="lg:col-span-8 space-y-6">
+                    
+                    <!-- Event Info Header -->
+                    <div class="mb-8">
+                        <h1 class="text-2xl font-black text-gray-900 mb-2 uppercase">{{ $event->name }}</h1>
+                        <div class="text-gray-500 font-medium text-sm space-y-1">
+                            <p>{{ $event->date->format('d F Y') }} • {{ $event->date->format('H:i') }} - Selesai</p>
+                            <p>{{ $event->location }}</p>
+                        </div>
+                    </div>
+
+                    <form action="#" method="POST" id="checkoutDetailsForm">
+                        @csrf
+                        
+                        <div class="space-y-6">
+                            @php $ticketCounter = 1; @endphp
+                            @foreach($selectedTickets as $selection)
+                                @php
+                                    $ticketData = $tickets->firstWhere('id', $selection['id']);
+                                    $qty = $selection['quantity'];
+                                @endphp
+                                
+                                @for($i = 0; $i < $qty; $i++)
+                                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                                        <h3 class="text-lg font-bold text-[#2D336B] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+                                            <svg class="w-5 h-5 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                            Data Pemesan Tiket {{ $ticketCounter }} ({{ $ticketData->type }})
+                                        </h3>
+
+                                        <div class="space-y-5">
+                                            <!-- Nama Lengkap -->
+                                            <div>
+                                                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
+                                                <input type="text" name="attendees[{{$ticketCounter}}][name]" required placeholder="Masukkan nama lengkap" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                            </div>
+
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                                <!-- Tipe Identitas -->
+                                                <div>
+                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Tipe Identitas <span class="text-red-500">*</span></label>
+                                                    <select name="attendees[{{$ticketCounter}}][identity_type]" required class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                        <option value="">Pilih tipe identitas</option>
+                                                        <option value="KTP">KTP</option>
+                                                        <option value="KIA">KIA</option>
+                                                        <option value="KTM">Kartu Pelajar / Mahasiswa</option>
+                                                    </select>
+                                                </div>
+
+                                                <!-- Nomor Identitas -->
+                                                <div>
+                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Nomor Identitas <span class="text-red-500">*</span></label>
+                                                    <input type="text" name="attendees[{{$ticketCounter}}][identity_number]" required placeholder="Masukkan nomor identitas" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                </div>
+                                            </div>
+
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                                <!-- Email -->
+                                                <div>
+                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email <span class="text-red-500">*</span></label>
+                                                    <input type="email" name="attendees[{{$ticketCounter}}][email]" required placeholder="Masukkan email aktif" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                </div>
+
+                                                <!-- No WhatsApp -->
+                                                <div>
+                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">No. WhatsApp <span class="text-red-500">*</span></label>
+                                                    <div class="flex relative">
+                                                        <span class="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-gray-200 bg-gray-50 text-gray-500 text-sm font-semibold">
+                                                            +62
+                                                        </span>
+                                                        <input type="tel" name="attendees[{{$ticketCounter}}][whatsapp]" required placeholder="81234567890" class="flex-1 rounded-none rounded-r-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @php $ticketCounter++; @endphp
+                                @endfor
+                            @endforeach
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right Column (Sticky Box) -->
+                <div class="lg:col-span-4 relative">
+                    
+                    <!-- Timer Box -->
+                    <div class="bg-[#FFC107] rounded-xl mb-4 p-4 text-center font-bold text-gray-900 shadow-sm flex items-center justify-center gap-3"
+                         x-data="{ 
+                            time: 600, 
+                            format() {
+                                let m = Math.floor(this.time / 60);
+                                let s = this.time % 60;
+                                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+                            },
+                            init() {
+                                setInterval(() => { if(this.time > 0) this.time-- }, 1000);
+                            }
+                         }">
+                        <span class="text-xl" x-text="format()">10:00</span>
+                        <div class="w-px h-5 bg-black/20"></div>
+                        <span>Batas Waktu Tersisa</span>
+                    </div>
+
+                    <div class="sticky top-24 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                        
+                        <h3 class="font-bold text-gray-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                            Rincian Pesanan
+                        </h3>
+                        
+                        @php
+                            $totalPrice = 0;
+                        @endphp
+                        <div class="space-y-4 mb-5 max-h-[40vh] overflow-y-auto pr-2">
+                            @foreach($selectedTickets as $selection)
+                                @php
+                                    $ticketData = $tickets->firstWhere('id', $selection['id']);
+                                    $subtotal = $ticketData->price * $selection['quantity'];
+                                    $totalPrice += $subtotal;
+                                @endphp
+                                <div class="flex justify-between items-start text-sm">
+                                    <div class="pr-4">
+                                        <div class="font-bold text-gray-900 uppercase">{{ $ticketData->type }}</div>
+                                        <div class="text-xs font-semibold text-gray-500 mt-1">x{{ $selection['quantity'] }}</div>
+                                    </div>
+                                    <div class="font-bold text-gray-900 shrink-0">Rp{{ number_format($subtotal, 0, ',', '.') }}</div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="border-t border-gray-100 pt-4 mb-6 space-y-3">
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="font-bold text-gray-500">Subtotal</span>
+                                <span class="font-bold text-gray-900">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-gray-700">Total Bayar</span>
+                                <span class="text-xl font-black text-[#2D336B]">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <a href="{{ route('user.checkout.index', $event) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            </a>
+                            <button type="button" onclick="document.getElementById('checkoutDetailsForm').submit()" class="flex-1 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center">
+                                Lanjutkan
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
