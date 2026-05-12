@@ -23,6 +23,7 @@ class Event extends Model
         'terms',
         'organizer_name',
         'organizer_social',
+        'facilities',
     ];
 
     protected $casts = [

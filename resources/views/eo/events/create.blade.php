@@ -108,8 +108,8 @@
                             </div>
                         </div>
 
-                        <!-- Keterangan & S&K -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Keterangan, S&K & Fasilitas -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                             <div class="input-group group">
                                 <label for="description" class="premium-label">Keterangan Event</label>
                                 <textarea id="description" name="description" rows="5" class="premium-input resize-none" placeholder="Jelaskan detail event Anda di sini...">{{ old('description') }}</textarea>
@@ -118,6 +118,11 @@
                             <div class="input-group group">
                                 <label for="terms" class="premium-label">Syarat dan Ketentuan</label>
                                 <textarea id="terms" name="terms" rows="5" class="premium-input resize-none" placeholder="Aturan main untuk peserta...">{{ old('terms') }}</textarea>
+                            </div>
+
+                            <div class="input-group group">
+                                <label for="facilities" class="premium-label">Fasilitas (Pisahkan dgn baris baru)</label>
+                                <textarea id="facilities" name="facilities" rows="5" class="premium-input resize-none" placeholder="Area Parkir Luas&#10;Toilet Bersih&#10;Musholla">{{ old('facilities') }}</textarea>
                             </div>
                         </div>
 

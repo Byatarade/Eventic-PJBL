@@ -133,11 +133,15 @@
                     <div x-show="activeTab === 'fasilitas'" x-cloak x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-2" x-transition:enter-end="opacity-100 translate-y-0" class="space-y-4">
                         <h2 class="text-xl font-bold text-gray-900">Fasilitas</h2>
                         <ul class="list-disc pl-5 text-sm text-gray-600 space-y-2 font-medium">
-                            <li>Area Parkir Luas</li>
-                            <li>Toilet Bersih & Nyaman</li>
-                            <li>Area Food & Beverage</li>
-                            <li>Posko Medis</li>
-                            <li>Musholla</li>
+                            @if($event->facilities)
+                                @foreach(explode("\n", str_replace("\r", "", $event->facilities)) as $facility)
+                                    @if(trim($facility))
+                                        <li>{{ trim($facility) }}</li>
+                                    @endif
+                                @endforeach
+                            @else
+                                <li class="list-none -ml-5 text-gray-500">Belum ada informasi fasilitas.</li>
+                            @endif
                         </ul>
                     </div>
 
