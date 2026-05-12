@@ -85,24 +85,24 @@
                                 
                                 @for($i = 0; $i < $qty; $i++)
                                     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-                                        <h3 class="text-lg font-bold text-[#2D336B] mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
-                                            <svg class="w-5 h-5 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                                            Data Pemesan Tiket {{ $ticketCounter }} ({{ $ticketData->type }})
+                                        <h3 class="text-[17px] font-bold text-[#2D336B] mb-6 flex items-center gap-2 border-b border-gray-100 pb-4">
+                                            <svg class="w-5 h-5 text-[#4F46E5]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                                            Data Pemesan {{ $qty > 1 ? '- Tiket '.$ticketCounter : '' }}
                                         </h3>
 
                                         <div class="space-y-5">
                                             <!-- Nama Lengkap -->
                                             <div>
-                                                <label class="block text-sm font-semibold text-gray-700 mb-1.5">Nama Lengkap <span class="text-red-500">*</span></label>
-                                                <input type="text" name="attendees[{{$ticketCounter}}][name]" required placeholder="Masukkan nama lengkap" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                <label class="block text-sm font-bold text-gray-800 mb-2">Nama Lengkap <span class="text-red-500">*</span></label>
+                                                <input type="text" name="attendees[{{$ticketCounter}}][name]" required placeholder="Masukkan nama lengkap Anda" class="w-full rounded-lg border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
                                             </div>
 
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                                 <!-- Tipe Identitas -->
                                                 <div>
-                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Tipe Identitas <span class="text-red-500">*</span></label>
-                                                    <select name="attendees[{{$ticketCounter}}][identity_type]" required class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
-                                                        <option value="">Pilih tipe identitas</option>
+                                                    <label class="block text-sm font-bold text-gray-800 mb-2">Tipe Identitas <span class="text-red-500">*</span></label>
+                                                    <select name="attendees[{{$ticketCounter}}][identity_type]" required class="w-full rounded-lg border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm text-gray-600">
+                                                        <option value="">Pilih tipe identitas Anda</option>
                                                         <option value="KTP">KTP</option>
                                                         <option value="KIA">KIA</option>
                                                         <option value="KTM">Kartu Pelajar / Mahasiswa</option>
@@ -111,27 +111,29 @@
 
                                                 <!-- Nomor Identitas -->
                                                 <div>
-                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Nomor Identitas <span class="text-red-500">*</span></label>
-                                                    <input type="text" name="attendees[{{$ticketCounter}}][identity_number]" required placeholder="Masukkan nomor identitas" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                                    <label class="block text-sm font-bold text-gray-800 mb-2">Nomor Identitas <span class="text-red-500">*</span></label>
+                                                    <input type="text" name="attendees[{{$ticketCounter}}][identity_number]" required placeholder="Masukkan nomor identitas Anda" class="w-full rounded-lg border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
                                                 </div>
                                             </div>
 
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                                <!-- Email -->
-                                                <div>
-                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email <span class="text-red-500">*</span></label>
-                                                    <input type="email" name="attendees[{{$ticketCounter}}][email]" required placeholder="Masukkan email aktif" class="w-full rounded-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
-                                                </div>
+                                            <!-- Email -->
+                                            <div>
+                                                <label class="block text-sm font-bold text-gray-800 mb-2">Email <span class="text-red-500">*</span></label>
+                                                <input type="email" name="attendees[{{$ticketCounter}}][email]" required placeholder="Masukkan email Anda" class="w-full rounded-lg border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                            </div>
 
-                                                <!-- No WhatsApp -->
-                                                <div>
-                                                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">No. WhatsApp <span class="text-red-500">*</span></label>
-                                                    <div class="flex relative">
-                                                        <span class="inline-flex items-center px-4 rounded-l-xl border border-r-0 border-gray-200 bg-gray-50 text-gray-500 text-sm font-semibold">
-                                                            +62
-                                                        </span>
-                                                        <input type="tel" name="attendees[{{$ticketCounter}}][whatsapp]" required placeholder="81234567890" class="flex-1 rounded-none rounded-r-xl border-gray-200 focus:border-[#4F46E5] focus:ring focus:ring-[#4F46E5] focus:ring-opacity-20 shadow-sm transition-colors px-4 py-3 text-sm">
+                                            <!-- No WhatsApp -->
+                                            <div>
+                                                <label class="block text-sm font-bold text-gray-800 mb-2">No. WhatsApp <span class="text-red-500">*</span></label>
+                                                <div class="flex items-stretch border border-gray-200 rounded-lg shadow-sm focus-within:border-[#4F46E5] focus-within:ring-1 focus-within:ring-[#4F46E5] transition-colors overflow-hidden">
+                                                    <div class="flex items-center gap-2 px-3 bg-gray-50 border-r border-gray-200">
+                                                        <svg class="w-5 h-3.5 border border-gray-300 rounded-sm" viewBox="0 0 3 2" preserveAspectRatio="none">
+                                                            <rect width="3" height="1" fill="#ce1126"/>
+                                                            <rect width="3" height="1" y="1" fill="#ffffff"/>
+                                                        </svg>
+                                                        <span class="text-sm font-semibold text-gray-700">+62</span>
                                                     </div>
+                                                    <input type="tel" name="attendees[{{$ticketCounter}}][whatsapp]" required placeholder="81234567890" class="flex-1 border-0 focus:ring-0 px-4 py-3 text-sm text-gray-900 w-full">
                                                 </div>
                                             </div>
                                         </div>
@@ -166,8 +168,8 @@
 
                     <div class="sticky top-24 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         
-                        <h3 class="font-bold text-gray-900 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <h3 class="text-[15px] font-bold text-gray-800 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-[#4F46E5]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h14v12zm-7-8c-1.66 0-3-1.34-3-3H7c0 2.76 2.24 5 5 5s5-2.24 5-5h-2c0 1.66-1.34 3-3 3z"/></svg>
                             Rincian Pesanan
                         </h3>
                         
@@ -181,24 +183,24 @@
                                     $subtotal = $ticketData->price * $selection['quantity'];
                                     $totalPrice += $subtotal;
                                 @endphp
-                                <div class="flex justify-between items-start text-sm">
+                                <div class="flex justify-between items-start text-[13px] mb-3">
                                     <div class="pr-4">
-                                        <div class="font-bold text-gray-900 uppercase">{{ $ticketData->type }}</div>
-                                        <div class="text-xs font-semibold text-gray-500 mt-1">x{{ $selection['quantity'] }}</div>
+                                        <div class="font-bold text-gray-800 uppercase leading-snug">{{ $ticketData->type }}</div>
+                                        <div class="text-xs font-semibold text-gray-400 mt-1">x{{ $selection['quantity'] }}</div>
                                     </div>
-                                    <div class="font-bold text-gray-900 shrink-0">Rp{{ number_format($subtotal, 0, ',', '.') }}</div>
+                                    <div class="font-semibold text-gray-800 shrink-0">Rp{{ number_format($subtotal, 0, ',', '.') }}</div>
                                 </div>
                             @endforeach
                         </div>
 
                         <div class="border-t border-gray-100 pt-4 mb-6 space-y-3">
-                            <div class="flex justify-between items-center text-sm">
-                                <span class="font-bold text-gray-500">Subtotal</span>
-                                <span class="font-bold text-gray-900">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
+                            <div class="flex justify-between items-center text-[13px]">
+                                <span class="font-semibold text-gray-500">Subtotal</span>
+                                <span class="font-semibold text-gray-800">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-gray-700">Total Bayar</span>
-                                <span class="text-xl font-black text-[#2D336B]">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
+                                <span class="font-bold text-gray-800 text-[14px]">Total Bayar</span>
+                                <span class="text-lg font-bold text-gray-800">Rp{{ number_format($totalPrice, 0, ',', '.') }}</span>
                             </div>
                         </div>
 
