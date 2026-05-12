@@ -22,12 +22,23 @@
     <x-navbar />
 
     <!-- x-data for tabs and ticket modal -->
-    <main class="w-full pt-28 pb-32 px-5 sm:px-8 lg:px-16 max-w-[1400px] mx-auto" 
+    <!-- x-data for tabs and ticket modal -->
+    <main class="w-full pt-32 pb-32 px-5 sm:px-8 lg:px-16 max-w-[1400px] mx-auto" 
           x-data="{ 
               activeTab: 'deskripsi', 
               isModalOpen: false, 
               selectedTicket: null 
           }">
+
+        <!-- Back Button -->
+        <div class="mb-10">
+            <a href="{{ url('/') }}" class="inline-flex items-center gap-3 text-gray-500 hover:text-gray-900 transition-colors font-bold group">
+                <div class="w-9 h-9 rounded-xl bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-white group-hover:shadow-sm transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15 19l-7-7 7-7"></path></svg>
+                </div>
+                Kembali ke Beranda
+            </a>
+        </div>
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             
