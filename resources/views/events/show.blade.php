@@ -205,10 +205,10 @@
                         
                         @auth
                             @if(auth()->user()->role === 'user')
-                                <button @click="isModalOpen = true" class="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md shadow-indigo-500/20 active:scale-95">
+                                <a href="{{ route('user.checkout.index', $event) }}" class="bg-[#4F46E5] hover:bg-[#4338CA] text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition-colors flex items-center gap-2 shadow-md shadow-indigo-500/20 active:scale-95">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
                                     Beli Tiket
-                                </button>
+                                </a>
                             @else
                                 <div class="bg-gray-200 text-gray-500 px-4 py-2.5 rounded-xl font-semibold text-xs text-center">
                                     Hanya Akun User
@@ -226,77 +226,7 @@
 
         </div>
 
-        <!-- TICKET SELECTION MODAL -->
-        <div x-show="isModalOpen" style="display: none;" class="fixed inset-0 z-[100] overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
-                
-                <!-- Background overlay -->
-                <div x-show="isModalOpen" 
-                     x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
-                     x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" 
-                     class="fixed inset-0 transition-opacity bg-black/40 backdrop-blur-sm" 
-                     @click="isModalOpen = false"></div>
 
-                <!-- Modal panel -->
-                <div x-show="isModalOpen" 
-                     x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100" 
-                     x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100" x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" 
-                     class="relative inline-block w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-2xl rounded-2xl sm:my-8">
-                    
-                    <div class="flex items-center justify-between mb-5">
-                        <h3 class="text-lg font-bold text-gray-900" id="modal-title">Pilih Tiket</h3>
-                        <button @click="isModalOpen = false" class="text-gray-400 hover:text-gray-600 transition-colors bg-gray-100 hover:bg-gray-200 p-1.5 rounded-full">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                        </button>
-                    </div>
-
-                    <div class="space-y-3 max-h-[60vh] overflow-y-auto pr-1">
-                        @if($event->tickets->count() > 0)
-                            @foreach($event->tickets as $ticket)
-                                <div @click="if({{ $ticket->stock }} > 0) selectedTicket = {{ $ticket->id }}"
-                                     :class="selectedTicket === {{ $ticket->id }} ? 'border-[#4F46E5] bg-[#EEF2FF] ring-1 ring-[#4F46E5]' : 'border-gray-200 hover:border-gray-300'"
-                                     class="border rounded-xl p-4 cursor-pointer transition-all {{ $ticket->stock <= 0 ? 'opacity-50 grayscale bg-gray-50' : 'bg-white' }}">
-                                    
-                                    <div class="flex justify-between items-start mb-2">
-                                        <div>
-                                            <h4 class="font-bold text-gray-900 text-base">{{ $ticket->type }}</h4>
-                                            @if($ticket->stock <= 0)
-                                                <span class="text-[10px] font-bold text-red-500 bg-red-100 px-2 py-0.5 rounded uppercase">Habis Terjual</span>
-                                            @elseif($ticket->stock < 10)
-                                                <span class="text-[10px] font-bold text-orange-500 bg-orange-100 px-2 py-0.5 rounded uppercase">Sisa {{ $ticket->stock }} Tiket</span>
-                                            @else
-                                                <span class="text-xs text-gray-500 font-medium">Tersedia {{ $ticket->stock }} tiket</span>
-                                            @endif
-                                        </div>
-                                        <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5" 
-                                             :class="selectedTicket === {{ $ticket->id }} ? 'border-[#4F46E5] bg-[#4F46E5]' : 'border-gray-300'">
-                                            <svg x-show="selectedTicket === {{ $ticket->id }}" class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                        </div>
-                                    </div>
-                                    <div class="text-[#4F46E5] font-bold text-lg mt-1">
-                                        Rp{{ number_format($ticket->price, 0, ',', '.') }}
-                                    </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <div class="text-center py-6">
-                                <p class="text-gray-500 text-sm font-medium">Tiket belum tersedia untuk event ini.</p>
-                            </div>
-                        @endif
-                    </div>
-
-                    <div class="mt-6 pt-5 border-t border-gray-100 flex gap-3 justify-end">
-                        <button @click="isModalOpen = false" type="button" class="px-4 py-2 text-sm font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50">
-                            Batal
-                        </button>
-                        <button :disabled="!selectedTicket" type="button" :class="!selectedTicket ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-[#4F46E5] hover:bg-[#4338CA] text-white shadow-md active:scale-95'" class="px-5 py-2 text-sm font-semibold rounded-xl transition-all flex items-center gap-2">
-                            Lanjutkan Pembayaran
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
         
     </main>
 

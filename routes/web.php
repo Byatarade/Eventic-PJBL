@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
 
     // User Routes
     Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/events/{event}/checkout', [\App\Http\Controllers\User\CheckoutController::class, 'index'])->name('checkout.index');
         Route::get('/tickets', function() { return view('user.tickets.index'); })->name('tickets.index');
         Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
     });
