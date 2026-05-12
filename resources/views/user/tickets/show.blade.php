@@ -80,11 +80,37 @@
                 </div>
             </div>
 
+            {{-- PENDING WARNING BANNER --}}
+            @if($order->status === 'pending')
+            <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center shrink-0">
+                    <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-amber-800 mb-1">Pembayaran Belum Selesai</h4>
+                    <p class="text-amber-700 text-sm">Anda sudah mengisi data pesanan namun belum menyelesaikan pembayaran. Selesaikan sebelum <span class="font-bold">{{ $order->expired_at ? \Carbon\Carbon::parse($order->expired_at)->format('d M Y, H:i') : '-' }} WIB</span> agar tiket tidak hangus.</p>
+                </div>
+                <a href="{{ route('user.transactions.show', $order) }}" class="shrink-0 bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm px-5 py-2.5 rounded-xl transition-all shadow-sm">
+                    Selesaikan Pembayaran
+                </a>
+            </div>
+            @elseif($order->status === 'canceled')
+            <div class="bg-red-50 border border-red-200 rounded-2xl p-5 flex items-center gap-4">
+                <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
+                    <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </div>
+                <div>
+                    <h4 class="font-bold text-red-700 mb-1">Pesanan Dibatalkan</h4>
+                    <p class="text-red-600 text-sm">Pesanan ini telah dibatalkan karena batas waktu pembayaran telah habis atau dibatalkan secara manual.</p>
+                </div>
+            </div>
+            @endif
+
             {{-- E-TICKET CARDS --}}
             <div class="space-y-4">
                 <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
                     <svg class="w-5 h-5 text-[#4F46E5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"/></svg>
-                    E-Ticket ({{ $order->items->sum('quantity') }})
+                    {{ $order->status === 'paid' ? 'E-Ticket' : 'Tiket (Belum Aktif)' }} ({{ $order->items->sum('quantity') }})
                 </h3>
 
                 @php $ticketNum = 0; @endphp
@@ -138,10 +164,17 @@
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                     Kembali
                 </a>
-                <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                    Lihat Transaksi
-                </a>
+                @if($order->status === 'pending')
+                    <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        Selesaikan Pembayaran
+                    </a>
+                @else
+                    <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        Lihat Transaksi
+                    </a>
+                @endif
             </div>
         </div>
     </div>

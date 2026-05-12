@@ -9,12 +9,26 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             
             <!-- Filter / Tabs -->
+            @php
+                $countAll = $orders->count();
+                $countPaid = $orders->where('status', 'paid')->count();
+                $countPending = $orders->where('status', 'pending')->count();
+                $countCanceled = $orders->where('status', 'canceled')->count();
+            @endphp
             <div x-data="{ filter: 'semua' }" class="mb-6">
                 <div class="flex flex-wrap gap-3 mb-8">
-                    <button @click="filter = 'semua'" :class="filter === 'semua' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200">Semua Transaksi</button>
-                    <button @click="filter = 'paid'" :class="filter === 'paid' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200">Berhasil</button>
-                    <button @click="filter = 'pending'" :class="filter === 'pending' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200">Menunggu</button>
-                    <button @click="filter = 'canceled'" :class="filter === 'canceled' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200">Batal</button>
+                    <button @click="filter = 'semua'" :class="filter === 'semua' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">
+                        Semua <span class="bg-white/20 rounded-full px-1.5 py-0.5 text-[10px]">{{ $countAll }}</span>
+                    </button>
+                    <button @click="filter = 'paid'" :class="filter === 'paid' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">
+                        Berhasil <span class="bg-emerald-100 text-emerald-700 rounded-full px-1.5 py-0.5 text-[10px] font-bold">{{ $countPaid }}</span>
+                    </button>
+                    <button @click="filter = 'pending'" :class="filter === 'pending' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">
+                        Menunggu @if($countPending > 0)<span class="bg-amber-100 text-amber-700 rounded-full px-1.5 py-0.5 text-[10px] font-bold animate-pulse">{{ $countPending }}</span>@endif
+                    </button>
+                    <button @click="filter = 'canceled'" :class="filter === 'canceled' ? 'bg-[#4F46E5] text-white shadow-md' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">
+                        Batal <span class="bg-red-100 text-red-600 rounded-full px-1.5 py-0.5 text-[10px] font-bold">{{ $countCanceled }}</span>
+                    </button>
                 </div>
 
                 @if($orders->count() > 0)

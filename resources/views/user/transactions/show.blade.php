@@ -106,7 +106,20 @@
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                                 </div>
                                 <h4 class="font-bold text-gray-900 text-lg mb-1">Menunggu Pembayaran</h4>
-                                <p class="text-xs text-gray-500 font-medium">Segera selesaikan pembayaran sebelum batas waktu berakhir.</p>
+                                <p class="text-xs text-gray-500 font-medium mb-4">Segera selesaikan pembayaran sebelum batas waktu berakhir.</p>
+                                
+                                <div class="bg-amber-50 rounded-xl p-3 border border-amber-100 mb-6">
+                                    <div class="text-[10px] text-amber-600 font-bold uppercase tracking-wider mb-1 text-left">Batas Waktu</div>
+                                    <div class="flex items-center gap-2 text-amber-700 font-bold text-sm">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        {{ $order->expired_at ? \Carbon\Carbon::parse($order->expired_at)->format('d M Y, H:i') : '-' }} WIB
+                                    </div>
+                                </div>
+
+                                <a href="{{ route('user.checkout.payment', $order->items->first()->ticket->event) }}" class="w-full inline-flex items-center justify-center px-6 py-3 bg-amber-500 text-white font-bold rounded-xl hover:bg-amber-600 shadow-md transition-all active:scale-95 gap-2">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                                    Lanjut ke Pembayaran
+                                </a>
                             @else
                                 <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
                                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
