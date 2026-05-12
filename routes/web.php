@@ -10,6 +10,8 @@ Route::get('/', function () {
     return view('welcome', compact('events'));
 });
 
+Route::get('/events/{event}', [\App\Http\Controllers\PublicEventController::class, 'show'])->name('events.show');
+
 Route::get('/dashboard', function () {
     if (auth()->user()->role === 'eo') {
         return redirect()->route('eo.dashboard');

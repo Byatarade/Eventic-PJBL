@@ -93,7 +93,7 @@
 
                                                 <!-- Actions & Meta -->
                                                 <div class="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-6 mt-2 md:mt-4 relative z-10">
-                                                    <a href="#" class="h-14 px-8 bg-[#4285F4] text-white font-black rounded-full hover:bg-[#3b78e7] transition-all duration-300 shadow-xl shadow-[#4285F4]/40 flex items-center justify-center gap-3 w-[260px] sm:w-auto transform hover:scale-105 active:scale-95">
+                                                    <a href="{{ route('events.show', $event) }}" class="h-14 px-8 bg-[#4285F4] text-white font-black rounded-full hover:bg-[#3b78e7] transition-all duration-300 shadow-xl shadow-[#4285F4]/40 flex items-center justify-center gap-3 w-[260px] sm:w-auto transform hover:scale-105 active:scale-95">
                                                         <span class="uppercase tracking-widest text-sm">Beli Tiket</span>
                                                         <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-colors">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>

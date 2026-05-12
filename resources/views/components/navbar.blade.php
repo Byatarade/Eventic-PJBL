@@ -36,19 +36,19 @@
 
         <!-- Center: Navigation -->
         <nav class="hidden lg:flex items-center justify-center p-1.5 bg-gray-50/80 rounded-full border border-gray-200/50">
-            <a href="#home" @click.prevent="scrollTo('home')" 
+            <a href="{{ url('/') }}#home" @click.prevent="window.location.href = '{{ url('/') }}#home'" 
                :class="activeSection === 'home' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Beranda</a>
                
-            <a href="#about" @click.prevent="scrollTo('about')" 
+            <a href="{{ url('/') }}#about" @click.prevent="window.location.href = '{{ url('/') }}#about'" 
                :class="activeSection === 'about' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Tentang Kami</a>
                
-            <a href="#events" @click.prevent="scrollTo('events')" 
+            <a href="{{ url('/') }}#events" @click.prevent="window.location.href = '{{ url('/') }}#events'" 
                :class="activeSection === 'events' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer">Event</a>
                
-            <a href="#contact" @click.prevent="scrollTo('contact')" 
+            <a href="{{ url('/') }}#contact" @click.prevent="window.location.href = '{{ url('/') }}#contact'" 
                :class="activeSection === 'contact' ? 'text-white bg-[#4285F4] shadow-md ring-1 ring-[#4285F4]/20' : 'text-gray-500 hover:text-gray-900 hover:bg-gray-200/50'"
                class="px-6 py-2 rounded-full text-sm font-semibold transition-all duration-300 cursor-pointer whitespace-nowrap">Hubungi Kami</a>
         </nav>
@@ -92,19 +92,19 @@
              x-cloak
              style="display: none;">
             <div class="flex flex-col p-3 gap-1">
-                <a href="#home" @click.prevent="scrollTo('home'); mobileMenuOpen = false" 
+                <a href="{{ url('/') }}#home" @click.prevent="window.location.href = '{{ url('/') }}#home'; mobileMenuOpen = false" 
                    :class="activeSection === 'home' ? 'bg-[#4285F4]/10 text-[#4285F4]' : 'text-gray-600 hover:bg-gray-50'"
                    class="px-5 py-3.5 rounded-2xl text-sm font-bold transition-colors">Beranda</a>
                    
-                <a href="#about" @click.prevent="scrollTo('about'); mobileMenuOpen = false" 
+                <a href="{{ url('/') }}#about" @click.prevent="window.location.href = '{{ url('/') }}#about'; mobileMenuOpen = false" 
                    :class="activeSection === 'about' ? 'bg-[#4285F4]/10 text-[#4285F4]' : 'text-gray-600 hover:bg-gray-50'"
                    class="px-5 py-3.5 rounded-2xl text-sm font-bold transition-colors">Tentang Kami</a>
                    
-                <a href="#events" @click.prevent="scrollTo('events'); mobileMenuOpen = false" 
+                <a href="{{ url('/') }}#events" @click.prevent="window.location.href = '{{ url('/') }}#events'; mobileMenuOpen = false" 
                    :class="activeSection === 'events' ? 'bg-[#4285F4]/10 text-[#4285F4]' : 'text-gray-600 hover:bg-gray-50'"
                    class="px-5 py-3.5 rounded-2xl text-sm font-bold transition-colors">Event</a>
                    
-                <a href="#contact" @click.prevent="scrollTo('contact'); mobileMenuOpen = false" 
+                <a href="{{ url('/') }}#contact" @click.prevent="window.location.href = '{{ url('/') }}#contact'; mobileMenuOpen = false" 
                    :class="activeSection === 'contact' ? 'bg-[#4285F4]/10 text-[#4285F4]' : 'text-gray-600 hover:bg-gray-50'"
                    class="px-5 py-3.5 rounded-2xl text-sm font-bold transition-colors">Hubungi Kami</a>
                    

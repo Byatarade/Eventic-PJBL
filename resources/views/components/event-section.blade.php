@@ -44,14 +44,13 @@
             </div>
         </div>
 
-        <!-- Events Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($events as $event)
-                <div x-show="filter === 'all' || filter === '{{ strtolower($event->category ?? '') }}'"
+                <a href="{{ route('events.show', $event) }}" x-show="filter === 'all' || filter === '{{ strtolower($event->category ?? '') }}'"
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 transform scale-95"
                      x-transition:enter-end="opacity-100 transform scale-100"
-                     class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-blue-100 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] flex flex-col h-full">
+                     class="group bg-white rounded-3xl overflow-hidden border border-gray-100 hover:border-blue-100 transition-all duration-500 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)] flex flex-col h-full cursor-pointer">
                     
                     <!-- Banner Container -->
                     <div class="relative aspect-video overflow-hidden bg-slate-100">
@@ -106,7 +105,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 
