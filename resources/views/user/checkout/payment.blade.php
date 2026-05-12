@@ -134,7 +134,7 @@
                                     <input type="radio" name="method" value="shopeepay" class="sr-only" @click="selectedMethod = 'shopeepay'">
                                     <div class="flex-1 flex items-center gap-4">
                                         <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee_Pay_logo.svg" alt="ShopeePay" class="max-h-full max-w-full object-contain">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee_Pay_logo.svg/512px-Shopee_Pay_logo.svg.png" alt="ShopeePay" class="max-h-full max-w-full object-contain">
                                         </div>
                                         <span class="font-bold text-gray-800">ShopeePay</span>
                                     </div>
@@ -175,7 +175,7 @@
                                     <input type="radio" name="method" value="mandiri_va" class="sr-only" @click="selectedMethod = 'mandiri_va'">
                                     <div class="flex-1 flex items-center gap-4">
                                         <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a8/Bank_Mandiri_logo_2016.svg" alt="Mandiri" class="max-h-full max-w-full object-contain">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bank_Mandiri_logo_2016.svg/1024px-Bank_Mandiri_logo_2016.svg.png" alt="Mandiri" class="max-h-full max-w-full object-contain">
                                         </div>
                                         <span class="font-bold text-gray-800">Mandiri Virtual Account</span>
                                     </div>
@@ -191,7 +191,7 @@
                                     <input type="radio" name="method" value="bni_va" class="sr-only" @click="selectedMethod = 'bni_va'">
                                     <div class="flex-1 flex items-center gap-4">
                                         <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/id/5/55/BNI_logo.svg" alt="BNI" class="max-h-full max-w-full object-contain">
+                                            <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1024px-BNI_logo.svg.png" alt="BNI" class="max-h-full max-w-full object-contain">
                                         </div>
                                         <span class="font-bold text-gray-800">BNI Virtual Account</span>
                                     </div>

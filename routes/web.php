@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/events/{event}/checkout/details', [\App\Http\Controllers\User\CheckoutController::class, 'processDetails'])->name('checkout.process_details');
         Route::get('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'payment'])->name('checkout.payment');
         Route::post('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'processPayment'])->name('checkout.process_payment');
-        Route::get('/tickets', function() { return view('user.tickets.index'); })->name('tickets.index');
+        Route::get('/tickets', [\App\Http\Controllers\User\CheckoutController::class, 'myTickets'])->name('tickets.index');
         Route::get('/transactions', function() { return view('user.transactions.index'); })->name('transactions.index');
     });
 

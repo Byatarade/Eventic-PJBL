@@ -117,13 +117,47 @@ class CheckoutController extends Controller
             return redirect()->route('user.checkout.index', $event);
         }
 
-        // Simpan metode pembayaran ke session
-        $checkoutData['payment_method'] = $request->payment_method;
-        session(['checkout' => $checkoutData]);
+        $selectedTickets = collect($checkoutData['tickets']);
+        $ticketIds = $selectedTickets->pluck('id');
+        $tickets = \App\Models\Ticket::whereIn('id', $ticketIds)->get();
 
-        // Nanti di sini buat order ke database, untuk sekarang redirect ke transactions
+        $totalPrice = 0;
+        foreach ($selectedTickets as $selection) {
+            $ticketData = $tickets->firstWhere('id', $selection['id']);
+            $totalPrice += $ticketData->price * $selection['quantity'];
+        }
+
+        // Create Order
+        $order = \App\Models\Order::create([
+            'user_id' => auth()->id(),
+            'total_price' => $totalPrice,
+            'status' => 'paid',
+            'expired_at' => now()->addHours(24),
+        ]);
+
+        // Create Order Items
+        foreach ($selectedTickets as $selection) {
+            $ticketData = $tickets->firstWhere('id', $selection['id']);
+            \App\Models\OrderItem::create([
+                'order_id' => $order->id,
+                'ticket_id' => $ticketData->id,
+                'quantity' => $selection['quantity'],
+                'price' => $ticketData->price,
+            ]);
+        }
+
         session()->forget('checkout');
         
-        return redirect()->route('user.transactions.index')->with('success', 'Pesanan berhasil dibuat!');
+        return redirect()->route('user.tickets.index')->with('success', 'Pembayaran berhasil! Tiket Anda sudah terbit.');
+    }
+
+    public function myTickets()
+    {
+        $orders = \App\Models\Order::where('user_id', auth()->id())
+                    ->with(['items.ticket.event'])
+                    ->latest()
+                    ->get();
+                    
+        return view('user.tickets.index', compact('orders'));
     }
 }
