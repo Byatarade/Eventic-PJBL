@@ -14,30 +14,30 @@
                 </div>
                 
                 <!-- Filter Chips -->
-                <div class="flex flex-wrap gap-2.5 md:gap-3 w-full">
+                <div class="flex flex-wrap gap-2 w-full lg:w-auto">
                     <button @click="filter = 'all'" 
-                            :class="filter === 'all' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            :class="filter === 'all' ? 'bg-[#4285F4] text-white shadow-lg shadow-blue-500/20' : 'bg-white text-gray-500 hover:bg-gray-50'"
+                            class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-gray-100 uppercase tracking-widest">
                         Semua
                     </button>
                     <button @click="filter = 'musik'" 
-                            :class="filter === 'musik' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            :class="filter === 'musik' ? 'bg-[#4285F4] text-white shadow-lg shadow-blue-500/20' : 'bg-white text-gray-500 hover:bg-gray-50'"
+                            class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-gray-100 uppercase tracking-widest">
                         Musik
                     </button>
                     <button @click="filter = 'olahraga'" 
-                            :class="filter === 'olahraga' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            :class="filter === 'olahraga' ? 'bg-[#4285F4] text-white shadow-lg shadow-blue-500/20' : 'bg-white text-gray-500 hover:bg-gray-50'"
+                            class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-gray-100 uppercase tracking-widest">
                         Olahraga
                     </button>
                     <button @click="filter = 'wahana'" 
-                            :class="filter === 'wahana' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            :class="filter === 'wahana' ? 'bg-[#4285F4] text-white shadow-lg shadow-blue-500/20' : 'bg-white text-gray-500 hover:bg-gray-50'"
+                            class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-gray-100 uppercase tracking-widest">
                         Wahana
                     </button>
                     <button @click="filter = 'wisata'" 
-                            :class="filter === 'wisata' ? 'bg-[#4285F4] text-white' : 'bg-white text-gray-600 hover:bg-gray-100'"
-                            class="px-5 md:px-6 py-2 md:py-2.5 rounded-full text-xs md:text-sm font-bold transition-all duration-300 border border-gray-200 shadow-sm">
+                            :class="filter === 'wisata' ? 'bg-[#4285F4] text-white shadow-lg shadow-blue-500/20' : 'bg-white text-gray-500 hover:bg-gray-50'"
+                            class="px-5 py-2 rounded-xl text-xs font-bold transition-all duration-300 border border-gray-100 uppercase tracking-widest">
                         Wisata
                     </button>
                 </div>
@@ -46,7 +46,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             @foreach($events as $event)
-                <a href="{{ route('events.show', $event) }}" x-show="filter === 'all' || filter === '{{ strtolower($event->category ?? '') }}'"
+                <a href="{{ route('events.show', $event) }}" x-show="filter === 'all' || filter === '{{ strtolower(trim($event->category ?? '')) }}'"
                      x-transition:enter="transition ease-out duration-300"
                      x-transition:enter-start="opacity-0 transform scale-95"
                      x-transition:enter-end="opacity-100 transform scale-100"
@@ -61,27 +61,27 @@
                         <!-- Category Badge -->
                         @if($event->category)
                         <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-md rounded-full">
-                            <span class="text-[9px] font-black text-gray-800 uppercase tracking-widest">{{ $event->category }}</span>
+                            <span class="text-[9px] font-bold text-gray-800 uppercase tracking-widest">{{ $event->category }}</span>
                         </div>
                         @endif
                     </div>
 
                     <!-- Content -->
                     <div class="p-6 flex flex-col flex-grow">
-                        <!-- Date & Location Row -->
-                        <div class="flex items-center gap-4 mb-4 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                            <div class="flex items-center gap-1.5 text-[#4285F4]">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <!-- Date & Location Stack -->
+                        <div class="flex flex-col gap-2.5 mb-5">
+                            <div class="flex items-center gap-2 text-[#4285F4] text-[10px] font-bold uppercase tracking-widest">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                                 <span>{{ $event->date->format('d M Y') }}</span>
                             </div>
-                            <div class="flex items-center gap-1.5 truncate">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <div class="flex items-center gap-2 text-gray-400 text-[10px] font-semibold uppercase tracking-wider">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
                                 <span class="truncate">{{ $event->location }}</span>
                             </div>
                         </div>
 
                         <!-- Title -->
-                        <h3 class="text-xl font-black text-gray-900 mb-4 group-hover:text-[#4285F4] transition-colors leading-snug line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4 group-hover:text-[#4285F4] transition-colors leading-tight line-clamp-2" style="font-family: 'Montserrat', sans-serif;">
                             {{ $event->name }}
                         </h3>
 
@@ -89,19 +89,19 @@
                         <div class="mt-auto pt-5 border-t border-gray-50 flex items-center justify-between">
                             <!-- Organizer Info -->
                             <div class="flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-xs font-bold uppercase shrink-0 border border-slate-200">
+                                <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-[10px] font-semibold uppercase shrink-0 border border-slate-200">
                                     {{ substr($event->organizer_name ?: 'E', 0, 1) }}
                                 </div>
                                 <div class="flex flex-col">
-                                    <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">By</span>
-                                    <span class="text-xs font-bold text-gray-800 truncate max-w-[100px]">{{ $event->organizer_name ?: 'Eventic' }}</span>
+                                    <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">By</span>
+                                    <span class="text-xs font-semibold text-gray-800 truncate max-w-[100px]">{{ $event->organizer_name ?: 'Eventic' }}</span>
                                 </div>
                             </div>
                             
                             <!-- Price -->
                             <div class="flex flex-col items-end">
-                                <span class="text-[9px] font-black text-gray-400 uppercase tracking-widest leading-none mb-1">Mulai</span>
-                                <span class="text-sm font-black text-[#4285F4]">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
+                                <span class="text-[8px] font-bold text-gray-400 uppercase tracking-widest leading-none mb-1">Mulai</span>
+                                <span class="text-sm font-bold text-[#4285F4]">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
                             </div>
                         </div>
                     </div>
