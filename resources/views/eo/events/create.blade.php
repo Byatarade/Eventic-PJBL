@@ -15,6 +15,22 @@
             <form action="{{ route('eo.events.store') }}" method="POST" enctype="multipart/form-data" class="space-y-8">
                 @csrf
                 
+                @if ($errors->any())
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-2xl shadow-sm mb-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center text-red-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            </div>
+                            <h3 class="text-red-800 font-bold">Mohon perbaiki kesalahan berikut:</h3>
+                        </div>
+                        <ul class="list-disc pl-11 text-sm text-red-700 space-y-1">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
                 <!-- Section 1: Informasi Event -->
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
                     <div class="bg-slate-50 border-b border-gray-100 px-8 py-6">
