@@ -54,7 +54,14 @@ class DashboardController extends Controller
         $upcomingEvents = Event::where('user_id', $userId)
             ->where('status', 'published')
             ->where('date', '>=', now())
-            ->withCount('tickets')
+            ->with(['tickets' => function($query) {
+                // Eager load sum of orderItems quantity to calculate sold tickets
+                $query->withSum(['orderItems as sold_count' => function($q) {
+                    $q->whereHas('order', function($oq) {
+                        $oq->where('status', 'paid');
+                    });
+                }], 'quantity');
+            }])
             ->orderBy('date', 'asc')
             ->take(5)
             ->get();

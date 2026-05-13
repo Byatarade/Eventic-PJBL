@@ -28,7 +28,7 @@
                         Overview Performa
                     </span>
                     <h3 class="text-2xl md:text-3xl font-bold mb-2">
-                        Halo, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{{ explode(' ', Auth::user()->name)[0] }}</span>! 👋
+                        Halo, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{{ explode(' ', Auth::user()->name)[0] }}</span>!
                     </h3>
                     <p class="text-slate-300 text-sm max-w-md leading-relaxed">
                         Anda memiliki <span class="text-white font-bold">{{ $activeEvents }} event aktif</span> saat ini. Penjualan tiket Anda meningkat <span class="text-green-400 font-bold">+15%</span> dari minggu lalu.
@@ -36,11 +36,11 @@
                     
                     <div class="mt-8 flex flex-wrap gap-4">
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[120px]">
-                            <p class="text-blue-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">Tiket Terjual</p>
+                            <p class="text-blue-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1">Tiket Terjual</p>
                             <p class="text-xl md:text-2xl font-bold">{{ number_format($totalTicketsSold) }}</p>
                         </div>
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[120px]">
-                            <p class="text-blue-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">Pendapatan</p>
+                            <p class="text-blue-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1">Pendapatan</p>
                             <p class="text-xl md:text-2xl font-bold">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
                         </div>
                     </div>
@@ -52,11 +52,16 @@
                 <div>
                     <h4 class="text-xs font-bold text-deep-navy uppercase tracking-widest mb-4">Event Terdekat</h4>
                     @if($upcomingEvents->count() > 0)
-                        @php $nextEvent = $upcomingEvents->first(); @endphp
+                        @php 
+                            $nextEvent = $upcomingEvents->first(); 
+                            $totalStock = $nextEvent->tickets->sum('stock');
+                            $totalSold = $nextEvent->tickets->sum('sold_count');
+                            $fillPercentage = $totalStock > 0 ? min(100, round(($totalSold / $totalStock) * 100)) : 0;
+                        @endphp
                         <div class="flex gap-4 items-start mb-4">
                             <div class="w-16 h-16 rounded-2xl bg-slate-50 flex flex-col items-center justify-center text-center shrink-0 border border-slate-100">
                                 <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ \Carbon\Carbon::parse($nextEvent->date)->format('M') }}</span>
-                                <span class="text-xl font-extrabold text-deep-navy">{{ \Carbon\Carbon::parse($nextEvent->date)->format('d') }}</span>
+                                <span class="text-xl font-bold text-deep-navy">{{ \Carbon\Carbon::parse($nextEvent->date)->format('d') }}</span>
                             </div>
                             <div>
                                 <h5 class="font-bold text-deep-navy line-clamp-1">{{ $nextEvent->name }}</h5>
@@ -69,10 +74,10 @@
                         <div class="space-y-2 mb-4">
                             <div class="flex justify-between text-xs font-medium">
                                 <span class="text-slate-500">Kapasitas Terisi</span>
-                                <span class="text-deep-navy font-bold">75%</span>
+                                <span class="text-deep-navy font-bold">{{ $fillPercentage }}%</span>
                             </div>
                             <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                                <div class="bg-electric-blue h-full rounded-full" style="width: 75%"></div>
+                                <div class="bg-electric-blue h-full rounded-full" style="width: {{ $fillPercentage }}%"></div>
                             </div>
                         </div>
                         <a href="{{ route('eo.events.show', $nextEvent) }}" class="w-full py-3 bg-slate-50 hover:bg-slate-100 text-slate-600 rounded-xl text-xs font-bold transition-colors text-center inline-block">

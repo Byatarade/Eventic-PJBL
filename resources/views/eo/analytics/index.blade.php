@@ -31,7 +31,7 @@
                             </div>
                             <span class="text-xs font-bold text-blue-100 uppercase tracking-widest">Total Pendapatan</span>
                         </div>
-                        <h3 class="text-3xl font-extrabold tracking-tight">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</h3>
+                        <h3 class="text-3xl font-bold tracking-tight">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</h3>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
                             </div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Tiket Terjual</span>
                         </div>
-                        <h3 class="text-3xl font-extrabold text-deep-navy">{{ number_format($totalTickets) }} <span class="text-sm font-bold text-slate-400">Tiket</span></h3>
+                        <h3 class="text-3xl font-bold text-deep-navy">{{ number_format($totalTickets) }} <span class="text-sm font-bold text-slate-400">Tiket</span></h3>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                             </div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Transaksi Sukses</span>
                         </div>
-                        <h3 class="text-3xl font-extrabold text-deep-navy">{{ number_format($totalTransactions) }} <span class="text-sm font-bold text-slate-400">Order</span></h3>
+                        <h3 class="text-3xl font-bold text-deep-navy">{{ number_format($totalTransactions) }} <span class="text-sm font-bold text-slate-400">Order</span></h3>
                     </div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                                             <p class="text-xs text-slate-500">{{ number_format($stat->tickets_sold) }} Tiket Terjual</p>
                                         </div>
                                         <div class="text-right shrink-0">
-                                            <p class="text-sm font-extrabold text-electric-blue">Rp {{ number_format($stat->revenue, 0, ',', '.') }}</p>
+                                            <p class="text-sm font-bold text-electric-blue">Rp {{ number_format($stat->revenue, 0, ',', '.') }}</p>
                                         </div>
                                     </div>
                                 @endforeach

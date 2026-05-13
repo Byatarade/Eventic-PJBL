@@ -23,7 +23,7 @@
                     <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm p-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
                         <div>
                             <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Order ID</p>
-                            <h3 class="text-2xl font-extrabold text-deep-navy">#{{ str_pad($transaction->id, 6, '0', STR_PAD_LEFT) }}</h3>
+                            <h3 class="text-2xl font-bold text-deep-navy">#{{ str_pad($transaction->id, 6, '0', STR_PAD_LEFT) }}</h3>
                             <p class="text-sm text-slate-500 mt-2">{{ \Carbon\Carbon::parse($transaction->created_at)->format('d M Y, H:i') }} WIB</p>
                         </div>
                         
@@ -85,7 +85,7 @@
                             
                             <div class="border-t border-slate-100 pt-4 flex justify-between items-center">
                                 <p class="text-sm font-bold text-slate-500 uppercase tracking-widest">Total Bayar</p>
-                                <p class="text-2xl font-extrabold text-electric-blue">Rp {{ number_format($transaction->total_price, 0, ',', '.') }}</p>
+                                <p class="text-2xl font-bold text-electric-blue">Rp {{ number_format($transaction->total_price, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <h4 class="font-bold text-lg text-deep-navy mb-6">Informasi Pembeli</h4>
                         
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="w-14 h-14 bg-electric-blue text-white rounded-2xl flex items-center justify-center text-xl font-extrabold shadow-sm">
+                            <div class="w-14 h-14 bg-electric-blue text-white rounded-2xl flex items-center justify-center text-xl font-bold shadow-sm">
                                 {{ strtoupper(substr($transaction->user->name, 0, 1)) }}
                             </div>
                             <div>
