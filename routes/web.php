@@ -85,7 +85,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/transactions/{transaction}', [\App\Http\Controllers\EO\TransactionController::class, 'show'])->name('transactions.show');
         
         // Analytics
-        Route::get('/analytics', function() { return view('eo.analytics.index'); })->name('analytics.index');
+        Route::get('/analytics', [\App\Http\Controllers\EO\AnalyticsController::class, 'index'])->name('analytics.index');
         
         // Participants
         Route::get('/participants', function() { return view('eo.participants.index'); })->name('participants.index');
