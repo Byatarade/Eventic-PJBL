@@ -11,6 +11,9 @@
 }
 
 @layer base {
+    html {
+        font-size: 90%;
+    }
     body {
         @apply bg-[#f8fafc] text-slate-900 antialiased;
     }
