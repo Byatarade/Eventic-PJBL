@@ -4,7 +4,7 @@
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('Kelola Event') }}
             </h2>
-            <a href="{{ route('eo.events.create') }}" class="bg-electric-blue hover:bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transition-colors shadow-sm">
+            <a href="{{ route('eo.events.create') }}" class="bg-electric-blue hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm">
                 + Buat Event Baru
             </a>
         </div>
@@ -46,18 +46,18 @@
                     <div class="overflow-x-auto scrollbar-hide">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                                    <th class="p-4 font-semibold rounded-tl-xl">Nama Event</th>
-                                    <th class="p-4 font-semibold">Tanggal</th>
-                                    <th class="p-4 font-semibold">Status</th>
-                                    <th class="p-4 font-semibold">Tiket</th>
-                                    <th class="p-4 font-semibold text-right rounded-tr-xl">Aksi</th>
+                                <tr class="bg-slate-50/50">
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest rounded-tl-xl">Nama Event</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Tanggal</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Tiket</th>
+                                    <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest text-right rounded-tr-xl">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-100">
                                 @forelse ($events as $event)
-                                    <tr class="hover:bg-gray-50/50 transition-colors">
-                                        <td class="p-4">
+                                    <tr class="hover:bg-slate-50/50 transition-colors">
+                                        <td class="px-6 py-4">
                                             <div class="flex items-center gap-3">
                                                 @if ($event->image)
                                                     <img src="{{ Storage::url($event->image) }}" alt="{{ $event->name }}" class="w-10 h-10 rounded-lg object-cover border border-gray-100">
@@ -72,22 +72,22 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="p-4 text-sm text-gray-600">
+                                        <td class="px-6 py-4 text-sm text-gray-600 font-medium">
                                             {{ $event->date->translatedFormat('d M Y, H:i') }}
                                         </td>
-                                        <td class="p-4">
+                                        <td class="px-6 py-4">
                                             @if ($event->status === 'published')
-                                                <span class="bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full text-xs font-semibold">Published</span>
+                                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Published</span>
                                             @elseif ($event->status === 'draft')
-                                                <span class="bg-yellow-100 text-yellow-700 px-2.5 py-0.5 rounded-full text-xs font-semibold">Draft</span>
+                                                <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Draft</span>
                                             @else
-                                                <span class="bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full text-xs font-semibold">Selesai</span>
+                                                <span class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Selesai</span>
                                             @endif
                                         </td>
-                                        <td class="p-4 text-sm text-gray-600">
+                                        <td class="px-6 py-4 text-sm text-gray-600 font-medium">
                                             {{ $event->tickets_count }} tipe
                                         </td>
-                                        <td class="p-4 text-right space-x-2">
+                                        <td class="px-6 py-4 text-right space-x-2">
                                             <a href="{{ route('eo.events.show', $event) }}" class="text-gray-400 hover:text-electric-blue transition-colors group relative inline-block" title="Lihat Event">
                                                 <svg class="w-5 h-5 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                                 <span class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10 shadow-sm">Lihat Detail</span>

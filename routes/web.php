@@ -81,7 +81,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('/events/{event}', [\App\Http\Controllers\EO\EventController::class, 'destroy'])->name('events.destroy');
         
         // Transaction Management
-        Route::get('/transactions', function() { return view('eo.transactions.index'); })->name('transactions.index');
+        Route::get('/transactions', [\App\Http\Controllers\EO\TransactionController::class, 'index'])->name('transactions.index');
+        Route::get('/transactions/{transaction}', [\App\Http\Controllers\EO\TransactionController::class, 'show'])->name('transactions.show');
         
         // Analytics
         Route::get('/analytics', function() { return view('eo.analytics.index'); })->name('analytics.index');

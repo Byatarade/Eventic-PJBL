@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-                <h2 class="font-black text-3xl text-deep-navy tracking-tight">
+                <h2 class="font-bold text-2xl text-deep-navy tracking-tight">
                     {{ __('EO Dashboard') }}
                 </h2>
                 <p class="text-slate-500 text-sm font-medium mt-1">Pantau performa event dan kelola transaksi Anda secara real-time.</p>
@@ -27,7 +27,7 @@
                     <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-4 border border-white/10">
                         Overview Performa
                     </span>
-                    <h3 class="text-3xl font-black mb-2">
+                    <h3 class="text-2xl md:text-3xl font-bold mb-2">
                         Halo, <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">{{ explode(' ', Auth::user()->name)[0] }}</span>! 👋
                     </h3>
                     <p class="text-slate-300 text-sm max-w-md leading-relaxed">
@@ -36,12 +36,12 @@
                     
                     <div class="mt-8 flex flex-wrap gap-4">
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[120px]">
-                            <p class="text-blue-300 text-[10px] font-bold uppercase mb-1">Tiket Terjual</p>
-                            <p class="text-2xl font-black">{{ number_format($totalTicketsSold) }}</p>
+                            <p class="text-blue-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">Tiket Terjual</p>
+                            <p class="text-xl md:text-2xl font-bold">{{ number_format($totalTicketsSold) }}</p>
                         </div>
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 min-w-[120px]">
-                            <p class="text-blue-300 text-[10px] font-bold uppercase mb-1">Pendapatan</p>
-                            <p class="text-2xl font-black">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
+                            <p class="text-blue-300 text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-1">Pendapatan</p>
+                            <p class="text-xl md:text-2xl font-bold">Rp {{ number_format($totalRevenue, 0, ',', '.') }}</p>
                         </div>
                     </div>
                 </div>
@@ -50,13 +50,13 @@
             <!-- Right: Next Event Highlight -->
             <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm flex flex-col justify-between">
                 <div>
-                    <h4 class="text-sm font-black text-deep-navy uppercase tracking-widest mb-4">Event Terdekat</h4>
+                    <h4 class="text-xs font-bold text-deep-navy uppercase tracking-widest mb-4">Event Terdekat</h4>
                     @if($upcomingEvents->count() > 0)
                         @php $nextEvent = $upcomingEvents->first(); @endphp
                         <div class="flex gap-4 items-start mb-4">
                             <div class="w-16 h-16 rounded-2xl bg-slate-50 flex flex-col items-center justify-center text-center shrink-0 border border-slate-100">
-                                <span class="text-[10px] font-bold text-slate-400 uppercase">{{ \Carbon\Carbon::parse($nextEvent->date)->format('M') }}</span>
-                                <span class="text-xl font-black text-deep-navy">{{ \Carbon\Carbon::parse($nextEvent->date)->format('d') }}</span>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">{{ \Carbon\Carbon::parse($nextEvent->date)->format('M') }}</span>
+                                <span class="text-xl font-extrabold text-deep-navy">{{ \Carbon\Carbon::parse($nextEvent->date)->format('d') }}</span>
                             </div>
                             <div>
                                 <h5 class="font-bold text-deep-navy line-clamp-1">{{ $nextEvent->name }}</h5>
@@ -98,8 +98,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Event</p>
-                        <p class="text-2xl font-black text-deep-navy">{{ $totalEvents }}</p>
+                        <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Event</p>
+                        <p class="text-2xl font-bold text-deep-navy">{{ $totalEvents }}</p>
                     </div>
                 </div>
             </div>
@@ -109,8 +109,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Event Aktif</p>
-                        <p class="text-2xl font-black text-deep-navy">{{ $activeEvents }}</p>
+                        <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Event Aktif</p>
+                        <p class="text-2xl font-bold text-deep-navy">{{ $activeEvents }}</p>
                     </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Peserta</p>
-                        <p class="text-2xl font-black text-deep-navy">{{ number_format($totalTicketsSold) }}</p>
+                        <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Total Peserta</p>
+                        <p class="text-2xl font-bold text-deep-navy">{{ number_format($totalTicketsSold) }}</p>
                     </div>
                 </div>
             </div>
@@ -131,8 +131,8 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     <div>
-                        <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Transaksi</p>
-                        <p class="text-2xl font-black text-deep-navy">{{ $recentOrders->count() }}</p>
+                        <p class="text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">Transaksi</p>
+                        <p class="text-2xl font-bold text-deep-navy">{{ $recentOrders->count() }}</p>
                     </div>
                 </div>
             </div>
@@ -144,17 +144,17 @@
             <!-- Recent Transactions Table -->
             <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
                 <div class="p-6 border-b border-slate-50 flex items-center justify-between">
-                    <h4 class="font-black text-deep-navy">Transaksi Terbaru</h4>
+                    <h4 class="font-bold text-lg text-deep-navy">Transaksi Terbaru</h4>
                     <a href="{{ route('eo.transactions.index') }}" class="text-xs font-bold text-electric-blue hover:underline">Semua Transaksi &rarr;</a>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50/50">
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Peserta</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Event</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Status</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Total</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Peserta</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Event</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Total</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-50">
@@ -186,7 +186,7 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p class="text-xs font-black text-deep-navy">Rp {{ number_format($order->total_price, 0, ',', '.') }}</p>
+                                        <p class="text-sm font-bold text-deep-navy">Rp {{ number_format($order->total_price, 0, ',', '.') }}</p>
                                     </td>
                                 </tr>
                             @empty
@@ -209,17 +209,17 @@
             <!-- Upcoming Events Table -->
             <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
                 <div class="p-6 border-b border-slate-50 flex items-center justify-between">
-                    <h4 class="font-black text-deep-navy">Daftar Event</h4>
+                    <h4 class="font-bold text-lg text-deep-navy">Daftar Event</h4>
                     <a href="{{ route('eo.events.index') }}" class="text-xs font-bold text-electric-blue hover:underline">Kelola Event &rarr;</a>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="bg-slate-50/50">
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Event</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Tanggal</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Kategori</th>
-                                <th class="px-6 py-4 text-[10px] font-black text-slate-400 uppercase tracking-widest">Status</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Event</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Tanggal</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Kategori</th>
+                                <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Status</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-50">
