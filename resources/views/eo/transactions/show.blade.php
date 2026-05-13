@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center gap-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('Detail Transaksi') }}
             </h2>
-            <div class="flex gap-3">
-                <a href="{{ route('eo.transactions.index') }}" class="px-4 py-2 text-gray-500 hover:text-electric-blue transition-colors text-sm font-semibold flex items-center">
+            <div class="flex gap-3 w-full md:w-auto">
+                <a href="{{ route('eo.transactions.index') }}" class="w-full md:w-auto justify-center px-4 py-2 text-gray-500 hover:text-electric-blue transition-colors text-sm font-semibold flex items-center bg-white md:bg-transparent rounded-xl border border-slate-200 md:border-transparent">
                     &larr; Kembali
                 </a>
             </div>

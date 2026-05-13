@@ -7,8 +7,8 @@
                 </h2>
                 <p class="text-slate-500 text-sm font-medium mt-1">Pantau performa event dan kelola transaksi Anda secara real-time.</p>
             </div>
-            <div class="flex items-center gap-3">
-                <a href="{{ route('eo.events.create') }}" class="group bg-electric-blue hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 shadow-lg shadow-blue-500/25 active:scale-95 flex items-center gap-2">
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <a href="{{ route('eo.events.create') }}" class="w-full md:w-auto justify-center group bg-electric-blue hover:bg-blue-700 text-white px-6 py-3 rounded-2xl text-sm font-bold transition-all duration-300 shadow-lg shadow-blue-500/25 active:scale-95 flex items-center gap-2">
                     <svg class="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
                     {{ __('Buat Event') }}
                 </a>
@@ -21,7 +21,7 @@
         <!-- Welcome & Quick Insights -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Left: Welcome Banner (Compact) -->
-            <div class="lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-deep-navy to-slate-900 p-8 text-white shadow-xl">
+            <div class="lg:col-span-2 relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-deep-navy to-slate-900 p-6 md:p-8 text-white shadow-xl">
                 <div class="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-64 h-64 bg-electric-blue/20 rounded-full blur-[80px]"></div>
                 <div class="relative z-10">
                     <span class="inline-block px-3 py-1 bg-white/10 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-300 mb-4 border border-white/10">
@@ -152,8 +152,8 @@
                     <h4 class="font-bold text-lg text-deep-navy">Transaksi Terbaru</h4>
                     <a href="{{ route('eo.transactions.index') }}" class="text-xs font-bold text-electric-blue hover:underline">Semua Transaksi &rarr;</a>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                <div class="overflow-x-auto pb-4">
+                    <table class="w-full text-left border-collapse whitespace-nowrap lg:whitespace-normal">
                         <thead>
                             <tr class="bg-slate-50/50">
                                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Peserta</th>
@@ -217,8 +217,8 @@
                     <h4 class="font-bold text-lg text-deep-navy">Daftar Event</h4>
                     <a href="{{ route('eo.events.index') }}" class="text-xs font-bold text-electric-blue hover:underline">Kelola Event &rarr;</a>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                <div class="overflow-x-auto pb-4">
+                    <table class="w-full text-left border-collapse whitespace-nowrap lg:whitespace-normal">
                         <thead>
                             <tr class="bg-slate-50/50">
                                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Event</th>

@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center gap-8">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('Kelola Event') }}
             </h2>
-            <a href="{{ route('eo.events.create') }}" class="bg-electric-blue hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm">
+            <a href="{{ route('eo.events.create') }}" class="w-full sm:w-auto text-center bg-electric-blue hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-colors shadow-sm">
                 + Buat Event Baru
             </a>
         </div>
@@ -27,13 +27,13 @@
                 <div class="p-6">
                     
                     {{-- Search & Filter --}}
-                    <div class="flex justify-between items-center mb-6">
-                        <div class="relative w-64">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
+                        <div class="relative w-full md:w-64">
                             <input type="text" placeholder="Cari event..." class="w-full pl-10 pr-4 py-2 rounded-xl border border-gray-200 focus:border-electric-blue focus:ring-electric-blue text-sm">
                             <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
                         </div>
-                        <div class="flex gap-2">
-                            <select class="rounded-xl border-gray-200 text-sm focus:border-electric-blue focus:ring-electric-blue">
+                        <div class="flex gap-2 w-full md:w-auto">
+                            <select class="w-full md:w-auto rounded-xl border-gray-200 text-sm focus:border-electric-blue focus:ring-electric-blue">
                                 <option value="">Semua Status</option>
                                 <option value="published">Published</option>
                                 <option value="draft">Draft</option>
@@ -43,8 +43,8 @@
                     </div>
 
                     {{-- Table List --}}
-                    <div class="overflow-x-auto scrollbar-hide">
-                        <table class="w-full text-left border-collapse">
+                    <div class="overflow-x-auto scrollbar-hide pb-4">
+                        <table class="w-full text-left border-collapse whitespace-nowrap lg:whitespace-normal">
                             <thead>
                                 <tr class="bg-slate-50/50">
                                     <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest rounded-tl-xl">Nama Event</th>

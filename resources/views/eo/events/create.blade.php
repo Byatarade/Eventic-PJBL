@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center gap-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                 {{ __('Buat Event Baru') }}
             </h2>
-            <a href="{{ route('eo.events.index') }}" class="text-gray-500 hover:text-electric-blue transition-colors text-sm font-semibold">
+            <a href="{{ route('eo.events.index') }}" class="w-full md:w-auto text-center text-gray-500 hover:text-electric-blue transition-colors text-sm font-semibold">
                 &larr; Kembali
             </a>
         </div>
@@ -33,9 +33,9 @@
                 
                 <!-- Section 1: Informasi Event -->
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-slate-50 border-b border-gray-100 px-8 py-6">
+                    <div class="bg-slate-50 border-b border-gray-100 px-6 md:px-8 py-6">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-electric-blue/10 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-electric-blue/10 flex items-center justify-center shrink-0">
                                 <svg class="w-6 h-6 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     
-                    <div class="p-8 space-y-8">
+                    <div class="p-6 md:p-8 space-y-8">
                         <!-- Nama Event & Banner -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="input-group">
@@ -181,9 +181,9 @@
 
                 <!-- Section 2: Pengaturan Tiket -->
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-slate-50 border-b border-gray-100 px-8 py-6 flex justify-between items-center">
+                    <div class="bg-slate-50 border-b border-gray-100 px-6 md:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                         <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center shrink-0">
                                 <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
                                 </svg>
@@ -198,7 +198,7 @@
                         </span>
                     </div>
                     
-                    <div class="p-8" x-data="{ 
+                    <div class="p-6 md:p-8" x-data="{ 
                         tickets: [
                             { type: 'reguler', price: '', stock: '100' }
                         ],
@@ -212,7 +212,7 @@
                         }
                     }">
                         <!-- Peringatan Sistem -->
-                        <div class="bg-amber-50 border border-amber-100 p-5 mb-8 rounded-2xl flex gap-4">
+                        <div class="bg-amber-50 border border-amber-100 p-5 mb-8 rounded-2xl flex flex-col sm:flex-row gap-4">
                             <div class="flex-shrink-0 w-10 h-10 bg-amber-200/50 rounded-full flex items-center justify-center">
                                 <svg class="h-6 w-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
@@ -229,7 +229,7 @@
                         <!-- Ticket List -->
                         <div class="space-y-6">
                             <template x-for="(ticket, index) in tickets" :key="index">
-                                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-8 relative overflow-hidden">
+                                <div class="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-8 relative overflow-hidden">
                                     <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                                         <svg class="w-32 h-32 text-slate-900" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>

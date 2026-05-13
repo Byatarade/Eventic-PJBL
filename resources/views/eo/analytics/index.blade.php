@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex justify-between items-center gap-8">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
                 <h2 class="font-bold text-2xl text-deep-navy leading-tight">
                     {{ __('Keuntungan & Analitik') }}
                 </h2>
                 <p class="text-slate-500 text-sm font-medium mt-1">Laporan performa penjualan tiket dan pendapatan seluruh event Anda.</p>
             </div>
-            <div class="flex items-center gap-3">
-                <button onclick="window.print()" class="bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-xl text-sm font-bold transition-colors shadow-sm flex items-center gap-2">
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <button onclick="window.print()" class="w-full md:w-auto justify-center bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 px-4 py-2 rounded-xl text-sm font-bold transition-colors shadow-sm flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
                     Cetak Laporan
                 </button>
@@ -113,8 +113,8 @@
                 <div class="p-6 border-b border-slate-50">
                     <h3 class="font-bold text-lg text-deep-navy">Performa Semua Event</h3>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                <div class="overflow-x-auto pb-4">
+                    <table class="w-full text-left border-collapse whitespace-nowrap lg:whitespace-normal">
                         <thead>
                             <tr class="bg-slate-50/50">
                                 <th class="px-6 py-4 text-xs font-bold text-slate-400 uppercase tracking-widest">Nama Event</th>
