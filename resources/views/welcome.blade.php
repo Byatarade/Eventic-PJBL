@@ -73,9 +73,12 @@
                                             <!-- Content Left -->
                                             <div class="lg:col-span-7 flex flex-col items-start text-left"
                                                  x-show="activeSlide === {{ $index }}"
-                                                 x-transition:enter="transition ease-out duration-1000 delay-300"
-                                                 x-transition:enter-start="opacity-0 -translate-x-12"
-                                                 x-transition:enter-end="opacity-100 translate-x-0">
+                                                 x-transition:enter="transition ease-out duration-700"
+                                                 x-transition:enter-start="opacity-0 translate-y-8"
+                                                 x-transition:enter-end="opacity-100 translate-y-0"
+                                                 x-transition:leave="transition ease-in duration-500"
+                                                 x-transition:leave-start="opacity-100 translate-y-0"
+                                                 x-transition:leave-end="opacity-0 -translate-y-8">
                                                 
                                                 <!-- Top Info -->
                                                 <div class="flex items-center gap-2 mb-2 lg:mb-8 lg:inline-flex lg:px-4 lg:py-2 lg:bg-white/10 lg:backdrop-blur-xl lg:border lg:border-white/20 lg:rounded-full lg:shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
