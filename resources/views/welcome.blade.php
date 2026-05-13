@@ -32,7 +32,7 @@
     <!-- Main Content -->
     <main class="w-full" id="home">
         <!-- Hero Section Container -->
-        <div class="p-3 sm:p-4 pt-[5.5rem] sm:pt-[7rem] md:pt-[8rem] pb-4 w-full h-[90svh] md:h-[100svh] min-h-[550px] md:min-h-[600px] flex flex-col" 
+        <div class="p-3 sm:p-4 pt-[5.5rem] sm:pt-[7rem] md:pt-[8rem] pb-4 w-full h-[70svh] lg:h-[100svh] min-h-[480px] lg:min-h-[600px] flex flex-col" 
              x-data="{ 
                 activeSlide: 0, 
                 slidesCount: {{ $events->count() > 0 ? $events->count() : 1 }},
@@ -64,49 +64,53 @@
                             </div>
 
                             <!-- Dark Overlay -->
-                            <div class="absolute inset-0 bg-black/50 backdrop-blur-[2px]"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent lg:bg-none lg:bg-black/50 lg:backdrop-blur-[2px]"></div>
                             
                             <!-- Text Content -->
-                                    <div class="w-full h-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 flex items-center" style="font-family: 'Montserrat', sans-serif;">
-                                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center w-full mt-12 lg:mt-0">
+                                    <div class="w-full h-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center lg:items-center items-end pb-16 lg:pb-0" style="font-family: 'Montserrat', sans-serif;">
+                                        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-center w-full mt-auto lg:mt-0">
                                             
                                             <!-- Content Left -->
-                                            <div class="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left"
+                                            <div class="lg:col-span-7 flex flex-col items-start text-left"
                                                  x-show="activeSlide === {{ $index }}"
                                                  x-transition:enter="transition ease-out duration-1000 delay-300"
                                                  x-transition:enter-start="opacity-0 -translate-x-12"
                                                  x-transition:enter-end="opacity-100 translate-x-0">
                                                 
-                                                <!-- Top Info Pill -->
-                                                <div class="inline-flex px-4 py-2 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full items-center gap-3 mb-6 lg:mb-8 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
-                                                    <div class="flex items-center gap-2">
-                                                        <div class="w-2 h-2 bg-[#4285F4] rounded-full shadow-[0_0_10px_#4285F4] animate-pulse"></div>
-                                                        <span class="text-[10px] font-black tracking-[0.3em] uppercase text-white/90">LIVE EVENT</span>
-                                                    </div>
+                                                <!-- Top Info -->
+                                                <div class="flex items-center gap-2 mb-2 lg:mb-8 lg:inline-flex lg:px-4 lg:py-2 lg:bg-white/10 lg:backdrop-blur-xl lg:border lg:border-white/20 lg:rounded-full lg:shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
+                                                    <div class="w-1.5 h-1.5 lg:w-2 lg:h-2 bg-[#4285F4] rounded-full shadow-[0_0_10px_#4285F4] animate-pulse"></div>
+                                                    <span class="text-[10px] font-bold lg:font-black tracking-[0.2em] lg:tracking-[0.3em] uppercase text-white/90">LIVE EVENT</span>
                                                 </div>
 
-                                                <!-- Massive Title -->
-                                                <h1 class="font-black tracking-tighter text-white mb-5 md:mb-8 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] uppercase leading-[1.0] md:leading-[0.9]" 
-                                                    :class="'{{ strlen($event->name) }}' > 15 ? 'text-4xl sm:text-5xl md:text-6xl lg:text-7xl' : 'text-[2.75rem] leading-none sm:text-6xl md:text-7xl lg:text-8xl'">
+                                                <!-- Title -->
+                                                <h1 class="font-bold lg:font-black tracking-tight lg:tracking-tighter text-white mb-1 lg:mb-8 drop-shadow-md lg:drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] uppercase leading-tight lg:leading-[0.9]" 
+                                                    :class="'{{ strlen($event->name) }}' > 15 ? 'text-3xl sm:text-5xl md:text-6xl lg:text-7xl' : 'text-4xl sm:text-6xl md:text-7xl lg:text-8xl'">
                                                     {{ $event->name }}
                                                 </h1>
 
+                                                <!-- Mobile Organizer Text (Minimalist) -->
+                                                <p class="lg:hidden text-xs text-white/80 mb-5 font-medium tracking-wide">Penyelenggara: <span class="text-white font-bold">{{ $event->organizer_name ?: 'Eventic' }}</span></p>
+
                                                 <!-- Actions & Meta -->
-                                                <div class="flex flex-col sm:flex-row items-center gap-3.5 sm:gap-6 mt-2 md:mt-4 relative z-10">
-                                                    <a href="{{ route('events.show', $event) }}" class="h-14 px-8 bg-[#4285F4] text-white font-black rounded-full hover:bg-[#3b78e7] transition-all duration-300 shadow-xl shadow-[#4285F4]/40 flex items-center justify-center gap-3 w-[260px] sm:w-auto transform hover:scale-105 active:scale-95">
-                                                        <span class="uppercase tracking-widest text-sm">Beli Tiket</span>
-                                                        <div class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-colors">
+                                                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 lg:gap-6 relative z-10 w-full sm:w-auto">
+                                                    
+                                                    <!-- Beli Tiket Button -->
+                                                    <a href="{{ route('events.show', $event) }}" class="h-10 lg:h-14 px-6 lg:px-8 bg-[#4285F4] text-white font-bold lg:font-black rounded-lg lg:rounded-full hover:bg-[#3b78e7] transition-all duration-300 lg:shadow-xl lg:shadow-[#4285F4]/40 flex items-center justify-center gap-2 lg:gap-3 w-fit transform hover:scale-105 active:scale-95">
+                                                        <span class="uppercase tracking-wide lg:tracking-widest text-xs lg:text-sm">Beli Tiket</span>
+                                                        <div class="hidden lg:flex w-8 h-8 rounded-full bg-white/20 items-center justify-center transition-colors">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                                         </div>
                                                     </a>
 
-                                                    <div class="flex items-center gap-4 px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full cursor-default w-[260px] sm:w-auto justify-center sm:justify-start">
-                                                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-gray-200 to-white flex items-center justify-center text-gray-900 font-black text-sm shadow-inner">
+                                                    <!-- Desktop Organizer Pill -->
+                                                    <div class="hidden lg:flex items-center gap-4 px-5 py-2.5 bg-black/40 backdrop-blur-md border border-white/10 rounded-full cursor-default">
+                                                        <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-gray-200 to-white flex items-center justify-center text-gray-900 font-black text-sm shadow-inner shrink-0">
                                                             {{ substr($event->organizer_name ?: 'E', 0, 1) }}
                                                         </div>
                                                         <div class="flex flex-col text-left">
                                                             <span class="text-[9px] font-black text-white/50 uppercase tracking-[0.2em] mb-0.5">Penyelenggara</span>
-                                                            <span class="text-xs font-black text-white uppercase tracking-wider">{{ $event->organizer_name ?: 'Eventic' }}</span>
+                                                            <span class="text-xs font-black text-white uppercase tracking-wider line-clamp-1">{{ $event->organizer_name ?: 'Eventic' }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
