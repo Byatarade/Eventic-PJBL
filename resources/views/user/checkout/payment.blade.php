@@ -17,7 +17,7 @@
     <nav class="bg-white border-b border-gray-100 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50">
         <a href="{{ url('/') }}" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img src="{{ asset('eventic.svg') }}" alt="Eventic Logo" class="h-8 w-auto">
-            <span class="font-extrabold text-xl text-[#2D336B] tracking-tight" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
+            <span class="font-extrabold text-xl text-[#0F172A] tracking-tight" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
         </a>
     </nav>
 

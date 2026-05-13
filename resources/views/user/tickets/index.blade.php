@@ -240,7 +240,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-[#2D336B] mb-2">Belum Ada Tiket</h3>
+                        <h3 class="text-xl font-bold text-[#0F172A] mb-2">Belum Ada Tiket</h3>
                         <p class="text-gray-500 max-w-md mx-auto mb-8">Anda belum memiliki tiket apapun. Silakan temukan dan beli tiket event menarik melalui halaman utama kami.</p>
                         <a href="/" class="bg-[#4F46E5] hover:bg-[#4338CA] text-white font-semibold py-3 px-8 rounded-xl transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2 hover:scale-105 active:scale-95">
                             Cari Event

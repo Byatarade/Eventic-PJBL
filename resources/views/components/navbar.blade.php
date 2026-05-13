@@ -31,7 +31,7 @@
         <!-- Left: Logo & Brand -->
         <div class="flex items-center gap-2.5 pl-4 cursor-pointer shrink-0" @click="scrollTo('home')">
             <img src="{{ asset('eventic.svg') }}" class="w-7 h-7 md:w-8 md:h-8" alt="Eventic Logo" />
-            <span class="text-lg md:text-xl font-extrabold tracking-tight text-gray-900" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
+            <span class="text-lg md:text-xl font-extrabold tracking-tight text-[#0F172A]" style="font-family: 'Montserrat', sans-serif;">Eventic</span>
         </div>
 
         <!-- Center: Navigation -->
