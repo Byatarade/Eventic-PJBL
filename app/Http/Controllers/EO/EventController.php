@@ -47,7 +47,8 @@ class EventController extends Controller
             'terms' => ['nullable', 'string'],
             'facilities' => ['nullable', 'string'],
             'organizer_name' => ['required', 'string', 'max:255'],
-            'organizer_social' => ['nullable', 'string', 'max:255'],
+            'organizer_ig' => ['nullable', 'string', 'max:255'],
+            'organizer_tiktok' => ['nullable', 'string', 'max:255'],
             'banner' => ['nullable', 'image', 'max:2048'],
             'tickets' => ['required', 'array', 'min:1'],
             'tickets.*.type' => ['required', 'string', 'max:255'],
@@ -77,7 +78,8 @@ class EventController extends Controller
             'terms' => $validated['terms'],
             'facilities' => $validated['facilities'] ?? null,
             'organizer_name' => $validated['organizer_name'],
-            'organizer_social' => $validated['organizer_social'],
+            'organizer_ig' => $validated['organizer_ig'] ?? null,
+            'organizer_tiktok' => $validated['organizer_tiktok'] ?? null,
         ]);
 
         // Create tickets
@@ -140,7 +142,8 @@ class EventController extends Controller
             'terms' => ['nullable', 'string'],
             'facilities' => ['nullable', 'string'],
             'organizer_name' => ['required', 'string', 'max:255'],
-            'organizer_social' => ['nullable', 'string', 'max:255'],
+            'organizer_ig' => ['nullable', 'string', 'max:255'],
+            'organizer_tiktok' => ['nullable', 'string', 'max:255'],
             'banner' => ['nullable', 'image', 'max:2048'],
             'tickets' => ['required', 'array', 'min:1'],
             'tickets.*.type' => ['required', 'string', 'max:255'],
@@ -166,7 +169,8 @@ class EventController extends Controller
             'terms' => $validated['terms'],
             'facilities' => $validated['facilities'] ?? null,
             'organizer_name' => $validated['organizer_name'],
-            'organizer_social' => $validated['organizer_social'],
+            'organizer_ig' => $validated['organizer_ig'] ?? null,
+            'organizer_tiktok' => $validated['organizer_tiktok'] ?? null,
             'status' => $request->has('draft') ? 'draft' : 'published',
         ]);
 

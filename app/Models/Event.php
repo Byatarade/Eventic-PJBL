@@ -22,7 +22,8 @@ class Event extends Model
         'status',
         'terms',
         'organizer_name',
-        'organizer_social',
+        'organizer_ig',
+        'organizer_tiktok',
         'facilities',
     ];
 
