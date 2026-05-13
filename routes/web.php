@@ -88,7 +88,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/analytics', [\App\Http\Controllers\EO\AnalyticsController::class, 'index'])->name('analytics.index');
         
         // Participants
-        Route::get('/participants', function() { return view('eo.participants.index'); })->name('participants.index');
+        Route::get('/participants', [\App\Http\Controllers\EO\ParticipantController::class, 'index'])->name('participants.index');
     });
 });
 
