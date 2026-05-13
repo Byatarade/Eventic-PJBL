@@ -100,7 +100,7 @@
                                         </div>
 
                                         <!-- Counter -->
-                                        <div class="flex items-end justify-between sm:flex-col sm:justify-end shrink-0">
+                                        <div class="flex justify-end sm:flex-col sm:justify-end shrink-0 mt-2 sm:mt-0">
                                             <div x-show="ticket.stock > 0" class="flex items-center bg-white border border-gray-200 rounded-lg h-10 shadow-sm overflow-hidden">
                                                 <button @click="decrement(index)" type="button"
                                                         class="w-10 h-full flex items-center justify-center transition-colors"
@@ -136,8 +136,8 @@
                     <div class="sticky top-24 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         
                         <!-- Default View (No tickets) -->
-                        <div x-show="totalQuantity === 0">
-                            <div class="flex justify-between items-center mb-5">
+                        <div x-show="totalQuantity === 0" class="flex flex-col gap-4">
+                            <div class="flex justify-between items-center sm:mb-5">
                                 <span class="text-sm font-semibold text-gray-500">Harga mulai dari</span>
                                 <span class="text-lg font-black text-gray-900">Rp{{ number_format($event->tickets->min('price') ?? 0, 0, ',', '.') }}</span>
                             </div>

@@ -129,7 +129,7 @@
                                                 </svg>
                                                 <span class="text-sm font-semibold text-gray-700">+62</span>
                                             </div>
-                                            <input type="tel" name="orderer[whatsapp]" required placeholder="81234567890" class="flex-1 border-0 focus:ring-0 px-4 py-3 text-sm text-gray-900 w-full">
+                                    <input type="tel" name="orderer[whatsapp]" required placeholder="81234567890" class="flex-1 border-0 focus:ring-0 px-4 py-3 text-sm text-gray-900 w-full min-w-0">
                                         </div>
                                     </div>
                                 </div>
@@ -248,11 +248,12 @@
                             </div>
                         </div>
 
-                        <div class="flex gap-3">
-                            <a href="{{ route('user.checkout.index', $event) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="{{ route('user.checkout.index', $event) }}" class="w-full sm:w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                <span class="sm:hidden ml-2 font-bold text-sm">Kembali</span>
                             </a>
-                            <button type="submit" form="checkoutDetailsForm" class="flex-1 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center">
+                            <button type="submit" form="checkoutDetailsForm" class="w-full sm:flex-1 bg-[#4F46E5] hover:bg-[#4338CA] text-white h-12 rounded-xl font-bold text-base transition-all shadow-md shadow-indigo-500/20 active:scale-95 flex justify-center items-center">
                                 Lanjutkan
                             </button>
                         </div>

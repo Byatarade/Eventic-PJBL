@@ -273,15 +273,16 @@
                             Pilih metode pembayaran terlebih dahulu
                         </div>
 
-                        <div class="flex gap-3">
-                            <a href="{{ route('user.checkout.details', $event) }}" class="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <a href="{{ route('user.checkout.details', $event) }}" class="w-full sm:w-12 h-12 flex items-center justify-center rounded-xl border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors shrink-0">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                <span class="sm:hidden ml-2 font-bold text-sm">Kembali</span>
                             </a>
                             <button type="button" 
                                     :disabled="selectedMethod === ''"
                                     :class="selectedMethod === '' ? 'opacity-50 cursor-not-allowed bg-gray-400' : 'bg-[#4F46E5] hover:bg-[#4338CA] shadow-md shadow-indigo-500/20 active:scale-95'"
                                     onclick="if(document.getElementById('checkoutPaymentForm').elements['payment_method'].value !== '') document.getElementById('checkoutPaymentForm').submit()" 
-                                    class="flex-1 text-white rounded-xl font-bold text-base transition-all flex justify-center items-center">
+                                    class="w-full sm:flex-1 h-12 text-white rounded-xl font-bold text-base transition-all flex justify-center items-center">
                                 Bayar Sekarang
                             </button>
                         </div>

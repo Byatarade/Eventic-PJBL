@@ -1,10 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center gap-3">
-            <a href="{{ route('user.tickets.index') }}" class="w-9 h-9 bg-gray-100 hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-            </a>
-            <h2 class="font-bold text-2xl text-deep-navy leading-tight">Detail Tiket</h2>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <a href="{{ route('user.tickets.index') }}" class="w-9 h-9 bg-gray-100 hover:bg-gray-200 rounded-xl flex items-center justify-center transition-colors">
+                    <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </a>
+                <h2 class="font-bold text-2xl text-deep-navy leading-tight">Detail Tiket</h2>
+            </div>
         </div>
     </x-slot>
 
@@ -58,9 +60,9 @@
                             <p class="text-sm text-gray-500">Order #{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</p>
                         </div>
                     </div>
-                    <div class="text-sm text-gray-500 font-medium">Dipesan pada {{ $order->created_at->format('d M Y, H:i') }}</div>
+                    <div class="text-sm text-gray-500 font-medium">Dipesan pada {{ $order->created_at->format('d M Y, H:i') }} WIB</div>
                 </div>
-                <div class="p-6 grid grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-gray-50 rounded-xl p-4">
                         <div class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1">Status</div>
                         <div class="text-sm font-bold {{ $order->status === 'paid' ? 'text-emerald-600' : ($order->status === 'pending' ? 'text-amber-600' : 'text-red-600') }}">{{ $order->status === 'paid' ? 'Lunas' : ($order->status === 'pending' ? 'Menunggu' : ucfirst($order->status)) }}</div>
