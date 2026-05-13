@@ -12,12 +12,6 @@
                         </svg>
                     </button>
                 </div>
-
-                @isset($header)
-                    <div class="text-xl font-bold text-deep-navy">
-                        {{ $header }}
-                    </div>
-                @endisset
             </div>
 
             <!-- Right Side: User Dropdown -->
@@ -70,9 +64,27 @@
     </div>
 
     <!-- Mobile Navigation Drawer -->
-    <div x-show="open" class="fixed inset-0 z-50 lg:hidden" style="display: none;">
-        <div class="fixed inset-0 bg-deep-navy/80 backdrop-blur-sm" @click="open = false"></div>
-        <div class="fixed inset-y-0 left-0 w-72 bg-electric-blue p-6 flex flex-col shadow-2xl overflow-y-auto">
+    <template x-teleport="body">
+        <div x-show="open" class="fixed inset-0 z-[100] lg:hidden" style="display: none;">
+            <!-- Backdrop -->
+            <div x-show="open" 
+                 x-transition:enter="transition-opacity ease-linear duration-300" 
+                 x-transition:enter-start="opacity-0" 
+                 x-transition:enter-end="opacity-100" 
+                 x-transition:leave="transition-opacity ease-linear duration-300" 
+                 x-transition:leave-start="opacity-100" 
+                 x-transition:leave-end="opacity-0" 
+                 class="fixed inset-0 bg-deep-navy/80 backdrop-blur-sm" @click="open = false"></div>
+            
+            <!-- Drawer Panel -->
+            <div x-show="open" 
+                 x-transition:enter="transition ease-in-out duration-300 transform" 
+                 x-transition:enter-start="-translate-x-full" 
+                 x-transition:enter-end="translate-x-0" 
+                 x-transition:leave="transition ease-in-out duration-300 transform" 
+                 x-transition:leave-start="translate-x-0" 
+                 x-transition:leave-end="-translate-x-full" 
+                 class="fixed inset-y-0 left-0 w-72 bg-electric-blue p-6 flex flex-col shadow-2xl overflow-y-auto">
             <div class="flex items-center justify-between mb-8 shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="bg-white p-2 rounded-lg">
@@ -189,5 +201,5 @@
                 </form>
             </div>
         </div>
-    </div>
+    </template>
 </nav>
