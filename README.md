@@ -1,58 +1,461 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<img src="public/eventic.svg" alt="Eventic Logo" width="80" />
 
-## About Laravel
+# 🎟️ Eventic
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**Platform Manajemen & Pembelian Tiket Event Modern**
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+[![Laravel](https://img.shields.io/badge/Laravel-v13.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white)](https://alpinejs.dev)
+[![Filament](https://img.shields.io/badge/Filament-v5-FDAE4B?style=for-the-badge&logo=filament&logoColor=white)](https://filamentphp.com)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+*Solusi terpadu untuk mengelola, mempromosikan, dan membeli tiket event — semua dalam satu platform yang elegan.*
 
-## Learning Laravel
+[🌐 Demo](#) · [📖 Dokumentasi](#-dokumentasi) · [🐛 Report Bug](https://github.com/Byatarade/Laravel-13/issues) · [💡 Request Feature](https://github.com/Byatarade/Laravel-13/issues)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+</div>
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 📋 Deskripsi
 
-## Agentic Development
+**Eventic** adalah platform web manajemen tiket event berbasis Laravel 13 yang dirancang untuk menghubungkan **Event Organizer (EO)** dengan **pengguna/pembeli tiket**. Platform ini menghadirkan pengalaman end-to-end mulai dari pembuatan event, penjualan tiket, hingga proses pembayaran — semuanya dalam antarmuka yang modern, responsif, dan mudah digunakan.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Dibangun dengan arsitektur **multi-role** (Admin, Event Organizer, User), Eventic memastikan setiap pihak memiliki akses dan kontrol yang tepat sesuai perannya. Admin mengelola keseluruhan sistem melalui panel Filament yang powerful, EO mengelola event dan memantau performa secara real-time, sementara pengguna dapat mencari, membeli, dan mengelola tiket mereka dengan mudah.
+
+---
+
+## ✨ Fitur Unggulan
+
+### 🎭 Untuk Pengguna (User)
+| Fitur | Deskripsi |
+|-------|-----------|
+| 🔍 **Pencarian & Filter Event** | Temukan event berdasarkan kategori, lokasi, dan tanggal |
+| 🛒 **Checkout Multi-Tiket** | Beli berbagai jenis tiket (Reguler, VIP, VVIP) dalam satu transaksi |
+| 💳 **Multi Metode Pembayaran** | Dukungan GoPay, OVO, DANA, BCA VA, dan BRI VA |
+| ❤️ **Wishlist Event** | Simpan event favorit dan pantau perkembangannya |
+| 🎫 **Tiket Digital dengan QR Code** | Tiket digital otomatis digenerate dengan QR Code unik setelah pembayaran |
+| 📜 **Riwayat Transaksi** | Pantau semua transaksi dengan filter status (Lunas / Pending / Batal) |
+| 🔄 **Pengajuan Refund** | Ajukan refund dengan alasan yang terstruktur |
+| 👤 **Manajemen Profil** | Update informasi akun dan ubah password dengan aman |
+
+### 🏢 Untuk Event Organizer (EO)
+| Fitur | Deskripsi |
+|-------|-----------|
+| 📊 **Dashboard Analytics** | Pantau total pendapatan, tiket terjual, dan event aktif secara real-time |
+| 📅 **Manajemen Event Lengkap** | Buat, edit, dan publish event dengan form yang komprehensif |
+| 🎟️ **Pengaturan Multi-Tiket** | Atur berbagai tipe tiket dengan harga dan stok terpisah (hingga 5 tiket/user) |
+| 📋 **Daftar Peserta** | Lihat detail semua peserta yang telah membeli tiket |
+| 💰 **Laporan Transaksi EO** | Monitor semua transaksi event dengan breakdown per tiket |
+| 🔄 **Kelola Permintaan Refund** | Approve atau tolak permintaan refund dari pembeli |
+| 📷 **Upload Banner Event** | Upload gambar banner event dengan preview langsung |
+| 💼 **Profil Penyelenggara** | Kelola informasi EO termasuk sosial media (Instagram, TikTok) |
+
+### 🔐 Untuk Admin (Filament)
+| Fitur | Deskripsi |
+|-------|-----------|
+| 🛡️ **Panel Admin Filament** | Panel administrasi modern berbasis Filament v5 |
+| 👥 **Manajemen User & Role** | Kelola semua pengguna dengan sistem RBAC yang aman |
+| 📊 **Overview Sistem** | Monitor seluruh aktivitas platform secara menyeluruh |
+
+### 🌟 Fitur Platform
+- **📱 Fully Responsive** — Tampilan optimal di desktop, tablet, dan smartphone
+- **⚡ Real-time Timer Pembayaran** — Countdown timer 24 jam untuk menyelesaikan transaksi
+- **🔒 Keamanan Berlapis** — CSRF protection, role-based access, dan validasi server-side
+- **🖨️ PDF Export** — Generate tiket dalam format PDF siap cetak dengan DomPDF
+- **🎨 Modern UI/UX** — Desain minimalis premium dengan micro-animations dan glassmorphism effects
+- **🔗 Multi-step Checkout** — Alur pembelian tiket 4 langkah yang intuitif
+
+---
+
+## 🛠️ Tech Stack
+
+### Backend
+| Teknologi | Versi | Peran |
+|-----------|-------|-------|
+| **PHP** | ^8.3 | Runtime bahasa utama |
+| **Laravel** | ^13.0 | Framework aplikasi web |
+| **Filament** | ^5.6 | Panel Admin UI |
+| **Laravel Breeze** | ^2.4 | Autentikasi & scaffolding |
+| **barryvdh/laravel-dompdf** | ^3.1 | Generate PDF tiket |
+| **simplesoftwareio/simple-qrcode** | ^4.2 | Generate QR Code tiket digital |
+
+### Frontend
+| Teknologi | Versi | Peran |
+|-----------|-------|-------|
+| **Tailwind CSS** | ^4.2 | Utility-first CSS framework |
+| **Alpine.js** | ^3.4 | Reactive UI & interaktivitas |
+| **Vite** | ^8.0 | Build tool & HMR |
+| **Axios** | ^1.11 | HTTP client |
+
+### Database & Infrastruktur
+| Teknologi | Peran |
+|-----------|-------|
+| **MySQL / SQLite** | Database relasional |
+| **Laravel Eloquent ORM** | Query builder & relasi model |
+| **Laravel Queue** | Proses background jobs |
+
+---
+
+## 🚀 Cara Menjalankan Proyek
+
+### Prasyarat
+Pastikan sistem Anda telah memiliki:
+- **PHP** >= 8.3
+- **Composer** >= 2.x
+- **Node.js** >= 18.x & **NPM**
+- **MySQL** atau **SQLite**
+- **Git**
+
+### 1. Clone Repositori
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Byatarade/Laravel-13.git
+cd Laravel-13
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install Dependensi PHP
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Konfigurasi Environment
 
-## Code of Conduct
+```bash
+# Salin file environment
+cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Generate application key
+php artisan key:generate
+```
 
-## Security Vulnerabilities
+Kemudian buka file `.env` dan sesuaikan konfigurasi database:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=eventic_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+> **Tip:** Untuk development cepat, gunakan SQLite dengan mengubah `DB_CONNECTION=sqlite` dan hapus baris DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD. File database akan dibuat otomatis.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 4. Migrasi & Seeding Database
+
+```bash
+# Jalankan migrasi
+php artisan migrate
+
+# (Opsional) Jalankan seeder untuk data dummy
+php artisan db:seed
+```
+
+### 5. Install Dependensi Frontend
+
+```bash
+npm install
+```
+
+### 6. Konfigurasi Storage
+
+```bash
+# Buat symlink storage untuk akses file publik
+php artisan storage:link
+```
+
+### 7. Jalankan Aplikasi
+
+**Opsi A — Jalankan semua sekaligus (Direkomendasikan):**
+```bash
+composer run dev
+```
+> Perintah ini akan menjalankan Laravel server, Queue listener, dan Vite dev server secara bersamaan.
+
+**Opsi B — Jalankan terpisah:**
+```bash
+# Terminal 1: Laravel server
+php artisan serve
+
+# Terminal 2: Vite asset bundler
+npm run dev
+
+# Terminal 3: Queue listener (opsional)
+php artisan queue:listen
+```
+
+### 8. Akses Aplikasi
+
+| URL | Keterangan |
+|-----|-----------|
+| `http://localhost:8000` | Halaman utama (Landing Page) |
+| `http://localhost:8000/login` | Halaman login |
+| `http://localhost:8000/register` | Halaman registrasi |
+| `http://localhost:8000/dashboard` | Dashboard User |
+| `http://localhost:8000/eo/dashboard` | Dashboard Event Organizer |
+| `http://localhost:8000/admin` | Panel Admin (Filament) |
+
+---
+
+## 📁 Struktur Folder
+
+```
+Laravel-13/
+├── 📁 app/
+│   ├── 📁 Http/
+│   │   ├── 📁 Controllers/
+│   │   │   ├── 📁 Auth/              # Autentikasi (Login, Register, dll.)
+│   │   │   ├── 📁 EO/                # Controller untuk Event Organizer
+│   │   │   │   ├── DashboardController.php
+│   │   │   │   ├── EventController.php
+│   │   │   │   └── RefundController.php
+│   │   │   ├── 📁 User/              # Controller untuk User
+│   │   │   │   ├── CheckoutController.php
+│   │   │   │   ├── DashboardController.php
+│   │   │   │   ├── TicketController.php
+│   │   │   │   ├── TransactionController.php
+│   │   │   │   └── WishlistController.php
+│   │   │   ├── ProfileController.php
+│   │   │   └── PublicEventController.php
+│   │   └── 📁 Middleware/
+│   ├── 📁 Models/
+│   │   ├── Event.php                 # Model Event
+│   │   ├── Order.php                 # Model Transaksi/Pesanan
+│   │   ├── OrderItem.php             # Model Item dalam Pesanan
+│   │   ├── RefundRequest.php         # Model Permintaan Refund
+│   │   ├── Ticket.php                # Model Tiket
+│   │   ├── User.php                  # Model Pengguna
+│   │   └── Wishlist.php              # Model Wishlist
+│   └── 📁 Providers/
+│
+├── 📁 database/
+│   ├── 📁 migrations/                # Skema database
+│   ├── 📁 seeders/                   # Data awal
+│   └── 📁 factories/
+│
+├── 📁 resources/
+│   ├── 📁 css/                       # Stylesheet utama
+│   ├── 📁 js/                        # JavaScript (Alpine.js, Axios)
+│   └── 📁 views/
+│       ├── 📁 auth/                  # View login, register
+│       ├── 📁 components/            # Komponen Blade reusable
+│       ├── 📁 layouts/               # Layout utama (app, sidebar, navbar)
+│       ├── 📁 eo/                    # View Dashboard EO
+│       │   ├── dashboard.blade.php
+│       │   └── 📁 events/            # CRUD Event
+│       ├── 📁 user/                  # View Dashboard User
+│       │   ├── 📁 checkout/          # Alur pembelian tiket
+│       │   ├── 📁 tickets/           # Manajemen tiket user
+│       │   └── 📁 transactions/      # Riwayat transaksi
+│       ├── 📁 events/                # Detail event publik
+│       ├── 📁 profile/               # Pengaturan profil
+│       ├── dashboard.blade.php       # Dashboard User utama
+│       └── welcome.blade.php         # Landing Page
+│
+├── 📁 routes/
+│   ├── web.php                       # Route web utama
+│   └── auth.php                      # Route autentikasi
+│
+├── 📁 public/                        # Aset publik & entry point
+├── 📁 storage/                       # File upload & log
+├── 📁 Documentation/                 # Screenshot dokumentasi
+├── .env.example                      # Template konfigurasi
+├── composer.json                     # Dependensi PHP
+├── package.json                      # Dependensi Node.js
+├── tailwind.config.js                # Konfigurasi Tailwind CSS
+└── vite.config.js                    # Konfigurasi Vite
+```
+
+---
+
+## 📸 Dokumentasi
+
+### 🌐 Landing Page
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/Hero Section.jpg" width="100%" alt="Hero Section" />
+      <br/><sub><b>Hero Section</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/Event Section.jpg" width="100%" alt="Event Section" />
+      <br/><sub><b>Event Section</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/About Section.jpg" width="100%" alt="About Section" />
+      <br/><sub><b>About Section</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/Contact Section.jpg" width="100%" alt="Contact Section" />
+      <br/><sub><b>Contact Section</b></sub>
+    </td>
+  </tr>
+</table>
+
+### 🔐 Autentikasi
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/Login/Login.jpg" width="100%" alt="Login" />
+      <br/><sub><b>Login</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/Register/Register.jpg" width="100%" alt="Register" />
+      <br/><sub><b>Register</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/Footer.jpg" width="100%" alt="Footer" />
+      <br/><sub><b>Footer</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/User Buy/Detail Event.jpg" width="100%" alt="Detail Event" />
+      <br/><sub><b>Detail Event</b></sub>
+    </td>
+  </tr>
+</table>
+
+### 🛒 Alur Pembelian Tiket
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/User Buy/Pilih Kategori Tiket.jpg" width="100%" alt="Pilih Kategori Tiket" />
+      <br/><sub><b>Pilih Kategori Tiket</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/User Buy/Detail Pesanan.jpg" width="100%" alt="Detail Pesanan" />
+      <br/><sub><b>Detail Pesanan</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/User Buy/Metode Pembayaran.jpg" width="100%" alt="Metode Pembayaran" />
+      <br/><sub><b>Metode Pembayaran</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing Page/User Buy/Pembayaran Done.jpg" width="100%" alt="Pembayaran Berhasil" />
+      <br/><sub><b>Pembayaran Berhasil</b></sub>
+    </td>
+  </tr>
+</table>
+
+### 👤 Dashboard Pengguna (User)
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/User/Home.jpg" width="100%" alt="Dashboard User - Home" />
+      <br/><sub><b>Beranda User</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/User/Tiket.jpg" width="100%" alt="Dashboard User - Tiket" />
+      <br/><sub><b>Tiket Saya</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/User/Transaksi.jpg" width="100%" alt="Dashboard User - Transaksi" />
+      <br/><sub><b>Riwayat Transaksi</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/User/Wishlist.jpg" width="100%" alt="Dashboard User - Wishlist" />
+      <br/><sub><b>Wishlist Event</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/User/Pengaturan Profil.jpg" width="100%" alt="Dashboard User - Profil" />
+      <br/><sub><b>Pengaturan Profil</b></sub>
+    </td>
+    <td align="center" width="25%" colspan="3"></td>
+  </tr>
+</table>
+
+### 🏢 Dashboard Event Organizer (EO)
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Home.jpg" width="100%" alt="Dashboard EO - Home" />
+      <br/><sub><b>Beranda EO</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Manajemen Event.jpg" width="100%" alt="Manajemen Event" />
+      <br/><sub><b>Manajemen Event</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Peserta Event.jpg" width="100%" alt="Peserta Event" />
+      <br/><sub><b>Peserta Event</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Transaksi.jpg" width="100%" alt="Transaksi EO" />
+      <br/><sub><b>Transaksi EO</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Keuntungan.jpg" width="100%" alt="Keuntungan EO" />
+      <br/><sub><b>Laporan Keuntungan</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Kelola Refund.jpg" width="100%" alt="Kelola Refund" />
+      <br/><sub><b>Kelola Refund</b></sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="Documentation/Dashboard/EO/Pengaturan Profil.jpg" width="100%" alt="Profil EO" />
+      <br/><sub><b>Pengaturan Profil EO</b></sub>
+    </td>
+    <td align="center" width="25%"></td>
+  </tr>
+</table>
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Sistem autentikasi multi-role (Admin, EO, User)
+- [x] Multi-step checkout dengan payment gateway simulation
+- [x] QR Code tiket digital
+- [x] Manajemen wishlist
+- [x] Sistem refund
+- [x] Panel admin Filament
+- [ ] Integrasi payment gateway nyata (Midtrans/Xendit)
+- [ ] Notifikasi email otomatis
+- [ ] Mobile app (React Native)
+- [ ] Event livestream integration
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi sangat disambut! Silakan ikuti langkah berikut:
+
+1. **Fork** repositori ini
+2. Buat **branch** fitur baru: `git checkout -b feature/NamaFitur`
+3. **Commit** perubahan: `git commit -m 'feat: tambah fitur keren'`
+4. **Push** ke branch: `git push origin feature/NamaFitur`
+5. Buat **Pull Request**
+
+> Harap ikuti konvensi commit [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+---
+
+## 📄 Lisensi
+
+Proyek ini dilisensikan di bawah **MIT License** — lihat file [LICENSE](LICENSE) untuk detail lengkap.
+
+---
+
+<div align="center">
+
+**Dibuat dengan ❤️ menggunakan Laravel 13**
+
+*"Building experiences, one ticket at a time."*
+
+⭐ **Star repositori ini jika Anda merasa terbantu!** ⭐
+
+</div>
