@@ -239,7 +239,8 @@
                                         this.time--;
                                     } else {
                                         clearInterval(timer);
-                                        window.location.href = '{{ route("user.checkout.index", $event) }}';
+                                        alert('Waktu pembayaran telah habis. Silakan pilih tiket kembali.');
+                                        window.location.href = '{{ url("/") }}';
                                     }
                                 }, 1000);
                             }
