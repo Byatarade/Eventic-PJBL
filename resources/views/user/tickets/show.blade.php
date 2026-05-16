@@ -188,20 +188,6 @@
                             Selesaikan Pembayaran
                         </a>
                     @elseif($order->status === 'paid')
-                        @php
-                            $googleCalendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE" .
-                                "&text=" . urlencode($event->name) .
-                                "&dates=" . $event->date->format('Ymd\THis\Z') . "/" . $event->date->addHours(2)->format('Ymd\THis\Z') .
-                                "&details=" . urlencode("Tiket Elektronik Eventic - Order #" . str_pad($order->id, 6, '0', STR_PAD_LEFT)) .
-                                "&location=" . urlencode($event->location);
-                        @endphp
-                        
-                        {{-- Calendar --}}
-                        <a href="{{ $googleCalendarUrl }}" target="_blank" class="w-full sm:w-auto px-5 py-3.5 bg-white border border-gray-200 text-gray-700 rounded-2xl font-bold text-sm hover:bg-gray-50 transition-all flex items-center justify-center gap-2 shadow-sm">
-                            <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-                            Calendar
-                        </a>
-
                         {{-- Refund (Only if not requested) --}}
                         @if(!$order->refundRequest)
                         <a href="{{ route('user.refunds.create', $order) }}" class="w-full sm:w-auto px-5 py-3.5 bg-red-50 text-red-600 border border-red-100 rounded-2xl font-bold text-sm hover:bg-red-100 transition-all flex items-center justify-center gap-2">
