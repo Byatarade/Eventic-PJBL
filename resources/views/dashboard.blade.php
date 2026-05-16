@@ -83,116 +83,66 @@
                 </div>
             </div>
 
-            <!-- Two Column Layout for Content -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Upcoming Events -->
-                <div class="lg:col-span-2 flex flex-col">
-                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex-1 flex flex-col">
-                        <div class="px-6 py-5 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
-                                </div>
-                                <h3 class="text-lg font-bold text-gray-900">Rekomendasi Acara</h3>
-                            </div>
-                            <a href="/" class="text-sm text-blue-600 hover:text-blue-700 font-medium hover:underline decoration-blue-200 underline-offset-4 transition-all">Jelajahi Semua</a>
+            <!-- Full Width Recent Activities -->
+            <div class="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">
+                <div class="px-8 py-7 border-b border-gray-50 flex justify-between items-center bg-gray-50/30">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        
-                        <div class="p-6">
-                            @if($upcomingEvents->count() > 0)
-                                <div class="space-y-4">
-                                    @foreach($upcomingEvents as $event)
-                                        <a href="{{ route('events.show', $event) }}" class="flex gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group">
-                                            <div class="w-24 h-16 rounded-lg overflow-hidden bg-gray-100 shrink-0">
-                                                @if($event->image)
-                                                    <img src="{{ Storage::url($event->image) }}" class="w-full h-full object-cover">
-                                                @else
-                                                    <div class="w-full h-full bg-indigo-500"></div>
-                                                @endif
-                                            </div>
-                                            <div class="flex-1 min-w-0">
-                                                <h4 class="font-bold text-gray-900 truncate group-hover:text-blue-600 transition-colors">{{ $event->name }}</h4>
-                                                <div class="flex items-center gap-3 mt-1">
-                                                    <span class="text-xs text-gray-500 flex items-center gap-1">
-                                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                                        {{ $event->date->format('d M Y') }}
-                                                    </span>
-                                                    <span class="text-xs text-gray-500 flex items-center gap-1">
-                                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-                                                        {{ Str::limit($event->location, 20) }}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    @endforeach
-                                </div>
-                            @else
-                                <div class="p-8 flex-1 flex flex-col justify-center items-center text-center">
-                                    <div class="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-5 relative">
-                                        <div class="absolute inset-0 border-2 border-dashed border-gray-200 rounded-full"></div>
-                                        <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V7m2 13a2 2 0 002-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>
-                                    </div>
-                                    <h4 class="text-gray-900 font-bold text-lg mb-2">Belum ada acara mendatang</h4>
-                                    <p class="text-gray-500 max-w-sm mx-auto mb-6 text-sm">Temukan acara menarik di sekitarmu sekarang!</p>
-                                    <a href="/" class="inline-flex items-center justify-center px-5 py-2.5 bg-gray-900 text-white rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors shadow-sm gap-2">
-                                        Cari Event
-                                    </a>
-                                </div>
-                            @endif
+                        <div>
+                            <h3 class="text-xl font-black text-gray-900 uppercase tracking-tight leading-none mb-1">Aktivitas Terakhir</h3>
+                            <p class="text-xs text-gray-400 font-bold uppercase tracking-widest">Riwayat transaksi terbaru Anda</p>
                         </div>
                     </div>
-
-
-
-                <!-- Recent Activities -->
-                <div class="flex flex-col">
-                    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden flex-1 flex flex-col">
-                        <div class="px-6 py-5 border-b border-gray-50 flex justify-between items-center bg-gray-50/50">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-lg bg-green-100 text-green-600 flex items-center justify-center">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                </div>
-                                <h3 class="text-lg font-bold text-gray-900">Aktivitas Terakhir</h3>
-                            </div>
-                            <a href="{{ route('user.transactions.index') }}" class="text-sm text-gray-500 hover:text-gray-700 font-medium">Lihat Semua</a>
-                        </div>
-                        
-                        <div class="p-6">
-                            @if($recentActivities->count() > 0)
-                                <div class="space-y-6">
-                                    @foreach($recentActivities as $activity)
-                                        <div class="flex gap-4 relative">
-                                            @if(!$loop->last)
-                                                <div class="absolute left-4 top-10 bottom-0 w-px bg-gray-100"></div>
-                                            @endif
-                                            <div class="w-8 h-8 rounded-full {{ $activity->status === 'paid' ? 'bg-emerald-50 text-emerald-500' : 'bg-amber-50 text-amber-500' }} flex items-center justify-center shrink-0 z-10 border-4 border-white">
-                                                @if($activity->status === 'paid')
-                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
-                                                @else
-                                                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.828a1 1 0 101.415-1.414L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                                                @endif
+                    <a href="{{ route('user.transactions.index') }}" class="px-6 py-2.5 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border border-gray-100 shadow-sm">
+                        Lihat Semua
+                    </a>
+                </div>
+                
+                <div class="p-8 sm:p-12">
+                    @if($recentActivities->count() > 0)
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+                            @foreach($recentActivities as $activity)
+                                <div class="flex gap-5 group relative">
+                                    <div class="w-14 h-14 rounded-[1.25rem] {{ $activity->status === 'paid' ? 'bg-emerald-50 text-emerald-500 shadow-emerald-100' : 'bg-amber-50 text-amber-500 shadow-amber-100' }} flex items-center justify-center shrink-0 z-10 shadow-lg border-2 border-white group-hover:scale-110 transition-transform duration-300">
+                                        @if($activity->status === 'paid')
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                                        @else
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        @endif
+                                    </div>
+                                    <div class="flex-1 min-w-0 pt-1">
+                                        <div class="flex justify-between items-start mb-1">
+                                            <div class="text-base font-black text-gray-900 leading-tight">
+                                                {{ $activity->status === 'paid' ? 'Pembayaran Berhasil' : 'Menunggu Pembayaran' }}
                                             </div>
-                                            <div class="flex-1 min-w-0">
-                                                <div class="text-sm font-bold text-gray-900 leading-tight">
-                                                    {{ $activity->status === 'paid' ? 'Pembayaran Berhasil' : 'Menunggu Pembayaran' }}
-                                                </div>
-                                                <div class="text-[11px] text-gray-500 mt-0.5">{{ $activity->items->first()->ticket->event->name ?? 'Event' }}</div>
-                                                <div class="text-[10px] text-gray-400 mt-1 font-medium">{{ $activity->created_at->diffForHumans() }}</div>
+                                            <span class="text-[9px] font-black text-gray-300 uppercase tracking-widest">{{ $activity->created_at->diffForHumans() }}</span>
+                                        </div>
+                                        <p class="text-sm text-gray-500 font-bold mb-3 opacity-70 group-hover:opacity-100 transition-opacity truncate">{{ $activity->items->first()->ticket->event->name ?? 'Event Terkait' }}</p>
+                                        <div class="flex items-center gap-2">
+                                            <div class="px-2.5 py-1 bg-gray-50 rounded-lg text-[10px] text-gray-400 font-black uppercase tracking-tight border border-gray-100">
+                                                Order #{{ str_pad($activity->id, 6, '0', STR_PAD_LEFT) }}
+                                            </div>
+                                            <div class="w-1 h-1 bg-gray-200 rounded-full"></div>
+                                            <div class="text-[10px] font-black {{ $activity->status === 'paid' ? 'text-emerald-500' : 'text-amber-500' }} uppercase tracking-widest">
+                                                Rp{{ number_format($activity->total_price, 0, ',', '.') }}
                                             </div>
                                         </div>
-                                    @endforeach
-                                </div>
-                            @else
-                                <div class="p-8 flex-1 flex flex-col justify-center items-center text-center">
-                                    <div class="w-20 h-20 bg-gray-50 rounded-2xl rotate-3 flex items-center justify-center mb-5 border border-gray-100">
-                                        <svg class="w-8 h-8 text-gray-300 -rotate-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
                                     </div>
-                                    <h4 class="text-gray-900 font-bold mb-2 text-sm">Belum ada aktivitas</h4>
-                                    <p class="text-[11px] text-gray-500 max-w-xs mx-auto">Riwayat transaksi Anda akan muncul di sini.</p>
                                 </div>
-                            @endif
+                            @endforeach
                         </div>
-                    </div>
+                    @else
+                        <div class="flex flex-col justify-center items-center text-center py-16">
+                            <div class="w-24 h-24 bg-gray-50 rounded-[2rem] rotate-6 flex items-center justify-center mb-6 border border-gray-100 shadow-inner relative">
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 rounded-[2rem]"></div>
+                                <svg class="w-10 h-10 text-gray-200 -rotate-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                            </div>
+                            <h4 class="text-gray-900 font-black text-xl mb-2 uppercase tracking-tight">Belum ada aktivitas</h4>
+                            <p class="text-sm text-gray-400 font-bold uppercase tracking-wider max-w-xs mx-auto leading-relaxed">Semua riwayat pembelian tiket Anda akan muncul secara otomatis di sini.</p>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
