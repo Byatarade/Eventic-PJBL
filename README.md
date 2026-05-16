@@ -25,7 +25,7 @@
 
 **Eventic** adalah platform web manajemen tiket event berbasis Laravel 13 yang dirancang untuk menghubungkan **Event Organizer (EO)** dengan **pengguna/pembeli tiket**. Platform ini menghadirkan pengalaman end-to-end mulai dari pembuatan event, penjualan tiket, hingga proses pembayaran — semuanya dalam antarmuka yang modern, responsif, dan mudah digunakan.
 
-Dibangun dengan arsitektur **multi-role** (Admin, Event Organizer, User), Eventic memastikan setiap pihak memiliki akses dan kontrol yang tepat sesuai perannya. Admin mengelola keseluruhan sistem melalui panel Filament yang powerful, EO mengelola event dan memantau performa secara real-time, sementara pengguna dapat mencari, membeli, dan mengelola tiket mereka dengan mudah.
+Dibangun dengan arsitektur **multi-role** (Event Organizer, User), Eventic memastikan setiap pihak memiliki akses dan kontrol yang tepat sesuai perannya. EO mengelola event dan memantau performa secara real-time, sementara pengguna dapat mencari, membeli, dan mengelola tiket mereka dengan mudah.
 
 ---
 
@@ -55,21 +55,6 @@ Dibangun dengan arsitektur **multi-role** (Admin, Event Organizer, User), Eventi
 | 📷 **Upload Banner Event** | Upload gambar banner event dengan preview langsung |
 | 💼 **Profil Penyelenggara** | Kelola informasi EO termasuk sosial media (Instagram, TikTok) |
 
-### 🔐 Untuk Admin (Filament)
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🛡️ **Panel Admin Filament** | Panel administrasi modern berbasis Filament v5 |
-| 👥 **Manajemen User & Role** | Kelola semua pengguna dengan sistem RBAC yang aman |
-| 📊 **Overview Sistem** | Monitor seluruh aktivitas platform secara menyeluruh |
-
-### 🌟 Fitur Platform
-- **📱 Fully Responsive** — Tampilan optimal di desktop, tablet, dan smartphone
-- **⚡ Real-time Timer Pembayaran** — Countdown timer 24 jam untuk menyelesaikan transaksi
-- **🔒 Keamanan Berlapis** — CSRF protection, role-based access, dan validasi server-side
-- **🖨️ PDF Export** — Generate tiket dalam format PDF siap cetak dengan DomPDF
-- **🎨 Modern UI/UX** — Desain minimalis premium dengan micro-animations dan glassmorphism effects
-- **🔗 Multi-step Checkout** — Alur pembelian tiket 4 langkah yang intuitif
-
 ---
 
 ## 🛠️ Tech Stack
@@ -79,7 +64,7 @@ Dibangun dengan arsitektur **multi-role** (Admin, Event Organizer, User), Eventi
 |-----------|-------|-------|
 | **PHP** | ^8.3 | Runtime bahasa utama |
 | **Laravel** | ^13.0 | Framework aplikasi web |
-| **Filament** | ^5.6 | Panel Admin UI |
+| **Filament** | ^5.6 | Panel Dashboard UI |
 | **Laravel Breeze** | ^2.4 | Autentikasi & scaffolding |
 | **barryvdh/laravel-dompdf** | ^3.1 | Generate PDF tiket |
 | **simplesoftwareio/simple-qrcode** | ^4.2 | Generate QR Code tiket digital |
@@ -199,7 +184,6 @@ php artisan queue:listen
 | `http://localhost:8000/register` | Halaman registrasi |
 | `http://localhost:8000/dashboard` | Dashboard User |
 | `http://localhost:8000/eo/dashboard` | Dashboard Event Organizer |
-| `http://localhost:8000/admin` | Panel Admin (Filament) |
 
 ---
 
@@ -417,12 +401,11 @@ Laravel-13/
 
 ## 🗺️ Roadmap
 
-- [x] Sistem autentikasi multi-role (Admin, EO, User)
+- [x] Sistem autentikasi multi-role (EO, User)
 - [x] Multi-step checkout dengan payment gateway simulation
 - [x] QR Code tiket digital
 - [x] Manajemen wishlist
 - [x] Sistem refund
-- [x] Panel admin Filament
 - [ ] Integrasi payment gateway nyata (Midtrans/Xendit)
 - [ ] Notifikasi email otomatis
 - [ ] Mobile app (React Native)
