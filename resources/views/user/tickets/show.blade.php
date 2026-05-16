@@ -173,45 +173,56 @@
             </div>
 
             {{-- ACTIONS --}}
-            <div class="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <a href="{{ route('user.tickets.index') }}" class="px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                    Kembali
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 border-t border-gray-100">
+                <a href="{{ route('user.tickets.index') }}" class="group flex items-center gap-3 text-gray-500 hover:text-gray-900 font-bold transition-all shrink-0">
+                    <div class="w-10 h-10 rounded-2xl bg-white border border-gray-200 flex items-center justify-center group-hover:bg-gray-50 group-hover:border-gray-300 shadow-sm transition-all">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                    </div>
+                    <span>Kembali ke Daftar</span>
                 </a>
-                @if($order->status === 'pending')
-                    <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                        Selesaikan Pembayaran
-                    </a>
-                @else
-                    @php
-                        $googleCalendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE" .
-                            "&text=" . urlencode($event->name) .
-                            "&dates=" . $event->date->format('Ymd\THis\Z') . "/" . $event->date->addHours(2)->format('Ymd\THis\Z') .
-                            "&details=" . urlencode("Tiket Elektronik Eventic - Order #" . str_pad($order->id, 6, '0', STR_PAD_LEFT)) .
-                            "&location=" . urlencode($event->location);
-                    @endphp
-                    <div class="flex flex-wrap gap-3 justify-center">
-                        <a href="{{ $googleCalendarUrl }}" target="_blank" class="px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2">
+
+                <div class="flex flex-wrap items-center justify-center md:justify-end gap-3 w-full">
+                    @if($order->status === 'pending')
+                        <a href="{{ route('user.transactions.show', $order) }}" class="w-full sm:w-auto px-8 py-3.5 bg-amber-500 hover:bg-amber-600 text-white rounded-2xl font-black text-sm transition-all shadow-lg shadow-amber-200 active:scale-95 flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                            Selesaikan Pembayaran
+                        </a>
+                    @elseif($order->status === 'paid')
+                        @php
+                            $googleCalendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE" .
+                                "&text=" . urlencode($event->name) .
+                                "&dates=" . $event->date->format('Ymd\THis\Z') . "/" . $event->date->addHours(2)->format('Ymd\THis\Z') .
+                                "&details=" . urlencode("Tiket Elektronik Eventic - Order #" . str_pad($order->id, 6, '0', STR_PAD_LEFT)) .
+                                "&location=" . urlencode($event->location);
+                        @endphp
+                        
+                        {{-- Calendar --}}
+                        <a href="{{ $googleCalendarUrl }}" target="_blank" class="w-full sm:w-auto px-5 py-3.5 bg-white border border-gray-200 text-gray-700 rounded-2xl font-bold text-sm hover:bg-gray-50 transition-all flex items-center justify-center gap-2 shadow-sm">
                             <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
-                            Tambah ke Google Calendar
+                            Calendar
                         </a>
-                        <a href="{{ route('user.tickets.download', $order) }}" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                            Download E-Ticket (PDF)
+
+                        {{-- Refund (Only if not requested) --}}
+                        @if(!$order->refundRequest)
+                        <a href="{{ route('user.refunds.create', $order) }}" class="w-full sm:w-auto px-5 py-3.5 bg-red-50 text-red-600 border border-red-100 rounded-2xl font-bold text-sm hover:bg-red-100 transition-all flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Ajukan Refund
                         </a>
-                        <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                        @endif
+
+                        {{-- View Transaction --}}
+                        <a href="{{ route('user.transactions.show', $order) }}" class="w-full sm:w-auto px-6 py-3.5 bg-indigo-50 text-[#4F46E5] rounded-2xl font-bold text-sm hover:bg-indigo-100 transition-all flex items-center justify-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                             Lihat Transaksi
                         </a>
-                    </div>
-                    @if($order->status === 'paid' && !$order->refundRequest)
-                    <a href="{{ route('user.refunds.create', $order) }}" class="px-6 py-3 bg-red-50 text-red-600 border border-red-100 rounded-xl font-semibold text-sm hover:bg-red-100 transition-colors inline-flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        Ajukan Refund
-                    </a>
+
+                        {{-- Download PDF (Primary) --}}
+                        <a href="{{ route('user.tickets.download', $order) }}" class="w-full sm:w-auto px-8 py-3.5 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-2xl font-black text-sm transition-all shadow-lg shadow-indigo-200 active:scale-95 flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Download E-Ticket
+                        </a>
                     @endif
-                @endif
+                </div>
             </div>
         </div>
     </div>
