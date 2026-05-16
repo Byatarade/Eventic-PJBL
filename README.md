@@ -266,19 +266,19 @@ Laravel-13/
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/Hero Section.jpg" width="100%" alt="Hero Section" />
+      <img src="Documentation/Landing%20Page/Hero%20Section.jpg" width="100%" alt="Hero Section" />
       <br/><sub><b>Hero Section</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/Event Section.jpg" width="100%" alt="Event Section" />
+      <img src="Documentation/Landing%20Page/Event%20Section.jpg" width="100%" alt="Event Section" />
       <br/><sub><b>Event Section</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/About Section.jpg" width="100%" alt="About Section" />
+      <img src="Documentation/Landing%20Page/About%20Section.jpg" width="100%" alt="About Section" />
       <br/><sub><b>About Section</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/Contact Section.jpg" width="100%" alt="Contact Section" />
+      <img src="Documentation/Landing%20Page/Contact%20Section.jpg" width="100%" alt="Contact Section" />
       <br/><sub><b>Contact Section</b></sub>
     </td>
   </tr>
@@ -297,11 +297,11 @@ Laravel-13/
       <br/><sub><b>Register</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/Footer.jpg" width="100%" alt="Footer" />
+      <img src="Documentation/Landing%20Page/Footer.jpg" width="100%" alt="Footer" />
       <br/><sub><b>Footer</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/User Buy/Detail Event.jpg" width="100%" alt="Detail Event" />
+      <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Event.jpg" width="100%" alt="Detail Event" />
       <br/><sub><b>Detail Event</b></sub>
     </td>
   </tr>
@@ -312,19 +312,19 @@ Laravel-13/
 <table>
   <tr>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/User Buy/Pilih Kategori Tiket.jpg" width="100%" alt="Pilih Kategori Tiket" />
+      <img src="Documentation/Landing%20Page/User%20Buy/Pilih%20Kategori%20Tiket.jpg" width="100%" alt="Pilih Kategori Tiket" />
       <br/><sub><b>Pilih Kategori Tiket</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/User Buy/Detail Pesanan.jpg" width="100%" alt="Detail Pesanan" />
+      <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Pesanan.jpg" width="100%" alt="Detail Pesanan" />
       <br/><sub><b>Detail Pesanan</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/User Buy/Metode Pembayaran.jpg" width="100%" alt="Metode Pembayaran" />
+      <img src="Documentation/Landing%20Page/User%20Buy/Metode%20Pembayaran.jpg" width="100%" alt="Metode Pembayaran" />
       <br/><sub><b>Metode Pembayaran</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing Page/User Buy/Pembayaran Done.jpg" width="100%" alt="Pembayaran Berhasil" />
+      <img src="Documentation/Landing%20Page/User%20Buy/Pembayaran%20Done.jpg" width="100%" alt="Pembayaran Berhasil" />
       <br/><sub><b>Pembayaran Berhasil</b></sub>
     </td>
   </tr>
@@ -353,7 +353,7 @@ Laravel-13/
   </tr>
   <tr>
     <td align="center" width="25%">
-      <img src="Documentation/Dashboard/User/Pengaturan Profil.jpg" width="100%" alt="Dashboard User - Profil" />
+      <img src="Documentation/Dashboard/User/Pengaturan%20Profil.jpg" width="100%" alt="Dashboard User - Profil" />
       <br/><sub><b>Pengaturan Profil</b></sub>
     </td>
     <td align="center" width="25%" colspan="3"></td>
@@ -369,11 +369,11 @@ Laravel-13/
       <br/><sub><b>Beranda EO</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Dashboard/EO/Manajemen Event.jpg" width="100%" alt="Manajemen Event" />
+      <img src="Documentation/Dashboard/EO/Manajemen%20Event.jpg" width="100%" alt="Manajemen Event" />
       <br/><sub><b>Manajemen Event</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Dashboard/EO/Peserta Event.jpg" width="100%" alt="Peserta Event" />
+      <img src="Documentation/Dashboard/EO/Peserta%20Event.jpg" width="100%" alt="Peserta Event" />
       <br/><sub><b>Peserta Event</b></sub>
     </td>
     <td align="center" width="25%">
@@ -387,11 +387,11 @@ Laravel-13/
       <br/><sub><b>Laporan Keuntungan</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Dashboard/EO/Kelola Refund.jpg" width="100%" alt="Kelola Refund" />
+      <img src="Documentation/Dashboard/EO/Kelola%20Refund.jpg" width="100%" alt="Kelola Refund" />
       <br/><sub><b>Kelola Refund</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Dashboard/EO/Pengaturan Profil.jpg" width="100%" alt="Profil EO" />
+      <img src="Documentation/Dashboard/EO/Pengaturan%20Profil.jpg" width="100%" alt="Profil EO" />
       <br/><sub><b>Pengaturan Profil EO</b></sub>
     </td>
     <td align="center" width="25%"></td>
