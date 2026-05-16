@@ -80,7 +80,7 @@ Dibangun dengan arsitektur **multi-role** (Event Organizer, User), Eventic memas
 ### Database & Infrastruktur
 | Teknologi | Peran |
 |-----------|-------|
-| **MySQL / SQLite** | Database relasional |
+| **MySQL** | Database relasional |
 | **Laravel Eloquent ORM** | Query builder & relasi model |
 | **Laravel Queue** | Proses background jobs |
 
@@ -93,7 +93,7 @@ Pastikan sistem Anda telah memiliki:
 - **PHP** >= 8.3
 - **Composer** >= 2.x
 - **Node.js** >= 18.x & **NPM**
-- **MySQL** atau **SQLite**
+- **MySQL**
 - **Git**
 
 ### 1. Clone Repositori
