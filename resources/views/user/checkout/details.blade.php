@@ -195,7 +195,7 @@
                     <!-- Timer Box -->
                     <div class="bg-[#FFC107] rounded-xl mb-4 p-4 text-center font-bold text-gray-900 shadow-sm flex items-center justify-center gap-3"
                          x-data="{ 
-                            time: 600, 
+                            time: 30, 
                             format() {
                                 let m = Math.floor(this.time / 60);
                                 let s = this.time % 60;
