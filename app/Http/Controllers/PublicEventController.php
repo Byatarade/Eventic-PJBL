@@ -13,6 +13,14 @@ class PublicEventController extends Controller
             abort(404);
         }
         $event->load('tickets', 'user');
-        return view('events.show', compact('event'));
+        
+        $isWishlisted = false;
+        if (auth()->check()) {
+            $isWishlisted = \App\Models\Wishlist::where('user_id', auth()->id())
+                ->where('event_id', $event->id)
+                ->exists();
+        }
+
+        return view('events.show', compact('event', 'isWishlisted'));
     }
 }

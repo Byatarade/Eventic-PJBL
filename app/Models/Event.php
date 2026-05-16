@@ -46,4 +46,9 @@ class Event extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
+    }
 }

@@ -66,6 +66,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/tickets/{order}/download', [\App\Http\Controllers\User\TicketController::class, 'download'])->name('tickets.download');
         Route::get('/transactions', [\App\Http\Controllers\User\TransactionController::class, 'index'])->name('transactions.index');
         Route::get('/transactions/{order}', [\App\Http\Controllers\User\TransactionController::class, 'show'])->name('transactions.show');
+        
+        // Wishlist Routes
+        Route::get('/wishlist', [\App\Http\Controllers\User\WishlistController::class, 'index'])->name('wishlist.index');
+        Route::post('/wishlist/{event}/toggle', [\App\Http\Controllers\User\WishlistController::class, 'toggle'])->name('wishlist.toggle');
+        Route::delete('/wishlist/{wishlist}', [\App\Http\Controllers\User\WishlistController::class, 'destroy'])->name('wishlist.destroy');
     });
 
     // EO Routes
