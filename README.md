@@ -282,6 +282,13 @@ Laravel-13/
       <br/><sub><b>Contact Section</b></sub>
     </td>
   </tr>
+  <tr>
+    <td align="center" width="25%">
+      <img src="Documentation/Landing%20Page/Footer.jpg" width="100%" alt="Footer" />
+      <br/><sub><b>Footer</b></sub>
+    </td>
+    <td align="center" width="25%" colspan="3"></td>
+  </tr>
 </table>
 
 ### 🔐 Autentikasi
@@ -297,13 +304,10 @@ Laravel-13/
       <br/><sub><b>Register</b></sub>
     </td>
     <td align="center" width="25%">
-      <img src="Documentation/Landing%20Page/Footer.jpg" width="100%" alt="Footer" />
-      <br/><sub><b>Footer</b></sub>
-    </td>
-    <td align="center" width="25%">
       <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Event.jpg" width="100%" alt="Detail Event" />
       <br/><sub><b>Detail Event</b></sub>
     </td>
+    <td align="center" width="25%"></td>
   </tr>
 </table>
 
@@ -398,21 +402,7 @@ Laravel-13/
   </tr>
 </table>
 
----
 
-## 🗺️ Roadmap
-
-- [x] Sistem autentikasi multi-role (EO, User)
-- [x] Multi-step checkout dengan payment gateway simulation
-- [x] QR Code tiket digital
-- [x] Manajemen wishlist
-- [x] Sistem refund
-- [ ] Integrasi payment gateway nyata (Midtrans/Xendit)
-- [ ] Notifikasi email otomatis
-- [ ] Mobile app (React Native)
-- [ ] Event livestream integration
-
----
 
 ## 🤝 Kontribusi
 
@@ -436,10 +426,11 @@ Proyek ini dilisensikan di bawah **MIT License** — lihat file [LICENSE](LICENS
 
 <div align="center">
 
-**Dibuat dengan ❤️ menggunakan Laravel 13**
+Dibuat dengan &nbsp;
+![Laravel](https://img.shields.io/badge/Laravel-v13.x-FF2D20?style=flat-square&logo=laravel&logoColor=white)
+&nbsp; dan &nbsp;
+![Vite](https://img.shields.io/badge/Vite-v8.x-646CFF?style=flat-square&logo=vite&logoColor=white)
 
-*"Building experiences, one ticket at a time."*
-
-⭐ **Star repositori ini jika Anda merasa terbantu!** ⭐
+Created by Byatarade. ig: @byatarade
 
 </div>
