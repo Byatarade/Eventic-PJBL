@@ -128,21 +128,7 @@
                                     </div>
                                 </label>
                                 
-                                <!-- ShopeePay -->
-                                <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all hover:bg-gray-50"
-                                       :class="selectedMethod === 'shopeepay' ? 'border-[#4F46E5] ring-1 ring-[#4F46E5] bg-indigo-50/30' : 'border-gray-200'">
-                                    <input type="radio" name="method" value="shopeepay" class="sr-only" @click="selectedMethod = 'shopeepay'">
-                                    <div class="flex-1 flex items-center gap-4">
-                                        <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Shopee_Pay_logo.svg/512px-Shopee_Pay_logo.svg.png" alt="ShopeePay" class="max-h-full max-w-full object-contain">
-                                        </div>
-                                        <span class="font-bold text-gray-800">ShopeePay</span>
-                                    </div>
-                                    <div class="w-5 h-5 rounded-full border flex items-center justify-center"
-                                         :class="selectedMethod === 'shopeepay' ? 'border-[#4F46E5] bg-[#4F46E5]' : 'border-gray-300'">
-                                        <svg x-show="selectedMethod === 'shopeepay'" class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                    </div>
-                                </label>
+
                             </div>
                         </div>
 
@@ -169,37 +155,7 @@
                                     </div>
                                 </label>
 
-                                <!-- Mandiri VA -->
-                                <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all hover:bg-gray-50"
-                                       :class="selectedMethod === 'mandiri_va' ? 'border-[#4F46E5] ring-1 ring-[#4F46E5] bg-indigo-50/30' : 'border-gray-200'">
-                                    <input type="radio" name="method" value="mandiri_va" class="sr-only" @click="selectedMethod = 'mandiri_va'">
-                                    <div class="flex-1 flex items-center gap-4">
-                                        <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bank_Mandiri_logo_2016.svg/1024px-Bank_Mandiri_logo_2016.svg.png" alt="Mandiri" class="max-h-full max-w-full object-contain">
-                                        </div>
-                                        <span class="font-bold text-gray-800">Mandiri Virtual Account</span>
-                                    </div>
-                                    <div class="w-5 h-5 rounded-full border flex items-center justify-center"
-                                         :class="selectedMethod === 'mandiri_va' ? 'border-[#4F46E5] bg-[#4F46E5]' : 'border-gray-300'">
-                                        <svg x-show="selectedMethod === 'mandiri_va'" class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                    </div>
-                                </label>
 
-                                <!-- BNI VA -->
-                                <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all hover:bg-gray-50"
-                                       :class="selectedMethod === 'bni_va' ? 'border-[#4F46E5] ring-1 ring-[#4F46E5] bg-indigo-50/30' : 'border-gray-200'">
-                                    <input type="radio" name="method" value="bni_va" class="sr-only" @click="selectedMethod = 'bni_va'">
-                                    <div class="flex-1 flex items-center gap-4">
-                                        <div class="w-16 h-10 bg-white rounded flex items-center justify-center p-1 border border-gray-100">
-                                            <img src="https://upload.wikimedia.org/wikipedia/id/thumb/5/55/BNI_logo.svg/1024px-BNI_logo.svg.png" alt="BNI" class="max-h-full max-w-full object-contain">
-                                        </div>
-                                        <span class="font-bold text-gray-800">BNI Virtual Account</span>
-                                    </div>
-                                    <div class="w-5 h-5 rounded-full border flex items-center justify-center"
-                                         :class="selectedMethod === 'bni_va' ? 'border-[#4F46E5] bg-[#4F46E5]' : 'border-gray-300'">
-                                        <svg x-show="selectedMethod === 'bni_va'" class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                                    </div>
-                                </label>
 
                                 <!-- BRI VA -->
                                 <label class="relative flex items-center p-4 border rounded-xl cursor-pointer transition-all hover:bg-gray-50"
