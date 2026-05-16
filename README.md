@@ -11,11 +11,12 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Alpine.js](https://img.shields.io/badge/Alpine.js-v3-8BC0D0?style=for-the-badge&logo=alpine.js&logoColor=white)](https://alpinejs.dev)
 [![Filament](https://img.shields.io/badge/Filament-v5-FDAE4B?style=for-the-badge&logo=filament&logoColor=white)](https://filamentphp.com)
+[![Breeze](https://img.shields.io/badge/Laravel_Breeze-v2.4-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/docs/starter-kits#laravel-breeze)
+[![Vite](https://img.shields.io/badge/Vite-v8.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 *Solusi terpadu untuk mengelola, mempromosikan, dan membeli tiket event — semua dalam satu platform yang elegan.*
 
-[🌐 Demo](#) · [📖 Dokumentasi](#-dokumentasi) · [🐛 Report Bug](https://github.com/Byatarade/Laravel-13/issues) · [💡 Request Feature](https://github.com/Byatarade/Laravel-13/issues)
 
 </div>
 
