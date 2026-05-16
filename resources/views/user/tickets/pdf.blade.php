@@ -175,7 +175,7 @@
             <div class="qr-code">
                 {{-- QR Code typically needs to be an image in PDF. SimpleQRCode can generate PNG. --}}
                 {{-- However, for the PDF, we'll use base64 encoded PNG --}}
-                <img src="data:image/png;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('png')->size(150)->generate(route('user.tickets.download', $order))) !!} ">
+                <img src="data:image/svg+xml;base64, {!! base64_encode(SimpleSoftwareIO\QrCode\Facades\QrCode::format('svg')->size(150)->generate(route('user.tickets.download', $order))) !!} ">
             </div>
             <div class="ticket-id">SCAN UNTUK VERIFIKASI</div>
             <div class="ticket-id" style="margin-top: 5px;">ID: TKT-{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}</div>
