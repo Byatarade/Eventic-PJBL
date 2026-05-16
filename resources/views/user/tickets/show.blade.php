@@ -184,14 +184,27 @@
                         Selesaikan Pembayaran
                     </a>
                 @else
-                    <a href="{{ route('user.tickets.download', $order) }}" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-                        Download E-Ticket (PDF)
-                    </a>
-                    <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        Lihat Transaksi
-                    </a>
+                    @php
+                        $googleCalendarUrl = "https://www.google.com/calendar/render?action=TEMPLATE" .
+                            "&text=" . urlencode($event->name) .
+                            "&dates=" . $event->date->format('Ymd\THis\Z') . "/" . $event->date->addHours(2)->format('Ymd\THis\Z') .
+                            "&details=" . urlencode("Tiket Elektronik Eventic - Order #" . str_pad($order->id, 6, '0', STR_PAD_LEFT)) .
+                            "&location=" . urlencode($event->location);
+                    @endphp
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <a href="{{ $googleCalendarUrl }}" target="_blank" class="px-6 py-3 bg-white border border-gray-200 text-gray-700 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-colors inline-flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 002 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"/></svg>
+                            Tambah ke Google Calendar
+                        </a>
+                        <a href="{{ route('user.tickets.download', $order) }}" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            Download E-Ticket (PDF)
+                        </a>
+                        <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            Lihat Transaksi
+                        </a>
+                    </div>
                     @if($order->status === 'paid' && !$order->refundRequest)
                     <a href="{{ route('user.refunds.create', $order) }}" class="px-6 py-3 bg-red-50 text-red-600 border border-red-100 rounded-xl font-semibold text-sm hover:bg-red-100 transition-colors inline-flex items-center justify-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>

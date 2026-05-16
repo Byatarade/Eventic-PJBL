@@ -45,7 +45,22 @@ Route::get('/dashboard', function () {
         ->take(5)
         ->get();
 
-    return view('dashboard', compact('activeTicketsCount', 'transactionCount', 'upcomingEvents', 'recentActivities'));
+    // Calendar Events
+    $calendarEvents = \App\Models\Order::where('user_id', auth()->id())
+        ->where('status', 'paid')
+        ->with('items.ticket.event')
+        ->get()
+        ->flatMap(function($order) {
+            return $order->items->map(function($item) {
+                return [
+                    'title' => $item->ticket->event->name,
+                    'start' => $item->ticket->event->date->toIso8601String(),
+                    'url' => route('user.tickets.show', $item->order_id),
+                ];
+            });
+        })->values();
+
+    return view('dashboard', compact('activeTicketsCount', 'transactionCount', 'upcomingEvents', 'recentActivities', 'calendarEvents'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
