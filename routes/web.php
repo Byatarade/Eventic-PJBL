@@ -63,6 +63,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/events/{event}/checkout/payment', [\App\Http\Controllers\User\CheckoutController::class, 'processPayment'])->name('checkout.process_payment');
         Route::get('/tickets', [\App\Http\Controllers\User\TicketController::class, 'index'])->name('tickets.index');
         Route::get('/tickets/{order}', [\App\Http\Controllers\User\TicketController::class, 'show'])->name('tickets.show');
+        Route::get('/tickets/{order}/download', [\App\Http\Controllers\User\TicketController::class, 'download'])->name('tickets.download');
         Route::get('/transactions', [\App\Http\Controllers\User\TransactionController::class, 'index'])->name('transactions.index');
         Route::get('/transactions/{order}', [\App\Http\Controllers\User\TransactionController::class, 'show'])->name('transactions.show');
     });

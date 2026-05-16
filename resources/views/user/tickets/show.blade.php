@@ -149,8 +149,8 @@
                                 </div>
                             </div>
                             <div class="sm:w-44 bg-gray-50 border-t sm:border-t-0 sm:border-l border-dashed border-gray-200 p-6 flex flex-col items-center justify-center">
-                                <div class="w-24 h-24 bg-white rounded-xl border-2 border-dashed border-gray-200 flex items-center justify-center mb-2">
-                                    <svg class="w-8 h-8 text-gray-300" fill="currentColor" viewBox="0 0 24 24"><path d="M3 11h2v2H3zm0-4h2v2H3zm0 8h2v2H3zm4-4h2v2H7zm0-4h2v2H7zm0 8h2v2H7zm4-4h2v2h-2zm0-4h2v2h-2zm0 8h2v2h-2zm4-4h2v2h-2zm0-4h2v2h-2zm0 8h2v2h-2zm4-4h2v2h-2zm0-4h2v2h-2zm0 8h2v2h-2z"/></svg>
+                                <div class="w-28 h-28 bg-white rounded-xl border border-gray-100 flex items-center justify-center mb-2 p-2 shadow-sm">
+                                    {!! SimpleSoftwareIO\QrCode\Facades\QrCode::size(100)->generate(route('user.tickets.download', $order)) !!}
                                 </div>
                                 <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider">TKT-{{ str_pad($order->id, 6, '0', STR_PAD_LEFT) }}-{{ $ticketNum }}</span>
                             </div>
@@ -172,6 +172,10 @@
                         Selesaikan Pembayaran
                     </a>
                 @else
+                    <a href="{{ route('user.tickets.download', $order) }}" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Download E-Ticket (PDF)
+                    </a>
                     <a href="{{ route('user.transactions.show', $order) }}" class="px-6 py-3 bg-[#4F46E5] hover:bg-[#4338CA] text-white rounded-xl font-semibold text-sm transition-all shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                         Lihat Transaksi
