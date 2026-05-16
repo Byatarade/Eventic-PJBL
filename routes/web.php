@@ -71,6 +71,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/wishlist', [\App\Http\Controllers\User\WishlistController::class, 'index'])->name('wishlist.index');
         Route::post('/wishlist/{event}/toggle', [\App\Http\Controllers\User\WishlistController::class, 'toggle'])->name('wishlist.toggle');
         Route::delete('/wishlist/{wishlist}', [\App\Http\Controllers\User\WishlistController::class, 'destroy'])->name('wishlist.destroy');
+        
+        // Refund Routes
+        Route::get('/tickets/{order}/refund', [\App\Http\Controllers\User\RefundController::class, 'create'])->name('refunds.create');
+        Route::post('/tickets/{order}/refund', [\App\Http\Controllers\User\RefundController::class, 'store'])->name('refunds.store');
     });
 
     // EO Routes
@@ -89,6 +93,10 @@ Route::middleware('auth')->group(function () {
         // Transaction Management
         Route::get('/transactions', [\App\Http\Controllers\EO\TransactionController::class, 'index'])->name('transactions.index');
         Route::get('/transactions/{transaction}', [\App\Http\Controllers\EO\TransactionController::class, 'show'])->name('transactions.show');
+        
+        // Refund Management
+        Route::get('/refunds', [\App\Http\Controllers\EO\RefundController::class, 'index'])->name('refunds.index');
+        Route::patch('/refunds/{refund}', [\App\Http\Controllers\EO\RefundController::class, 'update'])->name('refunds.update');
         
         // Analytics
         Route::get('/analytics', [\App\Http\Controllers\EO\AnalyticsController::class, 'index'])->name('analytics.index');

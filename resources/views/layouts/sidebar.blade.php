@@ -93,6 +93,14 @@
                 </svg>
                 <span class="ml-3 whitespace-nowrap">Peserta Event</span>
             </x-sidebar-link>
+
+            <!-- Refund Management -->
+            <x-sidebar-link :href="route('eo.refunds.index')" :active="request()->routeIs('eo.refunds.*')">
+                <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
+                </svg>
+                <span class="ml-3 whitespace-nowrap">Kelola Refund</span>
+            </x-sidebar-link>
         @endif
 
         <x-sidebar-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
