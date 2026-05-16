@@ -11,7 +11,7 @@
     <div class="py-8">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-8">
             <!-- Minimalist Welcome Banner -->
-            <div class="relative overflow-hidden rounded-3xl bg-slate-900 p-8 md:p-10 text-white shadow-2xl">
+            <div class="relative overflow-hidden rounded-2xl bg-slate-900 p-8 md:p-10 text-white shadow-lg">
                 <div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px]"></div>
                 <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div class="max-w-xl text-center md:text-left">
@@ -26,7 +26,7 @@
                         </p>
                     </div>
                     <div class="shrink-0 flex gap-3">
-                        <a href="{{ route('user.tickets.index') }}" class="bg-white text-slate-900 px-6 py-3 rounded-2xl font-bold text-sm hover:bg-slate-50 transition-all active:scale-95 shadow-lg shadow-white/5">
+                        <a href="{{ route('user.tickets.index') }}" class="bg-white text-slate-900 px-6 py-3 rounded-xl font-bold text-sm hover:bg-slate-50 transition-all active:scale-95 shadow-sm">
                             Tiket Saya
                         </a>
                     </div>
@@ -35,9 +35,9 @@
 
             <!-- Minimalist Stats Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center transition-colors group-hover:bg-blue-600 group-hover:text-white">
+                        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center transition-colors group-hover:bg-blue-600 group-hover:text-white">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path></svg>
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Tiket Aktif</span>
@@ -45,9 +45,9 @@
                     <h4 class="text-4xl font-bold text-slate-900 tracking-tight">{{ $activeTicketsCount }}</h4>
                 </div>
 
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center transition-colors group-hover:bg-purple-600 group-hover:text-white">
+                        <div class="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center transition-colors group-hover:bg-purple-600 group-hover:text-white">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Transaksi</span>
@@ -55,9 +55,9 @@
                     <h4 class="text-4xl font-bold text-slate-900 tracking-tight">{{ $transactionCount }}</h4>
                 </div>
 
-                <div class="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
+                <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition-all duration-300 group">
                     <div class="flex items-center justify-between mb-4">
-                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-2xl flex items-center justify-center transition-colors group-hover:bg-orange-600 group-hover:text-white">
+                        <div class="w-12 h-12 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center transition-colors group-hover:bg-orange-600 group-hover:text-white">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                         </div>
                         <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Next Event</span>
@@ -69,7 +69,7 @@
             </div>
 
             <!-- Clean Recent Activities -->
-            <div class="bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden">
+            <div class="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
                 <div class="px-8 py-6 border-b border-slate-50 flex justify-between items-center bg-slate-50/30">
                     <div>
                         <h3 class="font-bold text-slate-900 tracking-tight leading-none mb-1">Aktivitas Terakhir</h3>

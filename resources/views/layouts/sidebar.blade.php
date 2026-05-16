@@ -22,7 +22,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">{{ __('Dashboard') }}</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">{{ __('Dashboard') }}</span>
             </x-sidebar-link>
 
             <!-- Tiket Saya -->
@@ -30,7 +30,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Tiket Saya</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Tiket Saya</span>
             </x-sidebar-link>
 
             <!-- Transaksi -->
@@ -46,7 +46,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Wishlist Saya</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Wishlist Saya</span>
             </x-sidebar-link>
         @endif
 
@@ -67,7 +67,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Kelola Event</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Kelola Event</span>
             </x-sidebar-link>
 
             <!-- Transaksi -->
@@ -83,7 +83,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Keuntungan</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Keuntungan</span>
             </x-sidebar-link>
 
             <!-- Peserta -->
@@ -91,7 +91,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Peserta Event</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Peserta Event</span>
             </x-sidebar-link>
 
             <!-- Refund Management -->
@@ -99,7 +99,7 @@
                 <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H8m0 0l3 3m-3-3l3-3m9 14V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16l4-2 4 2 4-2 4 2z" />
                 </svg>
-                <span class="ml-3 whitespace-nowrap">Kelola Refund</span>
+                <span class="ml-3 whitespace-nowrap font-semibold">Kelola Refund</span>
             </x-sidebar-link>
         @endif
 
@@ -107,7 +107,7 @@
             <svg class="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <span class="ml-3 whitespace-nowrap">{{ __('Profil') }}</span>
+            <span class="ml-3 whitespace-nowrap font-semibold">{{ __('Profil') }}</span>
         </x-sidebar-link>
     </nav>
 

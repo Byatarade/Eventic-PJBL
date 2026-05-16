@@ -1,10 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <h2 class="font-bold text-2xl text-deep-navy leading-tight">
+            <h2 class="font-bold text-2xl text-slate-900 tracking-tight">
                 {{ __('Buat Event Baru') }}
             </h2>
-            <a href="{{ route('eo.events.index') }}" class="w-full md:w-auto text-center text-gray-500 hover:text-electric-blue transition-colors text-sm font-semibold">
+            <a href="{{ route('eo.events.index') }}" class="w-full md:w-auto text-center text-slate-400 hover:text-blue-600 transition-colors text-sm font-bold uppercase tracking-widest">
                 &larr; Kembali
             </a>
         </div>
@@ -32,17 +32,17 @@
                 @endif
                 
                 <!-- Section 1: Informasi Event -->
-                <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-slate-50 border-b border-gray-100 px-6 md:px-8 py-6">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-electric-blue/10 flex items-center justify-center shrink-0">
-                                <svg class="w-6 h-6 text-electric-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-slate-50/50 border-b border-slate-100 px-6 md:px-8 py-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 border border-blue-100">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-deep-navy">1. Informasi Event</h3>
-                                <p class="text-sm text-gray-500">Detail utama mengenai event yang akan Anda selenggarakan.</p>
+                                <h3 class="text-xl font-bold text-slate-900 tracking-tight">1. Informasi Event</h3>
+                                <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Detail utama mengenai event Anda.</p>
                             </div>
                         </div>
                     </div>
@@ -66,9 +66,9 @@
                                 <label for="banner" class="premium-label">Banner Event</label>
                                 <div class="relative">
                                     <input type="file" id="banner" name="banner" class="hidden" accept="image/*" onchange="document.getElementById('file-name').textContent = this.files[0].name" required>
-                                    <label for="banner" class="premium-input flex items-center justify-between cursor-pointer hover:bg-slate-100">
-                                        <span id="file-name" class="text-slate-500 truncate">Pilih gambar event...</span>
-                                        <span class="bg-electric-blue text-white text-xs font-bold px-3 py-1 rounded-lg">Browse</span>
+                                    <label for="banner" class="premium-input flex items-center justify-between cursor-pointer hover:bg-slate-50 transition-colors">
+                                        <span id="file-name" class="text-slate-400 truncate font-medium">Pilih gambar event...</span>
+                                        <span class="bg-blue-600 text-white text-[10px] font-bold px-3 py-1.5 rounded-lg uppercase tracking-tight">Browse</span>
                                     </label>
                                 </div>
                                 <p class="mt-2 text-[10px] text-gray-400 font-medium uppercase tracking-wider ml-1 italic">
@@ -180,20 +180,20 @@
                 </div>
 
                 <!-- Section 2: Pengaturan Tiket -->
-                <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
-                    <div class="bg-slate-50 border-b border-gray-100 px-6 md:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center shrink-0">
-                                <svg class="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="bg-slate-50/50 border-b border-slate-100 px-6 md:px-8 py-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 border border-amber-100">
+                                <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"></path>
                                 </svg>
                             </div>
                             <div>
-                                <h3 class="text-xl font-bold text-deep-navy">2. Pengaturan Tiket</h3>
-                                <p class="text-sm text-gray-500">Tentukan jenis, harga, dan kuota tiket.</p>
+                                <h3 class="text-xl font-bold text-slate-900 tracking-tight">2. Pengaturan Tiket</h3>
+                                <p class="text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-1">Tentukan jenis, harga, dan kuota tiket.</p>
                             </div>
                         </div>
-                        <span class="bg-blue-50 text-electric-blue text-xs font-bold px-4 py-2 rounded-full border border-blue-100">
+                        <span class="bg-blue-50 text-blue-600 text-[10px] font-bold px-4 py-2 rounded-xl border border-blue-100 uppercase tracking-tight">
                             Limit: 5 Tiket/User
                         </span>
                     </div>
@@ -293,13 +293,13 @@
 
                 <!-- Submit Button -->
                 <div class="flex flex-col md:flex-row justify-end items-center gap-4 pt-4">
-                    <button type="submit" name="draft" value="1" class="w-full md:w-auto px-8 py-4 border-2 border-slate-200 text-slate-600 rounded-2xl hover:bg-slate-50 hover:border-slate-300 font-bold transition-all duration-300 flex items-center justify-center gap-2 group">
-                        <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button type="submit" name="draft" value="1" class="w-full md:w-auto px-8 py-4 border-2 border-slate-100 text-slate-400 rounded-2xl hover:bg-slate-50 hover:border-slate-200 font-bold text-xs uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 group active:scale-[0.98]">
+                        <svg class="w-5 h-5 text-slate-300 group-hover:text-slate-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
                         </svg>
                         Simpan Draft
                     </button>
-                    <button type="submit" class="w-full md:w-auto px-10 py-4 bg-electric-blue text-white rounded-2xl hover:bg-blue-600 font-bold transition-all duration-300 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <button type="submit" class="w-full md:w-auto px-12 py-4 bg-blue-600 text-white rounded-2xl hover:bg-blue-700 font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-lg shadow-blue-600/10 active:scale-[0.98] flex items-center justify-center gap-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                         </svg>

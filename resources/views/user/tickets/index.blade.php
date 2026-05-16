@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-bold text-2xl text-deep-navy leading-tight">
+        <h2 class="font-bold text-2xl text-slate-900 tracking-tight">
             {{ __('Tiket Saya') }}
         </h2>
     </x-slot>
@@ -63,7 +63,7 @@
                                     </div>
                                 </div>
                                 @php $minPrice = $bannerEvent->tickets->min('price'); @endphp
-                                <a href="{{ route('events.show', $bannerEvent) }}" class="shrink-0 bg-white hover:bg-gray-50 text-[#4F46E5] px-5 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
+                                <a href="{{ route('events.show', $bannerEvent) }}" class="shrink-0 bg-white hover:bg-slate-50 text-blue-600 px-6 py-3 rounded-xl font-bold text-sm transition-all shadow-sm active:scale-95">
                                     @if($minPrice > 0)
                                         Mulai Rp{{ number_format($minPrice, 0, ',', '.') }}
                                     @else
@@ -107,10 +107,10 @@
             <div x-data="{ filter: 'semua' }" class="space-y-6">
                 {{-- Filter Buttons --}}
                 <div class="flex flex-wrap gap-3">
-                    <button @click="filter = 'semua'" :class="filter === 'semua' ? 'bg-[#4F46E5] text-white shadow-md shadow-indigo-200 border-transparent' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">Semua <span class="bg-white/20 rounded-full px-1.5 py-0.5 text-[10px]">{{ $countAll }}</span></button>
-                    <button @click="filter = 'paid'" :class="filter === 'paid' ? 'bg-[#4F46E5] text-white shadow-md shadow-indigo-200 border-transparent' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">Lunas <span class="bg-emerald-100 text-emerald-700 rounded-full px-1.5 py-0.5 text-[10px] font-bold">{{ $countPaid }}</span></button>
-                    <button @click="filter = 'pending'" :class="filter === 'pending' ? 'bg-[#4F46E5] text-white shadow-md shadow-indigo-200 border-transparent' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">Pending @if($countPending > 0)<span class="bg-amber-100 text-amber-700 rounded-full px-1.5 py-0.5 text-[10px] font-bold animate-pulse">{{ $countPending }}</span>@endif</button>
-                    <button @click="filter = 'canceled'" :class="filter === 'canceled' ? 'bg-[#4F46E5] text-white shadow-md shadow-indigo-200 border-transparent' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'" class="px-5 py-2.5 rounded-full text-sm font-semibold border transition-all duration-200 inline-flex items-center gap-2">Dibatalkan <span class="bg-red-100 text-red-600 rounded-full px-1.5 py-0.5 text-[10px] font-bold">{{ $countCanceled }}</span></button>
+                    <button @click="filter = 'semua'" :class="filter === 'semua' ? 'bg-slate-900 text-white shadow-lg shadow-slate-900/10 border-transparent' : 'bg-white text-slate-600 border-slate-100 hover:bg-slate-50'" class="px-6 py-3 rounded-xl text-sm font-bold border transition-all duration-200 inline-flex items-center gap-2">Semua <span class="bg-white/20 rounded-full px-2 py-0.5 text-[10px]">{{ $countAll }}</span></button>
+                    <button @click="filter = 'paid'" :class="filter === 'paid' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/10 border-transparent' : 'bg-white text-slate-600 border-slate-100 hover:bg-slate-50'" class="px-6 py-3 rounded-xl text-sm font-bold border transition-all duration-200 inline-flex items-center gap-2">Lunas <span class="bg-white/20 rounded-full px-2 py-0.5 text-[10px] font-bold">{{ $countPaid }}</span></button>
+                    <button @click="filter = 'pending'" :class="filter === 'pending' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/10 border-transparent' : 'bg-white text-slate-600 border-slate-100 hover:bg-slate-50'" class="px-6 py-3 rounded-xl text-sm font-bold border transition-all duration-200 inline-flex items-center gap-2">Pending @if($countPending > 0)<span class="bg-white/20 rounded-full px-2 py-0.5 text-[10px] font-bold animate-pulse">{{ $countPending }}</span>@endif</button>
+                    <button @click="filter = 'canceled'" :class="filter === 'canceled' ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/10 border-transparent' : 'bg-white text-slate-600 border-slate-100 hover:bg-slate-50'" class="px-6 py-3 rounded-xl text-sm font-bold border transition-all duration-200 inline-flex items-center gap-2">Dibatalkan <span class="bg-white/20 rounded-full px-2 py-0.5 text-[10px] font-bold">{{ $countCanceled }}</span></button>
                 </div>
 
                 @php
