@@ -195,11 +195,12 @@
                     <!-- Timer Box -->
                     <div class="bg-[#FFC107] rounded-xl mb-4 p-4 text-center font-bold text-gray-900 shadow-sm flex items-center justify-center gap-3"
                          x-data="{ 
-                            time: 30, 
+                            time: 86400, 
                             format() {
-                                let m = Math.floor(this.time / 60);
+                                let h = Math.floor(this.time / 3600);
+                                let m = Math.floor((this.time % 3600) / 60);
                                 let s = this.time % 60;
-                                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+                                return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
                             },
                             init() {
                                 let timer = setInterval(() => { 
@@ -213,7 +214,7 @@
                                 }, 1000);
                             }
                          }">
-                        <span class="text-xl" x-text="format()">10:00</span>
+                        <span class="text-xl" x-text="format()">24:00:00</span>
                         <div class="w-px h-5 bg-black/20"></div>
                         <span>Batas Waktu Tersisa</span>
                     </div>
