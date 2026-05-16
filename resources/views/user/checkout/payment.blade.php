@@ -223,6 +223,32 @@
 
                 <!-- Right Column (Sticky Box) -->
                 <div class="lg:col-span-4 relative">
+                    
+                    <!-- Timer Box -->
+                    <div class="bg-[#FFC107] rounded-xl mb-4 p-4 text-center font-bold text-gray-900 shadow-sm flex items-center justify-center gap-3"
+                         x-data="{ 
+                            time: 30, 
+                            format() {
+                                let m = Math.floor(this.time / 60);
+                                let s = this.time % 60;
+                                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+                            },
+                            init() {
+                                let timer = setInterval(() => { 
+                                    if(this.time > 0) {
+                                        this.time--;
+                                    } else {
+                                        clearInterval(timer);
+                                        window.location.href = '{{ route("user.checkout.index", $event) }}';
+                                    }
+                                }, 1000);
+                            }
+                         }">
+                        <span class="text-xl" x-text="format()">00:30</span>
+                        <div class="w-px h-5 bg-black/20"></div>
+                        <span>Batas Waktu Tersisa</span>
+                    </div>
+
                     <div class="sticky top-24 bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
                         
                         <h3 class="text-[15px] font-bold text-gray-800 mb-5 pb-3 border-b border-gray-100 flex items-center gap-2">

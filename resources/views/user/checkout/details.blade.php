@@ -202,7 +202,14 @@
                                 return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
                             },
                             init() {
-                                setInterval(() => { if(this.time > 0) this.time-- }, 1000);
+                                let timer = setInterval(() => { 
+                                    if(this.time > 0) {
+                                        this.time--;
+                                    } else {
+                                        clearInterval(timer);
+                                        window.location.href = '{{ route("user.checkout.index", $event) }}';
+                                    }
+                                }, 1000);
                             }
                          }">
                         <span class="text-xl" x-text="format()">10:00</span>
