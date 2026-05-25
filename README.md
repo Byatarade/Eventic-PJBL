@@ -100,7 +100,7 @@ Pastikan sistem Anda telah memiliki:
 
 ```bash
 git clone https://github.com/Byatarade/Eventic-PJBL.git
-cd Laravel-13
+cd Eventic-PJBL
 ```
 
 ### 2. Install Dependensi PHP
