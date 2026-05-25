@@ -99,8 +99,8 @@ Pastikan sistem Anda telah memiliki:
 ### 1. Clone Repositori
 
 ```bash
-git clone https://github.com/Byatarade/Laravel-13.git
-cd Laravel-13
+git clone https://github.com/Byatarade/Eventic-PJBL.git
+cd Eventic-PJBL
 ```
 
 ### 2. Install Dependensi PHP
@@ -395,10 +395,7 @@ erDiagram
       <img src="Documentation/Dashboard/Register/Register.jpg" width="100%" alt="Register" />
       <br/><sub><b>Register</b></sub>
     </td>
-    <td align="center" width="25%">
-      <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Event.jpg" width="100%" alt="Detail Event" />
-      <br/><sub><b>Detail Event</b></sub>
-    </td>
+    <td align="center" width="25%"></td>
     <td align="center" width="25%"></td>
   </tr>
 </table>
@@ -407,19 +404,23 @@ erDiagram
 
 <table>
   <tr>
-    <td align="center" width="25%">
+    <td align="center" width="20%">
       <img src="Documentation/Landing%20Page/User%20Buy/Pilih%20Kategori%20Tiket.jpg" width="100%" alt="Pilih Kategori Tiket" />
       <br/><sub><b>Pilih Kategori Tiket</b></sub>
     </td>
-    <td align="center" width="25%">
+    <td align="center" width="20%">
+      <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Event.jpg" width="100%" alt="Detail Event" />
+      <br/><sub><b>Detail Event</b></sub>
+    </td>
+    <td align="center" width="20%">
       <img src="Documentation/Landing%20Page/User%20Buy/Detail%20Pesanan.jpg" width="100%" alt="Detail Pesanan" />
       <br/><sub><b>Detail Pesanan</b></sub>
     </td>
-    <td align="center" width="25%">
+    <td align="center" width="20%">
       <img src="Documentation/Landing%20Page/User%20Buy/Metode%20Pembayaran.jpg" width="100%" alt="Metode Pembayaran" />
       <br/><sub><b>Metode Pembayaran</b></sub>
     </td>
-    <td align="center" width="25%">
+    <td align="center" width="20%">
       <img src="Documentation/Landing%20Page/User%20Buy/Pembayaran%20Done.jpg" width="100%" alt="Pembayaran Berhasil" />
       <br/><sub><b>Pembayaran Berhasil</b></sub>
     </td>
