@@ -99,7 +99,7 @@ Pastikan sistem Anda telah memiliki:
 ### 1. Clone Repositori
 
 ```bash
-git clone https://github.com/Byatarade/Laravel-13.git
+git clone https://github.com/Byatarade/Eventic-PJBL.git
 cd Laravel-13
 ```
 
