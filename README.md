@@ -248,6 +248,100 @@ Laravel-13/
 │
 ├── 📁 public/                        # Aset publik & entry point
 ├── 📁 storage/                       # File upload & log
+
+---
+
+## 🗄️ Arsitektur Database
+
+Eventic menggunakan skema database relasional yang dioptimalkan untuk performa dan integritas data. Berikut adalah representasi visual dan detail teknis dari struktur database.
+
+### Entity Relationship Diagram (ERD)
+
+```mermaid
+erDiagram
+    USER ||--o{ EVENT : "manages (EO)"
+    USER ||--o{ ORDER : "places"
+    USER ||--o{ WISHLIST : "adds"
+    USER ||--o{ REFUND_REQUEST : "submits"
+    
+    EVENT ||--o{ TICKET : "defines"
+    EVENT ||--o{ WISHLIST : "bookmarked_in"
+    
+    TICKET ||--o{ ORDER_ITEM : "included_in"
+    
+    ORDER ||--|{ ORDER_ITEM : "contains"
+    ORDER ||--o{ REFUND_REQUEST : "refunded_by"
+
+    USER {
+        bigint id PK
+        string name
+        string username
+        string email
+        string password
+        string phone
+        enum role "eo, user"
+        string avatar
+    }
+
+    EVENT {
+        bigint id PK
+        bigint user_id FK
+        string name
+        text description
+        string category
+        string location
+        datetime date
+        string status
+        string organizer_name
+    }
+
+    TICKET {
+        bigint id PK
+        bigint event_id FK
+        string type "VIP, Regular, dll"
+        integer price
+        integer stock
+        integer max_per_user
+    }
+
+    ORDER {
+        bigint id PK
+        bigint user_id FK
+        integer total_price
+        enum status "pending, paid, canceled"
+        timestamp expired_at
+    }
+
+    ORDER_ITEM {
+        bigint id PK
+        bigint order_id FK
+        bigint ticket_id FK
+        integer quantity
+        integer price
+    }
+```
+
+### Detail Tabel Utama
+
+| Tabel | Deskripsi |
+|-------|-----------|
+| `users` | Menyimpan data autentikasi dan profil. Field `role` membedakan antara EO dan pembeli umum. |
+| `events` | Entitas utama yang dikelola oleh EO. Menyimpan detail lokasi, waktu, dan metadata sosial media penyelenggara. |
+| `tickets` | Definisi tipe tiket untuk setiap event. Menggunakan `unique` constraint pada kombinasi `event_id` dan `type`. |
+| `orders` | Header transaksi yang mencatat status pembayaran dan batas waktu kedaluwarsa (expired). |
+| `order_items` | Detail item dalam transaksi, mencatat harga saat transaksi (snapshot) untuk akurasi laporan keuangan. |
+| `wishlists` | Tabel pivot yang menghubungkan pengguna dengan event yang diminati. |
+| `refund_requests` | Mencatat permohonan pengembalian dana dengan alasan terstruktur dan pelacakan status oleh admin/EO. |
+
+---
+
+## 🔐 Keamanan & Optimasi
+- **Hashing**: Semua password dienkripsi menggunakan algoritma `Bcrypt` (via Laravel native).
+- **Soft Deletes**: (Opsional/Planned) Untuk menjaga jejak audit data transaksi.
+- **Constraints**: Penggunaan `onDelete('cascade')` pada relasi kunci untuk menjaga integritas referensial.
+- **Indexing**: Database diindeks pada kolom-kolom yang sering dicari seperti `status`, `event_id`, dan `user_id` untuk query yang lebih cepat.
+
+---
 ├── 📁 Documentation/                 # Screenshot dokumentasi
 ├── .env.example                      # Template konfigurasi
 ├── composer.json                     # Dependensi PHP
