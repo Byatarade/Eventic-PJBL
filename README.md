@@ -13,7 +13,6 @@
 [![Filament](https://img.shields.io/badge/Filament-v5-FDAE4B?style=for-the-badge&logo=filament&logoColor=white)](https://filamentphp.com)
 [![Breeze](https://img.shields.io/badge/Laravel_Breeze-v2.4-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com/docs/starter-kits#laravel-breeze)
 [![Vite](https://img.shields.io/badge/Vite-v8.x-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
 *Solusi terpadu untuk mengelola, mempromosikan, dan membeli tiket event — semua dalam satu platform yang elegan.*
 
@@ -415,12 +414,6 @@ Kontribusi sangat disambut! Silakan ikuti langkah berikut:
 5. Buat **Pull Request**
 
 > Harap ikuti konvensi commit [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
-
----
-
-## 📄 Lisensi
-
-Proyek ini dilisensikan di bawah **MIT License** — lihat file [LICENSE](LICENSE) untuk detail lengkap.
 
 ---
 
