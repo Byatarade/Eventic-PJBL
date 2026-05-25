@@ -249,6 +249,14 @@ Laravel-13/
 ├── 📁 public/                        # Aset publik & entry point
 ├── 📁 storage/                       # File upload & log
 
+├── 📁 Documentation/                 # Screenshot dokumentasi
+├── .env.example                      # Template konfigurasi
+├── composer.json                     # Dependensi PHP
+├── package.json                      # Dependensi Node.js
+├── tailwind.config.js                # Konfigurasi Tailwind CSS
+└── vite.config.js                    # Konfigurasi Vite
+```
+
 ---
 
 ## 🗄️ Arsitektur Database
@@ -340,15 +348,6 @@ erDiagram
 - **Soft Deletes**: (Opsional/Planned) Untuk menjaga jejak audit data transaksi.
 - **Constraints**: Penggunaan `onDelete('cascade')` pada relasi kunci untuk menjaga integritas referensial.
 - **Indexing**: Database diindeks pada kolom-kolom yang sering dicari seperti `status`, `event_id`, dan `user_id` untuk query yang lebih cepat.
-
----
-├── 📁 Documentation/                 # Screenshot dokumentasi
-├── .env.example                      # Template konfigurasi
-├── composer.json                     # Dependensi PHP
-├── package.json                      # Dependensi Node.js
-├── tailwind.config.js                # Konfigurasi Tailwind CSS
-└── vite.config.js                    # Konfigurasi Vite
-```
 
 ---
 
