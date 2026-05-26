@@ -336,3 +336,60 @@
     <x-footer />
 </body>
 </html>
+
+<style>
+    /* SweetAlert2 custom tweaks */
+    .swal2-popup {
+        border-radius: 1rem !important;
+        font-family: 'Montserrat', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+        box-shadow: 0 20px 40px rgba(13, 42, 148, 0.08) !important;
+    }
+    .swal2-title {
+        color: #0F172A !important; /* deep navy */
+        font-weight: 700 !important;
+    }
+    .swal2-content {
+        color: #374151 !important; /* gray-700 */
+    }
+    .swal2-confirm {
+        background: linear-gradient(90deg,#2563EB,#60A5FA) !important; /* attractive blue gradient */
+        border: none !important;
+        box-shadow: 0 8px 20px rgba(37,99,235,0.18) !important;
+    }
+</style>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+    const contactSection = document.querySelector('section#contact');
+    if (!contactSection) return;
+    const form = contactSection.querySelector('form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        const name = form.querySelector('#name')?.value?.trim();
+
+        Swal.fire({
+            title: 'Pesan Terkirim',
+            html: `<div style="display:flex;flex-direction:column;gap:8px;align-items:center"><svg width=72 height=72 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#34D399" opacity="0.12"/><path d="M7 13l3 3 7-7" stroke="#10B981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-weight:600;color:#0F172A">Terima kasih${name ? ' ' + name : ''}!</div><div style="font-size:0.95rem;color:#374151">Pesan Anda telah kami terima. Tim kami akan menghubungi Anda segera.</div></div>`,
+            showConfirmButton: true,
+            confirmButtonText: 'Tutup',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content'
+            },
+            background: 'linear-gradient(180deg, #ffffff, #f8fbff)',
+            width: 540,
+            showCloseButton: false,
+            allowOutsideClick: false
+        }).then(() => {
+            form.reset();
+        });
+    });
+});
+</script>
